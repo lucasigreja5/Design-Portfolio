@@ -6,6 +6,19 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.3.1] - 2026-11-20
+
+- **Git Tag:** [`v0.3.1`](https://github.com/lucasigreja5/Design-Portfolio/releases/tag/v0.3.1)
+- **Archived Snapshot:** [`Versions/v0.3.1/`](./Versions/v0.3.1/VERSION_INFO.md)
+
+### Fixed
+- **Monotonic Projects Counter Scrolling (`js/motion/animations.js`):** Replaced the threshold-based `IntersectionObserver` with a `requestAnimationFrame`-throttled monotonic scroll-anchor scan across all `.project-card` elements plus a `240ms` directional vertical glide on `#stickyCounterNum`, eliminating back-and-forth counter jumps on Tablet and Mobile.
+
+### Changed
+- **Projects Rail Cleanup (`index.html`, `css/components.css`, `js/components/portfolio.js`, `js/motion/animations.js`):** Removed the `.rail-era` subtitle (`"2026 · DIGITAL PRODUCT"`, `"2019–2022 · BRAND SYSTEMS"`, `"2015–2018 · CAMPAIGNS & PRINT"`) from the Projects index rail (preserving `era` inside Case-Study Modals), tuned desktop `--rail-block-h` to `190px`, compacted the tablet/mobile sticky HUD to 2 clean rows, and updated asset cache-bust query strings to `?v=0.3.1`.
+
+---
+
 ## [0.3] - 2026-11-20
 
 - **Git Tag:** [`v0.3`](https://github.com/lucasigreja5/Design-Portfolio/releases/tag/v0.3)

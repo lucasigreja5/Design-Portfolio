@@ -225,7 +225,6 @@
     const stack = document.getElementById('projectsStack');
     const totalEl = document.getElementById('stickyCounterTotal');
     const numEl = document.getElementById('stickyCounterNum');
-    const eraEl = document.getElementById('railEra');
     const titleEl = document.getElementById('railTitle');
     const progressEl = document.getElementById('railProgressFill');
     if (!stack) return;
@@ -263,7 +262,6 @@
       const firstLoc = list[0][lang];
       if (numEl) numEl.textContent = '01';
       if (totalEl) totalEl.textContent = `/ ${String(list.length).padStart(2, '0')}`;
-      if (eraEl) eraEl.textContent = firstLoc.era;
       if (titleEl) titleEl.textContent = firstLoc.title;
       if (progressEl) progressEl.style.transform = `scaleX(${1 / list.length})`;
     }
