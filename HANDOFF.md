@@ -1,6 +1,7 @@
 # Project Handoff — Lucas Igreja Portfolio
 
 > **Current Status:** **Phase 1 (Design System v2.0)** & **Phase 2 (Full Portfolio from Figma `10:57`)** are **complete and browser-verified**.  
+> **Current Version:** `v0.1` (Archived at [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md) & Git tag `v0.1`)  
 > **Runtime Requirement:** **Zero build dependencies.** Pure static HTML5 + CSS3 Custom Properties + Vanilla JS (`window.PORTFOLIO_DATA` / `window.PortfolioUI` / `window.PortfolioMotion`) + GSAP CDN with graceful fallback. Works via local HTTP server (`scripts/serve.ps1` / `scripts/serve.sh`), static hosts, or direct `file://`.
 
 ---
@@ -42,6 +43,9 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`index.html`](./index.html) | Main bilingual portfolio page matching Figma `10:57` |
 | [`design-system.html`](./design-system.html) | Interactive Design System v2.0 specimen (color copy, Grid Overlay, motion playground) |
 | [`design.md`](./design.md) | Complete Design System v2.0 specification & Figma checklist |
+| [`VERSION`](./VERSION) | Active project version (`0.1`) |
+| [`CHANGELOG.md`](./CHANGELOG.md) | Release notes and version history (`0.1`, `0.2`, ...) |
+| [`Versions/`](./Versions/README.md) | Immutable runnable release snapshots (`Versions/v0.1/`, ...) & rollback guide |
 | [`css/tokens.css`](./css/tokens.css) | CSS Custom Properties matching `design.md` v2.0 1:1 |
 | [`css/base.css`](./css/base.css) | Reset, `.font-display`, `.font-mono`, `.micro-grid-bg`, sharp focus & reduced-motion guards |
 | [`css/components.css`](./css/components.css) | Header, Hero, About, sticky `01–09` Projects + bespoke covers, Disciplines band, asymmetric `OTHER`, CTA, Footer |
@@ -52,6 +56,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`js/main.js`](./js/main.js) | Entry bootstrap, mobile drawer, Back-to-Top scroll |
 | [`assets/hero-ambient.png`](./assets/hero-ambient.png) | Local Figma ambient curve artwork (`146,551` bytes) |
 | [`assets/projects/README.md`](./assets/projects/README.md) | Instructions for swapping bespoke covers with high-res Behance/Figma PNG/WebP exports |
+| [`scripts/release-version.sh`](./scripts/release-version.sh) | Archives a new immutable `Versions/vX.Y/` snapshot and updates `VERSION` |
 | [`scripts/serve.ps1`](./scripts/serve.ps1) | Zero-dependency Windows PowerShell static HTTP server (`localhost:4173`) |
 | [`scripts/serve.sh`](./scripts/serve.sh) | Portable macOS/Linux static HTTP server script |
 | [`docs/CONVERSATION_HISTORY.md`](./docs/CONVERSATION_HISTORY.md) | Human- & agent-readable chronological decision log |
@@ -68,6 +73,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 2. **Edge-Bleed Alignment Math:** `.projects-bleed-layout` and `.other-asymmetric-grid` rely on `--page-gutter: max(var(--container-pad), calc((100% - var(--container-max)) / 2 + var(--container-pad)))` so right/left edge-bleed cards align with `.container` boundaries without creating horizontal overflow.
 3. **Never Reintroduce Temporary Figma Asset URLs:** Always store images locally in `assets/`. Temporary `figma.com/api/mcp/asset/...` URLs expire after 7 days.
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
+5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
 
 ---
 

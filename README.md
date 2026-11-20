@@ -38,8 +38,13 @@ DesignPortfolio/
 ├── index.html                  # Main bilingual portfolio website
 ├── design-system.html          # Interactive Design System v2.0 specimen
 ├── design.md                   # Complete Design System v2.0 spec & Figma checklist
+├── VERSION                     # Active project version (currently 0.1)
+├── CHANGELOG.md                # Release notes & version history
 ├── HANDOFF.md                  # Full technical handoff & AI resume prompt
 ├── README.md                   # Project setup & deployment guide
+├── Versions/
+│   ├── README.md               # Archive guide, index & rollback instructions
+│   └── v0.1/                   # Runnable immutable snapshot of v0.1
 ├── css/
 │   ├── tokens.css              # Design tokens (#000000, #FFFFFF, #D4FF00, Clash Display, motion)
 │   ├── base.css                # Reset, typography utilities, reduced-motion & focus guards
@@ -54,6 +59,7 @@ DesignPortfolio/
 │   ├── hero-ambient.png        # Local ambient artwork exported from Figma
 │   └── projects/README.md      # Guide for adding high-res project screenshots
 ├── scripts/
+│   ├── release-version.sh      # Archive a new version snapshot & update VERSION
 │   ├── serve.ps1               # Windows static preview server
 │   └── serve.sh                # macOS/Linux static preview server
 └── docs/
@@ -72,6 +78,14 @@ DesignPortfolio/
 - **Edit Copy, Bio, or Case Studies:** Update [`js/data/projects.js`](./js/data/projects.js) (`copy.en` / `copy.pt`, `projects`, `disciplines`, and `evolution`).
 - **Swap Bespoke Cover Art for Exported Screenshots:** Follow [`assets/projects/README.md`](./assets/projects/README.md) to drop `16:10` `.webp`/`.png` exports into `assets/projects/` and reference them in `projects.js`.
 - **Continue Development on Another Machine:** Read [`HANDOFF.md`](./HANDOFF.md) and [`docs/CONVERSATION_HISTORY.md`](./docs/CONVERSATION_HISTORY.md) for full architectural context.
+
+---
+
+## Versioning & Releases
+
+- **Active Version:** Tracked in [`VERSION`](./VERSION) (`0.1`) with release notes in [`CHANGELOG.md`](./CHANGELOG.md).
+- **Archived Snapshots:** Immutable, runnable snapshots live under [`Versions/`](./Versions/README.md) (starting with [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md), previewable at `http://localhost:4173/Versions/v0.1/`).
+- **Cut a New Version:** Run `./scripts/release-version.sh 0.2 "Summary of changes"`, update [`CHANGELOG.md`](./CHANGELOG.md) and [`Versions/README.md`](./Versions/README.md), then commit and push with an annotated tag (`git tag -a v0.2 -m "..."` and `git push origin main --follow-tags`).
 
 ---
 
