@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Igreja — UI/UX &amp; Graphic Design Portfolio</title>
+  <meta name="description" content="Portfolio of Lucas Igreja — Graphic Designer, Art Director, and UI/UX Designer based in Brasília, Brazil. Showcasing 12+ years across brand systems, editorial campaigns, and digital products." />
+  <meta property="og:title" content="Lucas Igreja — UI/UX &amp; Graphic Design Portfolio" />
+  <meta property="og:description" content="Brand identity, art direction, and interactive UI/UX craft from 2013 to 2026." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css?v=0.4" />
+  <link rel="stylesheet" href="css/base.css?v=0.4" />
+  <link rel="stylesheet" href="css/components.css?v=0.4" />
+  <link rel="stylesheet" href="css/modal.css?v=0.4" />
+</head>
+<body>
+  <!-- Sticky Minimal Navigation -->
+  <header class="site-header" id="top">
+    <div class="container site-header-inner">
+      <a href="#top" class="brand-wordmark">
+        <span class="brand-status-dot" aria-hidden="true"></span>
+        <span>LUCAS IGREJA®</span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="#about" class="nav-link" data-i18n="nav.about">ABOUT</a>
+          <a href="#projects" class="nav-link" data-i18n="nav.projects">PROJECTS</a>
+          <a href="#disciplines" class="nav-link" data-i18n="nav.disciplines">DISCIPLINES</a>
+          <a href="#other" class="nav-link" data-i18n="nav.other">OTHER</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-toggle" id="langToggle" role="group" aria-label="Language switcher">
+            <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <button class="lang-option" type="button" data-lang="pt" aria-pressed="false">PT</button>
+          </div>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open navigation menu">
+            <span class="hamburger-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer (Slides in Right -> Left) -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+    <div class="mobile-drawer-panel">
+      <div class="mobile-drawer-top">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Close navigation menu">
+          <span class="drawer-close-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+      <nav class="mobile-drawer-nav" aria-label="Mobile navigation links">
+        <a href="#about" class="mobile-drawer-link" data-i18n="nav.about">ABOUT</a>
+        <a href="#projects" class="mobile-drawer-link" data-i18n="nav.projects">PROJECTS</a>
+        <a href="#disciplines" class="mobile-drawer-link" data-i18n="nav.disciplines">DISCIPLINES</a>
+        <a href="#other" class="mobile-drawer-link" data-i18n="nav.other">OTHER</a>
+        <a href="#contact" class="mobile-drawer-link" data-i18n="footer.colContact">CONTACT ME</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- 01. Hero Section (Figma 10:82 + 10:67) -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-title-wrap">
+          <h1 class="hero-headline">
+            <span class="hero-line"><span class="hero-line-inner" data-i18n="hero.titleLine1">GRAPHIC CRAFT</span></span>
+            <span class="hero-line"><span class="hero-line-inner" data-i18n="hero.titleLine2">MEETS DIGITAL UX</span></span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="hero-media-frame">
+        <img src="assets/hero-ambient.png" alt="Abstract architectural light curves" class="hero-media-img" />
+        <div class="hero-media-scrim" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 02. About Section (Figma 10:123 + 10:124) -->
+    <section class="about-section reveal-block" id="about">
+      <div class="container">
+        <h2 class="section-heading" data-i18n="about.heading">ABOUT</h2>
+
+        <div class="about-content-right">
+          <p class="about-statement" data-i18n="about.statement">
+            Graphic designer and art director since 2013, now expanding 12+ years of brand identity, editorial, and print craft into interactive UI/UX and motion-driven digital products — based in Brasília, Brazil.
+          </p>
+
+          <div class="about-actions">
+            <button class="btn-pill-cta" type="button" data-open-evolution>
+              <span class="cta-dot" aria-hidden="true"></span>
+              <span class="roll-wrap">
+                <span class="roll-track">
+                  <span data-i18n="about.ctaEvolution">CAREER EVOLUTION</span>
+                  <span aria-hidden="true" data-i18n="about.ctaEvolution">CAREER EVOLUTION</span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Projects Section — Sticky 01-09 Counter + Edge-Bleed Stack (Figma 10:158 + 10:161 + 10:160) -->
+    <section class="projects-section" id="projects">
+      <div class="container projects-header">
+        <h2 class="section-heading" data-i18n="projects.heading">PROJECTS</h2>
+      </div>
+
+      <div class="projects-bleed-layout">
+        <aside class="projects-rail" aria-label="Active project counter">
+          <div class="sticky-counter-row">
+            <span class="sticky-counter-num" id="stickyCounterNum">01</span>
+            <span class="sticky-counter-total" id="stickyCounterTotal">/ 09</span>
+          </div>
+          <div class="rail-progress-wrap" aria-hidden="true">
+            <div class="rail-progress-fill" id="railProgressFill"></div>
+          </div>
+          <span class="rail-title-preview" id="railTitle">SONAR BSB</span>
+        </aside>
+
+        <div class="projects-stack" id="projectsStack"></div>
+      </div>
+    </section>
+
+    <!-- 04. Disciplines Full-Bleed Band (Figma 10:167 + 10:148/155/156 + 10:181) -->
+    <section class="disciplines-section" id="disciplines">
+      <div class="disciplines-bg" aria-hidden="true">
+        <img src="assets/hero-ambient.png" alt="" id="disciplineBgImg" />
+      </div>
+      <div class="disciplines-scrim" aria-hidden="true"></div>
+
+      <div class="container disciplines-container">
+        <div class="disciplines-list" id="disciplinesList" role="tablist" aria-label="Core design disciplines"></div>
+
+        <div class="disciplines-detail" role="tabpanel" aria-live="polite">
+          <p class="disciplines-copy" id="disciplineCopy"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Other Section — Asymmetric Dual Edge-Bleed (Figma 10:169 + 10:168 + 10:175) -->
+    <section class="other-section reveal-block" id="other">
+      <div class="container other-header">
+        <h2 class="section-heading" data-i18n="other.heading">OTHER</h2>
+      </div>
+
+      <div class="other-asymmetric-grid">
+        <!-- Left Edge-Bleed Card -> Opens Career Evolution Modal -->
+        <button class="other-card other-card-left" type="button" data-open-evolution data-cursor-label="OPEN">
+          <div class="other-media-frame">
+            <img src="assets/hero-ambient.png" alt="" class="other-media-bg" aria-hidden="true" />
+            <div class="other-media-overlay">
+              <span class="font-mono" style="color: var(--accent-lime);" data-i18n="other.leftTag">INTERACTIVE TIMELINE</span>
+              <span class="other-card-sub" data-i18n="other.leftSubtitle">From print &amp; institutional direction to digital UX systems</span>
+              <span class="other-card-badge" data-i18n="other.leftBadge">OPEN TIMELINE</span>
+            </div>
+          </div>
+          <div class="other-caption-left">
+            <span class="other-caption-text" data-i18n="other.leftTitle">CAREER EVOLUTION · 2013–2026</span>
+          </div>
+        </button>
+
+        <!-- Right Edge-Bleed Card -> Opens Live Design System Specimen -->
+        <a href="design-system.html" class="other-card other-card-right" data-cursor-label="SPECIMEN">
+          <div class="other-media-frame">
+            <img src="assets/hero-ambient.png" alt="" class="other-media-bg" aria-hidden="true" />
+            <div class="other-media-overlay">
+              <span class="font-mono" style="color: var(--accent-lime);" data-i18n="other.rightTag">TOKENS &amp; SPECIMEN</span>
+              <span class="other-card-sub" data-i18n="other.rightSubtitle">Live monochrome architecture, Clash Display scale &amp; motion tokens</span>
+              <span class="other-card-badge" data-i18n="other.rightBadge">OPEN SPECIMEN ↗</span>
+            </div>
+          </div>
+          <div class="other-caption-right">
+            <span class="other-caption-text" data-i18n="other.rightTitle">DESIGN SYSTEM V2.0</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 06. Closing Contact CTA (Figma 10:235) -->
+    <section class="closing-cta-section reveal-block" id="contact">
+      <div class="container">
+        <h2 class="closing-cta-heading" data-i18n="cta.heading">
+          HAVE A PROJECT IN MIND? LET'S DESIGN SOMETHING SHARP TOGETHER.
+        </h2>
+
+        <div class="closing-cta-actions">
+          <a href="mailto:lucas.igreja@gmail.com" class="btn-pill-cta">
+            <span class="cta-dot" aria-hidden="true"></span>
+            <span class="roll-wrap">
+              <span class="roll-track">
+                <span data-i18n="cta.primaryBtn">LET'S WORK TOGETHER</span>
+                <span aria-hidden="true" data-i18n="cta.primaryBtn">LET'S WORK TOGETHER</span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 07. 4-Column Architectural Footer (Figma 10:178..232) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">LUCAS IGREJA®</div>
+          <p class="footer-bio" data-i18n="footer.bio">
+            Graphic designer, art director &amp; UI/UX designer based in Brasília, Brazil. Building visual identities and digital interfaces with clarity and motion.
+          </p>
+          <span class="font-mono footer-clock">BRASÍLIA, BR · <span data-brt-clock>--:-- BRT</span></span>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.colMain">MAIN</h3>
+          <ul class="footer-list">
+            <li><a href="#top" class="footer-link" data-i18n="footer.links.home">HOME</a></li>
+            <li><a href="#about" class="footer-link" data-i18n="footer.links.about">ABOUT</a></li>
+            <li><a href="#projects" class="footer-link" data-i18n="footer.links.projects">PROJECTS</a></li>
+            <li><a href="#disciplines" class="footer-link" data-i18n="footer.links.disciplines">DISCIPLINES</a></li>
+            <li><a href="#other" class="footer-link" data-i18n="footer.links.other">OTHER</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.colProjects">PROJECTS</h3>
+          <ul class="footer-list" id="footerProjectsList"></ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.colContact">CONTACT ME</h3>
+          <ul class="footer-list">
+            <li><a href="mailto:lucas.igreja@gmail.com" class="footer-link" data-i18n="footer.links.email">EMAIL ↗</a></li>
+            <li><a href="https://wa.me/5561981335098" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer.links.whatsapp">WHATSAPP ↗</a></li>
+            <li><a href="https://www.behance.net/lucasigreja" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer.links.behance">BEHANCE ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/lucasigreja/" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer.links.linkedin">LINKEDIN ↗</a></li>
+            <li><a href="design-system.html" class="footer-link" data-i18n="footer.links.designSystem">DESIGN SYSTEM ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="font-mono" style="color: var(--text-muted);" data-i18n="footer.rights">© 2026 LUCAS IGREJA. ALL RIGHTS RESERVED.</span>
+        <button class="footer-back-top" id="backToTopBtn" type="button" data-i18n="footer.backToTop">BACK TO TOP ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Case-Study & Career Evolution Modal -->
+  <div class="modal-backdrop" id="caseModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="modal-panel" id="caseModalContent"></div>
+  </div>
+
+  <!-- Custom Desktop Cursor Badge -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">VIEW CASE</div>
+
+  <!-- Toast Feedback -->
+  <div class="site-toast" id="siteToast" role="status" aria-live="polite"></div>
+
+  <!-- Motion Engine (GSAP CDN + Graceful Fallback) & App Scripts -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="js/data/projects.js?v=0.4"></script>
+  <script defer src="js/components/portfolio.js?v=0.4"></script>
+  <script defer src="js/motion/animations.js?v=0.4"></script>
+  <script defer src="js/main.js?v=0.4"></script>
+  <!-- DEV ONLY (PRE-v1.0 QA): Viewport Preview Toggle — REMOVE BEFORE SHIPPING v1.0 -->
+  <script defer src="js/dev/viewport-toggle.js?v=0.4"></script>
+</body>
+</html>

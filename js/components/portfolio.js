@@ -454,10 +454,11 @@
     lastFocusedEl = triggerEl || document.activeElement;
     const m = DATA.copy[lang].modal;
 
-    const rowsHtml = DATA.evolution
-      .map((item) => {
-        const loc = item[lang];
-        return `
+    const renderRows = (items) =>
+      items
+        .map((item) => {
+          const loc = item[lang];
+          return `
           <div class="evolution-row">
             <div class="font-mono evolution-period">${item.period}</div>
             <div>
@@ -466,27 +467,33 @@
               <p class="evolution-detail">${loc.detail}</p>
             </div>
           </div>`;
-      })
-      .join('');
+        })
+        .join('');
+
+    const experienceItems = DATA.evolution.filter((item) => item.category === 'experience');
+    const educationItems = DATA.evolution.filter((item) => item.category === 'education');
 
     bodyEl.innerHTML = `
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="font-mono modal-index">2013—2026</span>
           <h2 class="modal-title" id="modalHeading">${m.evolutionTitle}</h2>
         </div>
-        <button class="modal-close-btn" type="button" id="modalCloseBtn">${m.closeBtn}</button>
+        <button class="modal-close-icon-btn" type="button" id="modalCloseBtn" aria-label="${m.closeBtn}">
+          <span class="drawer-close-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
       </div>
       <div class="modal-body">
-        <p style="color: var(--text-secondary); font-size: var(--text-body-lg);">${m.evolutionSubtitle}</p>
-        <div class="evolution-list">${rowsHtml}</div>
-        <div class="modal-cta-row">
-          <span class="font-mono" style="color: var(--accent-lime);">${m.languagesLabel}</span>
-          <a href="${DATA.profile.linkedinUrl}" target="_blank" rel="noopener noreferrer" class="btn-pill-cta">
-            <span class="cta-dot" aria-hidden="true"></span>
-            <span>LINKEDIN ↗</span>
-          </a>
-        </div>
+        <section class="evolution-section" aria-labelledby="evolutionExperienceHeading">
+          <h3 class="font-mono evolution-section-heading" id="evolutionExperienceHeading">${m.experienceHeading}</h3>
+          <div class="evolution-list">${renderRows(experienceItems)}</div>
+        </section>
+        <section class="evolution-section" aria-labelledby="evolutionEducationHeading">
+          <h3 class="font-mono evolution-section-heading" id="evolutionEducationHeading">${m.educationHeading}</h3>
+          <div class="evolution-list">${renderRows(educationItems)}</div>
+        </section>
       </div>
     `;
 

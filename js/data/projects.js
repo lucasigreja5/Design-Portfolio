@@ -102,6 +102,8 @@
           closeBtn: 'CLOSE [ESC]',
           evolutionTitle: 'CAREER EVOLUTION · 2013–2026',
           evolutionSubtitle: '12+ years evolving from advertising & institutional art direction into modern UI/UX and motion design.',
+          experienceHeading: 'PROFESSIONAL EXPERIENCE',
+          educationHeading: 'SPECIALIZATIONS & DEGREES',
           languagesLabel: 'LANGUAGES: PORTUGUESE (NATIVE) · ENGLISH (FLUENT) · SPANISH (CONVERSATIONAL)'
         },
         toasts: {
@@ -196,6 +198,8 @@
           closeBtn: 'FECHAR [ESC]',
           evolutionTitle: 'EVOLUÇÃO PROFISSIONAL · 2013–2026',
           evolutionSubtitle: 'Mais de 12 anos evoluindo da publicidade e direção de arte institucional para UI/UX e motion design.',
+          experienceHeading: 'EXPERIÊNCIA PROFISSIONAL',
+          educationHeading: 'ESPECIALIZAÇÕES & FORMAÇÃO',
           languagesLabel: 'IDIOMAS: PORTUGUÊS (NATIVO) · INGLÊS (FLUENTE) · ESPANHOL (CONVERSAÇÃO)'
         },
         toasts: {
@@ -596,6 +600,7 @@
 
     evolution: [
       {
+        category: 'education',
         period: '2026',
         en: {
           role: 'UI/UX & Digital Product Craft',
@@ -609,6 +614,7 @@
         }
       },
       {
+        category: 'experience',
         period: '2019 — PRESENT',
         en: {
           role: 'Art Director',
@@ -622,6 +628,7 @@
         }
       },
       {
+        category: 'experience',
         period: '2017 — 2019',
         en: {
           role: 'Art Director',
@@ -635,6 +642,7 @@
         }
       },
       {
+        category: 'experience',
         period: '2016 — 2017',
         en: {
           role: 'Graphic Designer',
@@ -648,6 +656,7 @@
         }
       },
       {
+        category: 'experience',
         period: '2014 — 2016',
         en: {
           role: 'Junior Graphic Designer',
@@ -661,6 +670,7 @@
         }
       },
       {
+        category: 'education',
         period: '2010 — 2013',
         en: {
           role: 'B.A. in Advertising & Propaganda',

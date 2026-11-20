@@ -90,6 +90,30 @@
   border-color: var(--cta-bg);
 }
 
+.modal-close-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.modal-close-icon-btn:hover .drawer-close-icon span,
+.modal-close-icon-btn:focus-visible .drawer-close-icon span {
+  background: var(--accent-lime);
+}
+
+.modal-close-icon-btn:focus-visible {
+  outline: 2px solid var(--accent-lime);
+  outline-offset: 4px;
+}
+
 .modal-body {
   padding: var(--space-6);
   display: flex;
@@ -178,6 +202,25 @@
 }
 
 /* Career Evolution Timeline Modal Rows */
+.evolution-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.evolution-section + .evolution-section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.evolution-section-heading {
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--accent-lime);
+  margin: 0 0 var(--space-3);
+}
+
 .evolution-list {
   display: flex;
   flex-direction: column;

@@ -6,6 +6,18 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.4] - 2026-11-20
+
+**Git Tag:** `v0.4` · **Archive:** [`./Versions/v0.4/`](./Versions/v0.4/VERSION_INFO.md)
+
+### Changed
+- **Career Evolution Modal Close Button:** Replaced the `CLOSE [ESC]` pill text button with the borderless bold `X` icon (`.modal-close-icon-btn` + `.drawer-close-icon`) matching the slide-out navigation drawer.
+- **Career Evolution Modal Header & Footer Cleanup:** Removed the top-left lime `2013—2026` badge (`.modal-index`), the `12+ years evolving...` subtitle, the bottom `LANGUAGES:` metadata label, and the bottom `LINKEDIN ↗` CTA row.
+- **Separated Experience & Specializations Sections:** Categorized `DATA.evolution` entries (`experience` vs. `education`) and split the Career Evolution modal into two titled sections (`PROFESSIONAL EXPERIENCE` / `EXPERIÊNCIA PROFISSIONAL` with 4 roles, and `SPECIALIZATIONS & DEGREES` / `ESPECIALIZAÇÕES & FORMAÇÃO` placing `UI/UX & Digital Product Craft` `2026` alongside `B.A. in Advertising & Propaganda` `2010 — 2013`).
+- **Cache Busting:** Updated stylesheet and script query strings in `index.html` to `?v=0.4`.
+
+---
+
 ## [0.3.1] - 2026-11-20
 
 - **Git Tag:** [`v0.3.1`](https://github.com/lucasigreja5/Design-Portfolio/releases/tag/v0.3.1)
