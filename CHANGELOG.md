@@ -6,6 +6,22 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.3] - 2026-11-20
+
+- **Git Tag:** [`v0.3`](https://github.com/lucasigreja5/Design-Portfolio/releases/tag/v0.3)
+- **Archived Snapshot:** [`Versions/v0.3/`](./Versions/v0.3/VERSION_INFO.md)
+
+### Changed
+- **Borderless Hamburger & Clean Slide-Out Drawer (`<= 1023px`):** Removed the square outline from `#mobileMenuBtn` leaving a bold 3-bar icon, updated the right-to-left drawer close button to a matching borderless bold `X` icon, and removed the `NAVIGATION` header label and drawer Brasília/BRT footer.
+- **Sticky Mobile Projects Index HUD (`<= 1023px`):** Kept `.projects-rail` pinned directly below `.site-header` while project cards scroll underneath, updating `01 / 09`, active era/title, and `#D4FF00` progress bar dynamically.
+- **Contact & Language Switcher Refinements:** Removed the `COPY EMAIL` button from `#contact`, hardened `#langToggle` clicks across both options and `/`, and added `?v=0.3` cache-busting query strings to CSS/JS tags in `index.html`.
+- **Cleaner Projects & Disciplines:** Removed the centered `VIEW CASE` hover badge inside project frames and the floating `VIEW CASE` custom cursor tooltip on project cards; removed `// DISCIPLINES //` and the deliverables subtext beneath `#disciplineCopy`.
+
+### Added (Temporary Pre-v1.0 QA)
+- Added [`js/dev/viewport-toggle.js`](./js/dev/viewport-toggle.js) (`QA | WEB | TABLET 820 | MOBILE 390` floating preview switcher) — scheduled for removal before `v1.0`.
+
+---
+
 ## [0.2] - 2026-11-20
 
 - **Git Tag:** [`v0.2`](https://github.com/lucasigreja5/Design-Portfolio/releases/tag/v0.2)

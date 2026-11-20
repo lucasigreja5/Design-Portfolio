@@ -245,11 +245,10 @@
       card.dataset.title = loc.title;
       card.innerHTML = `
         <button class="project-trigger" type="button" data-open-project="${proj.id}" aria-label="${loc.title} — ${copy.viewCase}">
-          <div class="project-media-box" data-cursor-label="${copy.viewCase}">
+          <div class="project-media-box">
             <div class="project-artwork">
               ${renderCoverVisual(proj, lang)}
             </div>
-            <span class="project-view-badge">${copy.viewCase}</span>
           </div>
           <div class="project-caption-bar">
             <h3 class="project-caption-title">${displayNum} / ${loc.title}</h3>
@@ -283,7 +282,6 @@
   function renderDisciplines() {
     const listEl = document.getElementById('disciplinesList');
     const copyEl = document.getElementById('disciplineCopy');
-    const delivEl = document.getElementById('disciplineDeliverables');
     const bgImg = document.getElementById('disciplineBgImg');
     if (!listEl) return;
 
@@ -310,7 +308,6 @@
           el.setAttribute('aria-selected', String(active));
         });
         if (copyEl) copyEl.textContent = loc.description;
-        if (delivEl) delivEl.textContent = loc.deliverables;
         if (bgImg) {
           const scale = 1.06 + idx * 0.03;
           bgImg.style.transform = `scale(${scale})`;
@@ -323,7 +320,6 @@
 
       if (isActive) {
         if (copyEl) copyEl.textContent = loc.description;
-        if (delivEl) delivEl.textContent = loc.deliverables;
       }
     });
   }
@@ -547,22 +543,20 @@
     renderDisciplines();
     renderFooterProjects();
 
-    // Language toggle
-    document.querySelectorAll('#langToggle .lang-option').forEach((btn) => {
-      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    // Language toggle (clicking inactive switches to it; clicking active or '/' toggles)
+    const langToggle = document.getElementById('langToggle');
+    langToggle?.addEventListener('click', (e) => {
+      const opt = e.target.closest('.lang-option');
+      if (opt && opt.dataset.lang && opt.dataset.lang !== lang) {
+        setLanguage(opt.dataset.lang);
+      } else {
+        toggleLanguage();
+      }
     });
 
     // Career evolution modal triggers
     document.querySelectorAll('[data-open-evolution]').forEach((btn) => {
       btn.addEventListener('click', () => openEvolutionModal(btn));
-    });
-
-    // Copy email buttons
-    document.querySelectorAll('[data-copy-email]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        navigator.clipboard?.writeText(DATA.profile.email);
-        showToast(DATA.copy[lang].toasts.copiedEmail);
-      });
     });
 
     // Modal backdrop + Esc close

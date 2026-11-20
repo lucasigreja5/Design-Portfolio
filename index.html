@@ -15,10 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="css/tokens.css?v=0.3" />
+  <link rel="stylesheet" href="css/base.css?v=0.3" />
+  <link rel="stylesheet" href="css/components.css?v=0.3" />
+  <link rel="stylesheet" href="css/modal.css?v=0.3" />
 </head>
 <body>
   <!-- Sticky Minimal Navigation -->
@@ -43,22 +43,38 @@
             <span class="lang-sep" aria-hidden="true">/</span>
             <button class="lang-option" type="button" data-lang="pt" aria-pressed="false">PT</button>
           </div>
-          <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
-            MENU
+          <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open navigation menu">
+            <span class="hamburger-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
           </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-label="Mobile Navigation">
-    <button class="mobile-drawer-close" id="mobileDrawerClose" type="button">CLOSE [X]</button>
-    <a href="#about" class="mobile-drawer-link" data-i18n="nav.about">ABOUT</a>
-    <a href="#projects" class="mobile-drawer-link" data-i18n="nav.projects">PROJECTS</a>
-    <a href="#disciplines" class="mobile-drawer-link" data-i18n="nav.disciplines">DISCIPLINES</a>
-    <a href="#other" class="mobile-drawer-link" data-i18n="nav.other">OTHER</a>
-    <a href="#contact" class="mobile-drawer-link" data-i18n="footer.colContact">CONTACT ME</a>
+  <!-- Mobile Navigation Drawer (Slides in Right -> Left) -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+    <div class="mobile-drawer-panel">
+      <div class="mobile-drawer-top">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Close navigation menu">
+          <span class="drawer-close-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+      <nav class="mobile-drawer-nav" aria-label="Mobile navigation links">
+        <a href="#about" class="mobile-drawer-link" data-i18n="nav.about">ABOUT</a>
+        <a href="#projects" class="mobile-drawer-link" data-i18n="nav.projects">PROJECTS</a>
+        <a href="#disciplines" class="mobile-drawer-link" data-i18n="nav.disciplines">DISCIPLINES</a>
+        <a href="#other" class="mobile-drawer-link" data-i18n="nav.other">OTHER</a>
+        <a href="#contact" class="mobile-drawer-link" data-i18n="footer.colContact">CONTACT ME</a>
+      </nav>
+    </div>
   </div>
 
   <main>
@@ -138,9 +154,7 @@
         <div class="disciplines-list" id="disciplinesList" role="tablist" aria-label="Core design disciplines"></div>
 
         <div class="disciplines-detail" role="tabpanel" aria-live="polite">
-          <span class="font-mono disciplines-eyebrow" data-i18n="disciplines.eyebrow">// DISCIPLINES //</span>
           <p class="disciplines-copy" id="disciplineCopy"></p>
-          <span class="font-mono disciplines-deliverables" id="disciplineDeliverables"></span>
         </div>
       </div>
     </section>
@@ -201,15 +215,6 @@
               </span>
             </span>
           </a>
-
-          <button class="btn-pill-outline" type="button" data-copy-email>
-            <span class="roll-wrap">
-              <span class="roll-track">
-                <span data-i18n="cta.copyEmail">COPY EMAIL · lucas.igreja@gmail.com</span>
-                <span aria-hidden="true" data-i18n="cta.copyEmail">COPY EMAIL · lucas.igreja@gmail.com</span>
-              </span>
-            </span>
-          </button>
         </div>
       </div>
     </section>
@@ -276,9 +281,11 @@
   <!-- Motion Engine (GSAP CDN + Graceful Fallback) & App Scripts -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="js/data/projects.js"></script>
-  <script defer src="js/components/portfolio.js"></script>
-  <script defer src="js/motion/animations.js"></script>
-  <script defer src="js/main.js"></script>
+  <script defer src="js/data/projects.js?v=0.3"></script>
+  <script defer src="js/components/portfolio.js?v=0.3"></script>
+  <script defer src="js/motion/animations.js?v=0.3"></script>
+  <script defer src="js/main.js?v=0.3"></script>
+  <!-- DEV ONLY (PRE-v1.0 QA): Viewport Preview Toggle — REMOVE BEFORE SHIPPING v1.0 -->
+  <script defer src="js/dev/viewport-toggle.js?v=0.3"></script>
 </body>
 </html>

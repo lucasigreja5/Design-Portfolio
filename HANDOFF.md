@@ -1,7 +1,7 @@
 # Project Handoff — Lucas Igreja Portfolio
 
 > **Current Status:** **Phase 1 (Design System v2.0)** & **Phase 2 (Full Portfolio from Figma `10:57`)** are **complete and browser-verified**.  
-> **Current Version:** `v0.2` (Archived at [`Versions/v0.2/`](./Versions/v0.2/VERSION_INFO.md) & Git tag `v0.2`; prior `v0.1` preserved at [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md))  
+> **Current Version:** `v0.3` (Archived at [`Versions/v0.3/`](./Versions/v0.3/VERSION_INFO.md) & Git tag `v0.3`; prior `v0.2` and `v0.1` preserved under [`Versions/`](./Versions/README.md))  
 > **Runtime Requirement:** **Zero build dependencies.** Pure static HTML5 + CSS3 Custom Properties + Vanilla JS (`window.PORTFOLIO_DATA` / `window.PortfolioUI` / `window.PortfolioMotion`) + GSAP CDN with graceful fallback. Works via local HTTP server (`scripts/serve.ps1` / `scripts/serve.sh`), static hosts, or direct `file://`.
 
 ---
@@ -43,7 +43,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`index.html`](./index.html) | Main bilingual portfolio page matching Figma `10:57` |
 | [`design-system.html`](./design-system.html) | Interactive Design System v2.0 specimen (color copy, Grid Overlay, motion playground) |
 | [`design.md`](./design.md) | Complete Design System v2.0 specification & Figma checklist |
-| [`VERSION`](./VERSION) | Active project version (`0.2`) |
+| [`VERSION`](./VERSION) | Active project version (`0.3`) |
 | [`CHANGELOG.md`](./CHANGELOG.md) | Release notes and version history (`0.1`, `0.2`, ...) |
 | [`Versions/`](./Versions/README.md) | Immutable runnable release snapshots (`Versions/v0.1/`, ...) & rollback guide |
 | [`css/tokens.css`](./css/tokens.css) | CSS Custom Properties matching `design.md` v2.0 1:1 |
@@ -74,6 +74,12 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 3. **Never Reintroduce Temporary Figma Asset URLs:** Always store images locally in `assets/`. Temporary `figma.com/api/mcp/asset/...` URLs expire after 7 days.
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
 5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
+
+---
+
+## Pre-v1.0 Ship Checklist
+
+- **Remove QA Viewport Toggle:** Before releasing `v1.0`, remove `<script defer src="js/dev/viewport-toggle.js"></script>` from [`index.html`](./index.html) and delete [`js/dev/viewport-toggle.js`](./js/dev/viewport-toggle.js).
 
 ---
 
