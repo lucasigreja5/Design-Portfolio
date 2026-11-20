@@ -1,0 +1,15 @@
+# OS & Finder clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Editors & IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary logs & exports
+*.log
+npm-debug.log*

@@ -1,0 +1,96 @@
+# Conversation History & Design Decisions Log
+
+> **Project:** Lucas Igreja — Graphic Design & UI/UX Portfolio  
+> **Timeframe:** 2026-11-17 to 2026-11-19  
+> **Machine-Readable Log:** [`docs/history/conversation_log.json`](./history/conversation_log.json) (92 sanitized user & assistant turns)
+
+This document preserves the full chronological context, audits, user feedback, and architectural decisions that shaped the portfolio so work can resume seamlessly on any machine.
+
+---
+
+## Session 1 (2026-11-17) — Initial Request & Behance Audit
+
+### User Goal (`/plan`)
+- Requested a modern, artistic portfolio website with smooth motion graphics to migrate and elevate work from Behance (`https://www.behance.net/lucasigreja`), highlighting career improvement and UI/UX + graphic design expertise.
+
+### Environment & Behance Findings
+- **Workspace Discovery:** `DesignPortfolio` started empty; `git` was installed, while `node` / `npm` / `python` were absent from default Windows `PATH`.
+- **Behance Profile (`https://www.behance.net/lucasigreja`, `/info`, `/resume`):**
+  - **Name & Role:** Lucas Igreja (`UI/UX Design | Graphic Design`), Art Director at `Governo do Distrito Federal - SECOM` (Feb 2019–Present).
+  - **Contact:** `lucas.igreja@gmail.com` · `+55 61 98133-5098` · LinkedIn verified.
+  - **Resume Timeline:** UniCEUB Advertising & Propaganda (2010–2013) → Agência Comunica (2014–2016) → Grupo Voetur (2016–2017) → G3 Comunicação (2017–2019) → GDF SECOM (2019–Present) → Figma UI/UX Specializations (2026).
+  - **All 9 Public Projects:**
+    1. `Sonar BSB` (2026, UI/UX & Motion, Figma + Gemini AI)
+    2. `Olivia's Coffee Beans` (2026, UI/UX Mobile & Desktop, Figma + Gemini AI)
+    3. `GDF — UnDF` (2021, Brand Identity)
+    4. `GDF — Secretaria de Economia` (2021, Brand Identity)
+    5. `GDF — Clube de Desconto do Servidor` (2020, Brand & Social Campaign)
+    6. `GDF — Fábrica Social` (2020, Rebranding)
+    7. `Champion Volvo — Brasília Design` (2018, Print Advertising)
+    8. `Champion Volvo — Novo XC60` (2018, Launch & OOH Empena)
+    9. `CAU/BR — Informes Publicitários` (2015, Editorial Print Layout)
+
+### Initial Plan Drafted (v1.0)
+- Proposed zero-build static architecture (to work immediately without Node.js) with 3 clarifying open questions on tech stack, language, and visuals.
+
+---
+
+## Session 2 (2026-11-18) — `/grill-me` #1: Design System v1.0 & Figma Workflow
+
+### User Requests
+- Added creation of a formal **Design System** and a **`design.md`** file to the implementation plan.
+- Stated intention to draw components and a general layout mockup in **Figma** for the assistant to use as a reference.
+
+### `/grill-me` #1 Decisions (v1.0 Baseline)
+1. **Tech Stack:** Zero-build Static (`CSS Custom Properties + Vanilla JS + GSAP CDN`).
+2. **Design System Deliverables:** `design.md` + `css/tokens.css` + interactive `design-system.html` specimen page.
+3. **Color Polarity (v1.0):** Dark Editorial Obsidian (`#0A0A0C`) + Warm Alabaster (`#F4F2ED`) + Dual Accents (`#D4FF00` Lime + `#3B82F6` Cobalt). *(Later refined in v2.0)*
+4. **Typography (v1.0):** `Instrument Serif` + `Inter` + `JetBrains Mono`. *(Later replaced in v2.0)*
+5. **Motion Language:** Fluid Editorial.
+6. **Language Support:** Bilingual `EN / PT-BR` toggle (defaults to English).
+7. **Sequencing:** Build Phase 1 (`design.md` + `tokens.css` + `design-system.html`) first as Figma reference, then build Phase 2 after sharing the Figma mockup.
+
+### Phase 1 v1.0 Execution & Verification
+- Created v1.0 `design.md`, `css/tokens.css`, `css/base.css`, and `design-system.html`.
+- Caught and fixed an 82px mobile horizontal overflow on `.space-bar` at `390×844`.
+
+---
+
+## Session 3 (2026-11-19 Morning) — Reference Audit & `/grill-me` #2 (Design System v2.0)
+
+### Reference Sites Provided by User
+1. `https://nextwave-template.webflow.io/home` — Audited top-to-bottom: pure `#000000` canvas, single geometric sans (`Funnel Sans`), ALL-CAPS display typography, `1px solid #282828` hairlines, 4-col hero metadata strip, `#FFFFFF` pill CTAs with dual-label rolling-text hover, sticky `01–04` project rail, interactive oversized Services switcher, razor-sharp `0px` corners on media/rows.
+2. `https://portx.framer.ai/` — Audited top-to-bottom: dark monochrome (`#111`/`#000`), ALL-CAPS `Clash Display` + `Inter`, extreme negative tracking, `#2E2E2E` dimmed inactive headings vs `#FFFFFF` active headings, `//` technical section framing, rolling-text buttons.
+
+### `/grill-me` #2 Realignment Decisions (Locked v2.0 Spec)
+1. **Typography:** Switched to bold **ALL-CAPS geometric display (`Clash Display` via Fontshare + `Syne` fallback)** + `Inter` + `JetBrains Mono`. Removed `Instrument Serif`.
+2. **Color & Accents:** **Stark Monochrome (`#000000` canvas, `#0E0E0E`/`#141414` surfaces, `#FFFFFF` ink & white pill CTAs, `#282828` hairlines, `#2E2E2E` dim headings)** + **ONE surgical accent (`#D4FF00` Electric Lime)**. Removed Cobalt Blue from UI chrome.
+3. **Hero Structure:** Hybrid — 4-column hairline metadata strip (with live Brasília `BRT` clock) + monolithic ALL-CAPS headline + white rolling-text pill CTA + full-width sharp showcase.
+4. **Works & Disciplines Layout:** Interactive oversized **Disciplines Switcher** + Nextwave-style **sticky `01`–`09` counter vertical showcase**.
+5. **Surface Geometry & Footer:** **Nextwave Architectural Sharpness** — pure `#000000` canvas, razor-sharp `0px` corners on media frames/cards/rows/modals, `9999px` pills reserved strictly for CTAs/filter pills/icon chips, minimal typographic footer.
+
+### Copy Constraint Added by User
+- *"Just some quick changes on the copy, I dont think we need to use Brasília as a factor or as reference anymore than my homebase."*
+- Updated `design.md`, `design-system.html`, and `implementation_plan.md` to keep Brasília strictly as factual homebase/location metadata (`BRASÍLIA, BR · <LIVE CLOCK>` and bio/footer location), never as a visual theme or narrative angle.
+
+### Phase 1 v2.0 Execution & Verification
+- Rebuilt `css/tokens.css`, `css/base.css`, `design.md`, and `design-system.html` to v2.0.
+- Fixed mobile/tablet header overflow (`@media (max-width: 1023px)` and `767px` wrapping) and verified `0` overflows across `1440×900`, `623×900`, and `390×844` with zero console errors.
+
+---
+
+## Session 4 (2026-11-19 Afternoon) — Figma Mockup (`10:57`) & Phase 2 Full Portfolio Build
+
+### Figma Inspection
+- User shared `https://www.figma.com/design/RTPAVFPcYYvESGK77dI0XJ/Portfolio-Page?node-id=10-57&t=sjIMgLu0z6p0BB1K-1` (`Desktop - 1`, `1440×5524`).
+- Inspected via Figma MCP (`get_design_context`, `get_metadata`, `get_variable_defs`) following `figma-design-to-code`.
+- Confirmed Figma file implemented v2.0 tokens (`#000000`, `#0E0E0E`, `#141414`, `#282828`, `#2E2E2E`, `#8A8A8A`, `#FFFFFF`, `#D4FF00`), `Clash Display Variable` + `Inter`, and layout bands: Sticky Nav → 2-line ALL-CAPS Hero + Full-Bleed Ambient Image → Right-Aligned About → Sticky `01` Counter + Right Edge-Bleed Projects → Full-Bleed Disciplines (`work type1/2/3`) + Right Paragraph → Asymmetric Dual Edge-Bleed `OTHER` → Centered Closing CTA → 4-Column Footer.
+- Downloaded the Figma ambient graphic to `assets/hero-ambient.png` (`146,551` bytes), ensuring zero temporary Figma URLs remain in code.
+
+### Phase 2 Implementation & Verification
+- Built `index.html`, `css/components.css`, `css/modal.css`, `js/data/projects.js`, `js/components/portfolio.js`, `js/motion/animations.js`, and `js/main.js`.
+- Verified live at `http://localhost:4173/`:
+  - Zero horizontal overflow across `1440×900` desktop and `390×844` mobile.
+  - Zero console errors, zero uncaught page errors, zero failed network requests.
+  - All interactive flows tested and passing: discipline filters (`ALL 09`, `UI/UX 02`, `BRANDING 04`, `EDITORIAL & OOH 03`), sticky `01`–`09` counter scroll updates, Case-Study Modal (Prev/Next + `Esc`), 3-row Disciplines Switcher, Career Evolution Modal (6 milestones), `DESIGN SYSTEM V2.0` link, bilingual `EN / PT` switching, and `COPY EMAIL` toast.
+- Created portable handoff bundle (`HANDOFF.md`, `README.md`, `docs/`, `scripts/`) for seamless cross-machine access.
