@@ -858,31 +858,81 @@
 }
 
 .career-header {
-  margin-bottom: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  margin-bottom: var(--space-10);
+}
+
+.career-toggle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.65em;
+  row-gap: 0.45em;
+  max-width: 100%;
+  padding-right: 6px;
+}
+
+.career-option,
+.career-sep {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.25vw, 1.25rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.career-sep {
+  color: var(--text-dim);
+  user-select: none;
+  cursor: pointer;
+}
+
+.career-option {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--duration-micro) var(--ease-snappy),
+              transform var(--duration-ui) var(--ease-editorial);
+}
+
+.career-option:hover:not(.is-active) {
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+.career-option.is-active {
+  color: var(--accent-lime);
+  transform: translateX(5px);
 }
 
 .career-content {
   display: flex;
   flex-direction: column;
-}
-
-.evolution-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.evolution-section + .evolution-section {
-  margin-top: var(--space-12);
-  padding-top: var(--space-10);
   border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-8);
 }
 
-.evolution-section-heading {
-  font-size: var(--text-meta);
-  letter-spacing: var(--tracking-mono);
-  text-transform: uppercase;
-  color: var(--accent-lime);
-  margin: 0 0 var(--space-6);
+@keyframes careerListReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.career-content .evolution-list {
+  animation: careerListReveal var(--duration-ui) var(--ease-editorial);
 }
 
 .evolution-list {
@@ -1230,12 +1280,17 @@
   }
 
   .career-header {
+    gap: var(--space-6);
     margin-bottom: var(--space-8);
   }
 
-  .evolution-section + .evolution-section {
-    margin-top: var(--space-8);
-    padding-top: var(--space-8);
+  .career-option,
+  .career-sep {
+    font-size: clamp(0.85rem, 3.6vw, 1rem);
+  }
+
+  .career-content {
+    padding-top: var(--space-6);
   }
 
   .evolution-row {

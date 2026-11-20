@@ -6,6 +6,7 @@
   let lang = 'en';
   let activeFilter = 'all';
   let activeDisciplineId = 'uiux';
+  let activeCareerTab = 'experience';
   let currentModalProjectId = null;
   let lastFocusedEl = null;
   let toastTimer = null;
@@ -277,40 +278,53 @@
     }
   }
 
+  function syncCareerToggle() {
+    document.querySelectorAll('#careerToggle .career-option').forEach((btn) => {
+      const isCurrent = btn.dataset.careerTab === activeCareerTab;
+      btn.classList.toggle('is-active', isCurrent);
+      btn.setAttribute('aria-selected', String(isCurrent));
+    });
+    const panel = document.getElementById('careerContent');
+    if (panel) {
+      panel.setAttribute(
+        'aria-labelledby',
+        activeCareerTab === 'education' ? 'careerTabEducation' : 'careerTabExperience'
+      );
+    }
+  }
+
   function renderCareer() {
     const container = document.getElementById('careerContent');
     if (!container) return;
 
-    const c = DATA.copy[lang].career;
-    const renderRows = (items) =>
-      items
-        .map((item) => {
-          const loc = item[lang];
-          return `
+    syncCareerToggle();
+
+    const items = DATA.evolution.filter((item) => item.category === activeCareerTab);
+    const rowsHtml = items
+      .map((item) => {
+        const loc = item[lang];
+        return `
           <div class="evolution-row">
             <div class="font-mono evolution-period">${item.period}</div>
             <div>
-              <h4 class="evolution-role">${loc.role}</h4>
+              <h3 class="evolution-role">${loc.role}</h3>
               <div class="evolution-org">${loc.org}</div>
               <p class="evolution-detail">${loc.detail}</p>
             </div>
           </div>`;
-        })
-        .join('');
+      })
+      .join('');
 
-    const experienceItems = DATA.evolution.filter((item) => item.category === 'experience');
-    const educationItems = DATA.evolution.filter((item) => item.category === 'education');
+    container.innerHTML = `<div class="evolution-list">${rowsHtml}</div>`;
+  }
 
-    container.innerHTML = `
-      <div class="evolution-section" aria-labelledby="careerExperienceHeading">
-        <h3 class="font-mono evolution-section-heading" id="careerExperienceHeading">${c.experienceHeading}</h3>
-        <div class="evolution-list">${renderRows(experienceItems)}</div>
-      </div>
-      <div class="evolution-section" aria-labelledby="careerEducationHeading">
-        <h3 class="font-mono evolution-section-heading" id="careerEducationHeading">${c.educationHeading}</h3>
-        <div class="evolution-list">${renderRows(educationItems)}</div>
-      </div>
-    `;
+  function setCareerTab(nextTab) {
+    if ((nextTab !== 'experience' && nextTab !== 'education') || nextTab === activeCareerTab) return;
+    activeCareerTab = nextTab;
+    renderCareer();
+    if (global.ScrollTrigger && typeof global.ScrollTrigger.refresh === 'function') {
+      global.ScrollTrigger.refresh();
+    }
   }
 
   function renderDisciplines() {
@@ -531,6 +545,26 @@
         setLanguage(opt.dataset.lang);
       } else {
         toggleLanguage();
+      }
+    });
+
+    // Career section toggle (clicking option activates it; clicking '/' flips between tabs)
+    const careerToggle = document.getElementById('careerToggle');
+    careerToggle?.addEventListener('click', (e) => {
+      const opt = e.target.closest('.career-option');
+      if (opt && opt.dataset.careerTab) {
+        setCareerTab(opt.dataset.careerTab);
+      } else if (e.target.closest('.career-sep')) {
+        setCareerTab(activeCareerTab === 'experience' ? 'education' : 'experience');
+      }
+    });
+    careerToggle?.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const next = activeCareerTab === 'experience' ? 'education' : 'experience';
+        setCareerTab(next);
+        const nextBtn = careerToggle.querySelector(`[data-career-tab="${next}"]`);
+        nextBtn?.focus();
       }
     });
 
