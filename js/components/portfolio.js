@@ -353,11 +353,11 @@
       if (val) el.textContent = val;
     });
 
-    const langBtn = document.getElementById('langToggleBtn');
-    if (langBtn) {
-      langBtn.setAttribute('aria-pressed', String(lang === 'pt'));
-      langBtn.textContent = lang === 'pt' ? 'PT / EN' : 'EN / PT';
-    }
+    document.querySelectorAll('#langToggle .lang-option').forEach((btn) => {
+      const isCurrent = btn.dataset.lang === lang;
+      btn.classList.toggle('is-active', isCurrent);
+      btn.setAttribute('aria-pressed', String(isCurrent));
+    });
   }
 
   /* ------------------------------------------------------------------------
@@ -517,8 +517,9 @@
     }
   }
 
-  function toggleLanguage() {
-    lang = lang === 'en' ? 'pt' : 'en';
+  function setLanguage(nextLang) {
+    if (!nextLang || (nextLang !== 'en' && nextLang !== 'pt') || nextLang === lang) return;
+    lang = nextLang;
     applyStaticCopy();
     renderProjects();
     renderDisciplines();
@@ -533,6 +534,10 @@
     showToast(DATA.copy[lang].toasts.langSwitched);
   }
 
+  function toggleLanguage() {
+    setLanguage(lang === 'en' ? 'pt' : 'en');
+  }
+
   function init() {
     updateClock();
     setInterval(updateClock, 30000);
@@ -542,19 +547,10 @@
     renderDisciplines();
     renderFooterProjects();
 
-    // Filter pills
-    document.querySelectorAll('#projectsFilterBar .filter-pill').forEach((pill) => {
-      pill.addEventListener('click', () => {
-        activeFilter = pill.dataset.filter || 'all';
-        document.querySelectorAll('#projectsFilterBar .filter-pill').forEach((p) => {
-          p.classList.toggle('is-active', p === pill);
-        });
-        renderProjects();
-      });
-    });
-
     // Language toggle
-    document.getElementById('langToggleBtn')?.addEventListener('click', toggleLanguage);
+    document.querySelectorAll('#langToggle .lang-option').forEach((btn) => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
 
     // Career evolution modal triggers
     document.querySelectorAll('[data-open-evolution]').forEach((btn) => {

@@ -38,13 +38,14 @@ DesignPortfolio/
 ├── index.html                  # Main bilingual portfolio website
 ├── design-system.html          # Interactive Design System v2.0 specimen
 ├── design.md                   # Complete Design System v2.0 spec & Figma checklist
-├── VERSION                     # Active project version (currently 0.1)
+├── VERSION                     # Active project version (currently 0.2)
 ├── CHANGELOG.md                # Release notes & version history
 ├── HANDOFF.md                  # Full technical handoff & AI resume prompt
 ├── README.md                   # Project setup & deployment guide
 ├── Versions/
 │   ├── README.md               # Archive guide, index & rollback instructions
-│   └── v0.1/                   # Runnable immutable snapshot of v0.1
+│   ├── v0.1/                   # Runnable immutable snapshot of v0.1
+│   └── v0.2/                   # Runnable immutable snapshot of v0.2
 ├── css/
 │   ├── tokens.css              # Design tokens (#000000, #FFFFFF, #D4FF00, Clash Display, motion)
 │   ├── base.css                # Reset, typography utilities, reduced-motion & focus guards
@@ -83,9 +84,9 @@ DesignPortfolio/
 
 ## Versioning & Releases
 
-- **Active Version:** Tracked in [`VERSION`](./VERSION) (`0.1`) with release notes in [`CHANGELOG.md`](./CHANGELOG.md).
-- **Archived Snapshots:** Immutable, runnable snapshots live under [`Versions/`](./Versions/README.md) (starting with [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md), previewable at `http://localhost:4173/Versions/v0.1/`).
-- **Cut a New Version:** Run `./scripts/release-version.sh 0.2 "Summary of changes"`, update [`CHANGELOG.md`](./CHANGELOG.md) and [`Versions/README.md`](./Versions/README.md), then commit and push with an annotated tag (`git tag -a v0.2 -m "..."` and `git push origin main --follow-tags`).
+- **Active Version:** Tracked in [`VERSION`](./VERSION) (`0.2`) with release notes in [`CHANGELOG.md`](./CHANGELOG.md).
+- **Archived Snapshots:** Immutable, runnable snapshots live under [`Versions/`](./Versions/README.md) ([`Versions/v0.2/`](./Versions/v0.2/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.2/`, and [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.1/`).
+- **Cut a New Version:** Run `./scripts/release-version.sh 0.3 "Summary of changes"`, update [`CHANGELOG.md`](./CHANGELOG.md) and [`Versions/README.md`](./Versions/README.md), then commit and push with an annotated tag (`git tag -a v0.3 -m "..."` and `git push origin main --follow-tags`).
 
 ---
 

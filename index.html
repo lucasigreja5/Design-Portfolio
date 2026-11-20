@@ -38,9 +38,11 @@
         </nav>
 
         <div class="header-actions">
-          <button class="lang-toggle" id="langToggleBtn" type="button" aria-pressed="false" aria-label="Toggle language between English and Portuguese">
-            EN / PT
-          </button>
+          <div class="lang-toggle" id="langToggle" role="group" aria-label="Language switcher">
+            <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <button class="lang-option" type="button" data-lang="pt" aria-pressed="false">PT</button>
+          </div>
           <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
             MENU
           </button>
@@ -63,28 +65,6 @@
     <!-- 01. Hero Section (Figma 10:82 + 10:67) -->
     <section class="hero-section">
       <div class="container">
-        <div class="hero-meta-bar">
-          <div class="hero-meta-item">
-            <span class="hero-meta-text"><strong data-i18n="hero.eyebrowLeft">UI/UX &amp; GRAPHIC DESIGN</strong></span>
-            <span aria-hidden="true" style="color: var(--text-secondary);">↗</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-text">
-              <span class="pulse-dot" aria-hidden="true"></span>
-              <strong data-i18n="hero.eyebrowStatus">OPEN FOR WORK</strong>
-            </span>
-            <span aria-hidden="true" style="color: var(--text-secondary);">↗</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-text"><strong data-i18n="hero.eyebrowExp">12+ YEARS</strong></span>
-            <span aria-hidden="true" style="color: var(--text-secondary);">↗</span>
-          </div>
-          <div class="hero-meta-item">
-            <span class="hero-meta-text">BRASÍLIA, BR · <strong data-brt-clock>--:-- BRT</strong></span>
-            <span aria-hidden="true" style="color: var(--text-secondary);">↗</span>
-          </div>
-        </div>
-
         <div class="hero-title-wrap">
           <h1 class="hero-headline">
             <span class="hero-line"><span class="hero-line-inner" data-i18n="hero.titleLine1">GRAPHIC CRAFT</span></span>
@@ -96,11 +76,6 @@
       <div class="hero-media-frame">
         <img src="assets/hero-ambient.png" alt="Abstract architectural light curves" class="hero-media-img" />
         <div class="hero-media-scrim" aria-hidden="true"></div>
-        <div class="hero-scroll-overlay">
-          <div class="container" style="display: flex; justify-content: flex-end;">
-            <a href="#projects" class="hero-scroll-pill" data-i18n="hero.scrollCue">SCROLL TO EXPLORE ↓</a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -114,14 +89,6 @@
             Graphic designer and art director since 2013, now expanding 12+ years of brand identity, editorial, and print craft into interactive UI/UX and motion-driven digital products — based in Brasília, Brazil.
           </p>
 
-          <div class="about-tools" aria-label="Core design tools">
-            <span class="skill-pill">FIGMA</span>
-            <span class="skill-pill">ILLUSTRATOR</span>
-            <span class="skill-pill">INDESIGN</span>
-            <span class="skill-pill">PHOTOSHOP</span>
-            <span class="skill-pill">MOTION</span>
-          </div>
-
           <div class="about-actions">
             <button class="btn-pill-cta" type="button" data-open-evolution>
               <span class="cta-dot" aria-hidden="true"></span>
@@ -132,15 +99,6 @@
                 </span>
               </span>
             </button>
-
-            <a href="https://www.behance.net/lucasigreja" target="_blank" rel="noopener noreferrer" class="btn-pill-outline">
-              <span class="roll-wrap">
-                <span class="roll-track">
-                  <span data-i18n="about.ctaBehance">BEHANCE ARCHIVE ↗</span>
-                  <span aria-hidden="true" data-i18n="about.ctaBehance">BEHANCE ARCHIVE ↗</span>
-                </span>
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -150,18 +108,10 @@
     <section class="projects-section" id="projects">
       <div class="container projects-header">
         <h2 class="section-heading" data-i18n="projects.heading">PROJECTS</h2>
-
-        <div class="filter-bar" id="projectsFilterBar" role="group" aria-label="Filter projects by discipline">
-          <button class="filter-pill is-active" type="button" data-filter="all" data-i18n="projects.filters.all">ALL (09)</button>
-          <button class="filter-pill" type="button" data-filter="uiux" data-i18n="projects.filters.uiux">UI/UX (02)</button>
-          <button class="filter-pill" type="button" data-filter="branding" data-i18n="projects.filters.branding">BRANDING (04)</button>
-          <button class="filter-pill" type="button" data-filter="editorial" data-i18n="projects.filters.editorial">EDITORIAL &amp; OOH (03)</button>
-        </div>
       </div>
 
       <div class="projects-bleed-layout">
         <aside class="projects-rail" aria-label="Active project counter">
-          <span class="font-mono" style="color: var(--text-muted);" data-i18n="projects.scrollHint">ACTIVE INDEX</span>
           <div class="sticky-counter-row">
             <span class="sticky-counter-num" id="stickyCounterNum">01</span>
             <span class="sticky-counter-total" id="stickyCounterTotal">/ 09</span>
