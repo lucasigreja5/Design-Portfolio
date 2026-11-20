@@ -6,6 +6,17 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.4.1] - 2026-11-20
+
+**Git Tag:** `v0.4.1` · **Archive:** [`./Versions/v0.4.1/`](./Versions/v0.4.1/VERSION_INFO.md)
+
+### Changed
+- **Inline Career Section (`index.html`, `js/data/projects.js`, `js/components/portfolio.js`, `css/components.css`):** Replaced the `OTHER` (`#other` / `EXTRAS`) category and the `Career Evolution` popup modal (`openEvolutionModal`) with a dedicated inline `#career` (`CAREER` / `CARREIRA`) section positioned between **Projects** (`#projects`) and **Disciplines** (`#disciplines`), rendering `PROFESSIONAL EXPERIENCE` (`EXPERIÊNCIA PROFISSIONAL`, 4 roles) and `SPECIALIZATIONS & DEGREES` (`ESPECIALIZAÇÕES & FORMAÇÃO`, 2 entries).
+- **Navigation, About CTA & Footer (`index.html`, `js/data/projects.js`):** Reordered top navigation, mobile drawer links, and footer `MAIN` links to `ABOUT`, `PROJECTS`, `CAREER`, `DISCIPLINES` (`SOBRE`, `PROJETOS`, `CARREIRA`, `DISCIPLINAS`), and converted the About `CAREER EVOLUTION` pill CTA into an `<a href="#career">` anchor link.
+- **CSS Cleanup & Cache Busting (`css/components.css`, `css/modal.css`, `index.html`):** Moved timeline styling into `css/components.css` with responsive mobile stacking, removed `.disciplines-section` bottom double-border and unused `.other-*` / career modal styles, and bumped asset query strings to `?v=0.4.1`.
+
+---
+
 ## [0.4] - 2026-11-20
 
 **Git Tag:** `v0.4` · **Archive:** [`./Versions/v0.4/`](./Versions/v0.4/VERSION_INFO.md)

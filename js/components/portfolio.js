@@ -277,6 +277,42 @@
     }
   }
 
+  function renderCareer() {
+    const container = document.getElementById('careerContent');
+    if (!container) return;
+
+    const c = DATA.copy[lang].career;
+    const renderRows = (items) =>
+      items
+        .map((item) => {
+          const loc = item[lang];
+          return `
+          <div class="evolution-row">
+            <div class="font-mono evolution-period">${item.period}</div>
+            <div>
+              <h4 class="evolution-role">${loc.role}</h4>
+              <div class="evolution-org">${loc.org}</div>
+              <p class="evolution-detail">${loc.detail}</p>
+            </div>
+          </div>`;
+        })
+        .join('');
+
+    const experienceItems = DATA.evolution.filter((item) => item.category === 'experience');
+    const educationItems = DATA.evolution.filter((item) => item.category === 'education');
+
+    container.innerHTML = `
+      <div class="evolution-section" aria-labelledby="careerExperienceHeading">
+        <h3 class="font-mono evolution-section-heading" id="careerExperienceHeading">${c.experienceHeading}</h3>
+        <div class="evolution-list">${renderRows(experienceItems)}</div>
+      </div>
+      <div class="evolution-section" aria-labelledby="careerEducationHeading">
+        <h3 class="font-mono evolution-section-heading" id="careerEducationHeading">${c.educationHeading}</h3>
+        <div class="evolution-list">${renderRows(educationItems)}</div>
+      </div>
+    `;
+  }
+
   function renderDisciplines() {
     const listEl = document.getElementById('disciplinesList');
     const copyEl = document.getElementById('disciplineCopy');
@@ -355,7 +391,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     MODALS (CASE STUDY + CAREER EVOLUTION)
+     MODALS (CASE STUDY)
      ------------------------------------------------------------------------ */
   function openProjectModal(projectId, triggerEl) {
     const backdrop = document.getElementById('caseModalBackdrop');
@@ -445,67 +481,6 @@
     });
   }
 
-  function openEvolutionModal(triggerEl) {
-    const backdrop = document.getElementById('caseModalBackdrop');
-    const bodyEl = document.getElementById('caseModalContent');
-    if (!backdrop || !bodyEl) return;
-
-    currentModalProjectId = '__evolution__';
-    lastFocusedEl = triggerEl || document.activeElement;
-    const m = DATA.copy[lang].modal;
-
-    const renderRows = (items) =>
-      items
-        .map((item) => {
-          const loc = item[lang];
-          return `
-          <div class="evolution-row">
-            <div class="font-mono evolution-period">${item.period}</div>
-            <div>
-              <h3 class="evolution-role">${loc.role}</h3>
-              <div class="evolution-org">${loc.org}</div>
-              <p class="evolution-detail">${loc.detail}</p>
-            </div>
-          </div>`;
-        })
-        .join('');
-
-    const experienceItems = DATA.evolution.filter((item) => item.category === 'experience');
-    const educationItems = DATA.evolution.filter((item) => item.category === 'education');
-
-    bodyEl.innerHTML = `
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <h2 class="modal-title" id="modalHeading">${m.evolutionTitle}</h2>
-        </div>
-        <button class="modal-close-icon-btn" type="button" id="modalCloseBtn" aria-label="${m.closeBtn}">
-          <span class="drawer-close-icon" aria-hidden="true">
-            <span></span>
-            <span></span>
-          </span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <section class="evolution-section" aria-labelledby="evolutionExperienceHeading">
-          <h3 class="font-mono evolution-section-heading" id="evolutionExperienceHeading">${m.experienceHeading}</h3>
-          <div class="evolution-list">${renderRows(experienceItems)}</div>
-        </section>
-        <section class="evolution-section" aria-labelledby="evolutionEducationHeading">
-          <h3 class="font-mono evolution-section-heading" id="evolutionEducationHeading">${m.educationHeading}</h3>
-          <div class="evolution-list">${renderRows(educationItems)}</div>
-        </section>
-      </div>
-    `;
-
-    backdrop.classList.add('is-open');
-    backdrop.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    const closeBtn = document.getElementById('modalCloseBtn');
-    closeBtn?.addEventListener('click', closeModal);
-    closeBtn?.focus();
-  }
-
   function closeModal() {
     const backdrop = document.getElementById('caseModalBackdrop');
     if (!backdrop || !backdrop.classList.contains('is-open')) return;
@@ -523,12 +498,11 @@
     lang = nextLang;
     applyStaticCopy();
     renderProjects();
+    renderCareer();
     renderDisciplines();
     renderFooterProjects();
 
-    if (currentModalProjectId === '__evolution__') {
-      openEvolutionModal(lastFocusedEl);
-    } else if (currentModalProjectId) {
+    if (currentModalProjectId) {
       openProjectModal(currentModalProjectId, lastFocusedEl);
     }
 
@@ -545,6 +519,7 @@
 
     applyStaticCopy();
     renderProjects();
+    renderCareer();
     renderDisciplines();
     renderFooterProjects();
 
@@ -557,11 +532,6 @@
       } else {
         toggleLanguage();
       }
-    });
-
-    // Career evolution modal triggers
-    document.querySelectorAll('[data-open-evolution]').forEach((btn) => {
-      btn.addEventListener('click', () => openEvolutionModal(btn));
     });
 
     // Modal backdrop + Esc close
@@ -577,7 +547,6 @@
   global.PortfolioUI = {
     init,
     openProjectModal,
-    openEvolutionModal,
     closeModal
   };
 })(window);

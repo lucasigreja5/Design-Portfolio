@@ -20,8 +20,8 @@
         nav: {
           about: 'ABOUT',
           projects: 'PROJECTS',
-          disciplines: 'DISCIPLINES',
-          other: 'OTHER'
+          career: 'CAREER',
+          disciplines: 'DISCIPLINES'
         },
         hero: {
           eyebrowLeft: 'UI/UX & GRAPHIC DESIGN',
@@ -52,16 +52,10 @@
         disciplines: {
           eyebrow: '// DISCIPLINES //'
         },
-        other: {
-          heading: 'OTHER',
-          leftTitle: 'CAREER EVOLUTION · 2013–2026',
-          leftTag: 'INTERACTIVE TIMELINE',
-          leftSubtitle: 'From print & institutional direction to digital UX systems',
-          leftBadge: 'OPEN TIMELINE',
-          rightTitle: 'DESIGN SYSTEM V2.0',
-          rightTag: 'TOKENS & SPECIMEN',
-          rightSubtitle: 'Live monochrome architecture, Clash Display scale & motion tokens',
-          rightBadge: 'OPEN SPECIMEN ↗'
+        career: {
+          heading: 'CAREER',
+          experienceHeading: 'PROFESSIONAL EXPERIENCE',
+          educationHeading: 'SPECIALIZATIONS & DEGREES'
         },
         cta: {
           heading: "HAVE A PROJECT IN MIND? LET'S DESIGN SOMETHING SHARP TOGETHER.",
@@ -77,8 +71,8 @@
             home: 'HOME',
             about: 'ABOUT',
             projects: 'PROJECTS',
+            career: 'CAREER',
             disciplines: 'DISCIPLINES',
-            other: 'OTHER',
             email: 'EMAIL ↗',
             whatsapp: 'WHATSAPP ↗',
             behance: 'BEHANCE ↗',
@@ -116,8 +110,8 @@
         nav: {
           about: 'SOBRE',
           projects: 'PROJETOS',
-          disciplines: 'DISCIPLINAS',
-          other: 'EXTRAS'
+          career: 'CARREIRA',
+          disciplines: 'DISCIPLINAS'
         },
         hero: {
           eyebrowLeft: 'UI/UX & DESIGN GRÁFICO',
@@ -148,16 +142,10 @@
         disciplines: {
           eyebrow: '// DISCIPLINAS //'
         },
-        other: {
-          heading: 'EXTRAS',
-          leftTitle: 'EVOLUÇÃO PROFISSIONAL · 2013–2026',
-          leftTag: 'LINHA DO TEMPO INTERATIVA',
-          leftSubtitle: 'Da direção de arte institucional aos sistemas digitais UI/UX',
-          leftBadge: 'ABRIR LINHA DO TEMPO',
-          rightTitle: 'DESIGN SYSTEM V2.0',
-          rightTag: 'TOKENS & SPECIMEN',
-          rightSubtitle: 'Arquitetura monocromática viva, Clash Display e curvas de movimento',
-          rightBadge: 'ABRIR SPECIMEN ↗'
+        career: {
+          heading: 'CARREIRA',
+          experienceHeading: 'EXPERIÊNCIA PROFISSIONAL',
+          educationHeading: 'ESPECIALIZAÇÕES & FORMAÇÃO'
         },
         cta: {
           heading: 'TEM UM PROJETO EM MENTE? VAMOS CRIAR ALGO MARCANTE JUNTOS.',
@@ -173,8 +161,8 @@
             home: 'INÍCIO',
             about: 'SOBRE',
             projects: 'PROJETOS',
+            career: 'CARREIRA',
             disciplines: 'DISCIPLINAS',
-            other: 'EXTRAS',
             email: 'E-MAIL ↗',
             whatsapp: 'WHATSAPP ↗',
             behance: 'BEHANCE ↗',
