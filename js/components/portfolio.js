@@ -393,62 +393,35 @@
 
     const loc = project[lang];
     const m = DATA.copy[lang].modal;
-    const prevProj = listForNav[(idx - 1 + listForNav.length) % listForNav.length];
-    const nextProj = listForNav[(idx + 1) % listForNav.length];
+    const toolsHtml = project.tools.map((tool) => `<li>${tool}</li>`).join('');
 
     bodyEl.innerHTML = `
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="font-mono modal-index">${project.index}</span>
+          <span class="modal-index">${project.index}</span>
           <h2 class="modal-title" id="modalHeading">${loc.title}</h2>
         </div>
-        <button class="modal-close-btn" type="button" id="modalCloseBtn">${m.closeBtn}</button>
+        <button class="modal-close-icon-btn" type="button" id="modalCloseBtn" aria-label="${m.closeBtn}">
+          <span class="drawer-close-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
       </div>
       <div class="modal-body">
         <div class="modal-hero-art">${renderCoverVisual(project, lang)}</div>
-        <div class="modal-meta-grid">
-          <div>
-            <span class="font-mono modal-meta-label">${m.role}</span>
-            <span class="modal-meta-val">${loc.role}</span>
-          </div>
-          <div>
-            <span class="font-mono modal-meta-label">${m.year}</span>
-            <span class="modal-meta-val">${project.year}</span>
-          </div>
-          <div>
-            <span class="font-mono modal-meta-label">${m.era}</span>
-            <span class="modal-meta-val">${loc.era}</span>
-          </div>
-          <div>
-            <span class="font-mono modal-meta-label">${m.tools}</span>
-            <span class="modal-meta-val">${project.tools.join(' · ')}</span>
-          </div>
-        </div>
         <div class="modal-narrative-grid">
-          <div class="modal-narrative-col">
-            <h4>${m.context}</h4>
+          <div class="modal-narrative-col modal-overview-col">
+            <h4>${m.overview}</h4>
             <p>${loc.context}</p>
-          </div>
-          <div class="modal-narrative-col">
-            <h4>${m.approach}</h4>
             <p>${loc.approach}</p>
-          </div>
-          <div class="modal-narrative-col">
-            <h4>${m.outcome}</h4>
             <p>${loc.outcome}</p>
           </div>
+          <div class="modal-narrative-col modal-tools-col">
+            <h4>${m.toolsHeading}</h4>
+            <ul class="modal-tools-list">${toolsHtml}</ul>
+          </div>
         </div>
-        <div class="modal-cta-row">
-          <span class="font-mono" style="color: var(--text-secondary);">${loc.subtitle}</span>
-          <a href="${project.behanceUrl}" target="_blank" rel="noopener noreferrer" class="btn-pill-cta">
-            <span class="cta-dot" aria-hidden="true"></span>
-            <span>${m.behanceBtn}</span>
-          </a>
-        </div>
-      </div>
-      <div class="modal-footer-nav">
-        <button class="modal-nav-btn" type="button" data-modal-jump="${prevProj.id}">${m.prevBtn} (${prevProj[lang].title})</button>
-        <button class="modal-nav-btn" type="button" data-modal-jump="${nextProj.id}">${m.nextBtn} (${nextProj[lang].title})</button>
       </div>
     `;
 
@@ -459,10 +432,6 @@
     const closeBtn = document.getElementById('modalCloseBtn');
     closeBtn?.addEventListener('click', closeModal);
     closeBtn?.focus();
-
-    bodyEl.querySelectorAll('[data-modal-jump]').forEach((btn) => {
-      btn.addEventListener('click', () => openProjectModal(btn.dataset.modalJump, triggerEl));
-    });
   }
 
   function closeModal() {

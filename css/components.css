@@ -1073,68 +1073,43 @@
 
 .site-footer {
   border-top: 1px solid var(--border-subtle);
-  padding-block: var(--space-16) var(--space-10);
+  padding-block: var(--space-8);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 0.85fr 0.95fr;
-  gap: var(--space-8);
-  margin-bottom: var(--space-12);
-}
-
-.footer-brand {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  margin-bottom: var(--space-4);
-}
-
-.footer-bio {
-  font-size: var(--text-body);
-  line-height: 1.65;
-  color: var(--text-secondary);
-  max-width: 38ch;
-}
-
-.footer-col-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-bottom: var(--space-5);
-}
-
-.footer-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.footer-link {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  text-align: left;
-  transition: color var(--duration-micro) var(--ease-snappy);
-}
-
-.footer-link:hover {
-  color: var(--text-primary);
-}
-
-.footer-bottom {
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--border-subtle);
+.footer-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-6);
+}
+
+.footer-rights {
+  color: var(--text-muted);
+}
+
+.footer-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.footer-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color var(--duration-micro) var(--ease-snappy),
+              transform var(--duration-micro) var(--ease-snappy);
+}
+
+.footer-link:hover {
+  color: var(--accent-lime);
+  transform: translateY(-2px);
 }
 
 /* Custom Desktop Cursor Badge (hidden on touch/reduced motion) */
@@ -1298,8 +1273,8 @@
     align-items: flex-start;
   }
 
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .footer-bar {
+    gap: var(--space-5);
   }
 }
 
@@ -1376,8 +1351,14 @@
     display: none;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .footer-bar {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .footer-list {
+    gap: var(--space-6);
   }
 }
 

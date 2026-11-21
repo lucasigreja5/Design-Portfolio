@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System v2.0 — Lucas Igreja Portfolio</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <style>
+    /* Sticky Minimal Navigation (84px) */
+    .ds-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ds-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+      gap: var(--space-4);
+    }
+
+    .ds-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ds-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-circle);
+      background: var(--accent-lime);
+      box-shadow: 0 0 10px var(--accent-lime);
+      flex-shrink: 0;
+    }
+
+    .ds-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .ds-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color var(--duration-micro) var(--ease-snappy);
+    }
+
+    .ds-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .ds-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .ds-toggle-btn {
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: all var(--duration-micro) var(--ease-snappy);
+      white-space: nowrap;
+    }
+
+    .ds-toggle-btn:hover,
+    .ds-toggle-btn[aria-pressed="true"] {
+      border-color: var(--accent-lime);
+      color: var(--accent-lime);
+      background: var(--accent-lime-dim);
+    }
+
+    /* Hero Preview Section (Hybrid Nextwave + Portx) */
+    .ds-hero {
+      padding-block: var(--space-10) var(--space-16);
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-16);
+    }
+
+    .meta-cell {
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .meta-arrow {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: var(--radius-circle);
+      background: var(--accent-lime);
+      display: inline-block;
+      box-shadow: 0 0 10px var(--accent-lime);
+    }
+
+    .hero-split {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-8);
+    }
+
+    .ds-hero-title {
+      font-size: var(--text-hero);
+      line-height: var(--leading-hero);
+      max-width: 11ch;
+      overflow-wrap: break-word;
+    }
+
+    .hero-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-5);
+      max-width: 36ch;
+    }
+
+    .ds-hero-desc {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+    }
+
+    /* Rolling-Text Pill CTA */
+    .btn-pill-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 46px;
+      padding: 0 22px;
+      border-radius: var(--radius-pill);
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: transform var(--duration-micro) var(--ease-snappy);
+    }
+
+    .btn-pill-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    .cta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-circle);
+      background: var(--cta-text);
+      flex-shrink: 0;
+    }
+
+    .roll-wrap {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      height: 1.25em;
+      line-height: 1.25em;
+    }
+
+    .roll-track {
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--duration-roll) var(--ease-roll);
+    }
+
+    .btn-pill-cta:hover .roll-track,
+    .inline-roll-link:hover .roll-track,
+    .is-rolling .roll-track {
+      transform: translateY(-50%);
+    }
+
+    /* Sections */
+    .ds-section {
+      padding-block: var(--space-16);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ds-section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+    }
+
+    .ds-section-title {
+      font-size: var(--text-h2);
+    }
+
+    .ds-section-index {
+      color: var(--text-secondary);
+    }
+
+    /* 01. Sharp 0px Color Swatches */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sharp);
+      overflow: hidden;
+      text-align: left;
+      transition: border-color var(--duration-micro) var(--ease-snappy);
+    }
+
+    .swatch-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .swatch-preview {
+      height: 88px;
+      border-bottom: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .swatch-copy-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-sharp);
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      opacity: 0;
+      transition: opacity var(--duration-micro) var(--ease-snappy);
+    }
+
+    .swatch-card:hover .swatch-copy-hint {
+      opacity: 1;
+    }
+
+    .swatch-meta {
+      padding: var(--space-4);
+    }
+
+    .swatch-name {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .swatch-token {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* 02. Typography Specimen */
+    .type-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: baseline;
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .type-spec {
+      color: var(--text-secondary);
+    }
+
+    .type-spec strong {
+      display: block;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: 4px;
+    }
+
+    .type-sample {
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+
+    /* 03. Spacing & Geometry */
+    .space-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-10);
+    }
+
+    .space-item {
+      display: grid;
+      grid-template-columns: 140px 80px minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .space-bar {
+      height: 8px;
+      max-width: 100%;
+      border-radius: var(--radius-sharp);
+      background: var(--text-primary);
+    }
+
+    .space-bar.is-accent {
+      background: var(--accent-lime);
+    }
+
+    .geometry-compare {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .geo-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .geo-demo-sharp {
+      width: 72px;
+      height: 44px;
+      border: 1px solid var(--text-primary);
+      border-radius: var(--radius-sharp);
+      flex-shrink: 0;
+    }
+
+    .geo-demo-pill {
+      width: 88px;
+      height: 40px;
+      border: 1px solid var(--accent-lime);
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+    }
+
+    /* Grid Overlay */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: var(--z-modal);
+      display: none;
+    }
+
+    .grid-overlay.is-visible {
+      display: block;
+    }
+
+    .grid-overlay-inner {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--grid-gutter);
+    }
+
+    .grid-col {
+      background: rgba(212, 255, 0, 0.06);
+      border-inline: 1px dashed rgba(212, 255, 0, 0.24);
+      height: 100%;
+    }
+
+    /* 04. Components Showcase */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .comp-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sharp);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      min-width: 0;
+    }
+
+    .comp-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .btn-section-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .btn-arrow-chip {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-circle);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--duration-micro) var(--ease-snappy),
+                  transform var(--duration-micro) var(--ease-snappy);
+    }
+
+    .btn-section-action:hover .btn-arrow-chip {
+      border-color: var(--text-primary);
+      transform: translateX(2px);
+    }
+
+    .inline-roll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border-strong);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .skill-pill {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-strong);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .filter-pill {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      transition: all var(--duration-micro) var(--ease-snappy);
+    }
+
+    .filter-pill:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    .filter-pill.is-active {
+      background: var(--text-primary);
+      color: var(--text-inverse);
+      border-color: var(--text-primary);
+    }
+
+    /* Sharp 0px Project Card (Nextwave Sticky Counter Style) */
+    .sample-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sharp);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .sample-card-media {
+      aspect-ratio: 16 / 10;
+      background: radial-gradient(circle at 20% 20%, #3b1d7a 0%, #140f2d 55%, #000000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sample-card-media-inner {
+      transition: transform var(--duration-ui) var(--ease-editorial);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .sample-card:hover .sample-card-media-inner {
+      transform: scale(1.03);
+    }
+
+    .view-case-badge {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -40%);
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      padding: 10px 18px;
+      border-radius: var(--radius-sharp);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: var(--tracking-mono);
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity var(--duration-micro) var(--ease-snappy),
+                  transform var(--duration-ui) var(--ease-editorial);
+      pointer-events: none;
+    }
+
+    .sample-card:hover .view-case-badge {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .sample-card-body {
+      padding: var(--space-4) var(--space-5);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .sample-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-h3);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Interactive Oversized Disciplines Switcher */
+    .discipline-switcher {
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      padding: var(--space-8);
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: var(--space-8);
+      position: relative;
+      overflow: hidden;
+      transition: background var(--duration-ui) var(--ease-editorial);
+    }
+
+    .discipline-backdrop {
+      position: absolute;
+      inset: 0;
+      opacity: 0.25;
+      pointer-events: none;
+      transition: background var(--duration-ui) var(--ease-editorial);
+    }
+
+    .discipline-info {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .discipline-desc {
+      color: var(--text-secondary);
+      font-size: var(--text-body);
+    }
+
+    .discipline-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+
+    .discipline-item {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4.2vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      color: var(--text-dim);
+      text-align: right;
+      transition: color var(--duration-micro) var(--ease-snappy),
+                  transform var(--duration-ui) var(--ease-editorial);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      max-width: 100%;
+    }
+
+    .discipline-item .disc-idx {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: transparent;
+      transition: color var(--duration-micro) var(--ease-snappy);
+    }
+
+    .discipline-item:hover,
+    .discipline-item.is-active {
+      color: var(--text-primary);
+    }
+
+    .discipline-item.is-active .disc-idx {
+      color: var(--accent-lime);
+    }
+
+    /* 05. Motion Playground */
+    .motion-track {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sharp);
+      padding: var(--space-3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .motion-puck {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sharp);
+      background: var(--text-primary);
+      transform: translateX(0);
+    }
+
+    .motion-puck.is-editorial {
+      transition: transform var(--duration-reveal) var(--ease-editorial);
+    }
+
+    .motion-puck.is-snappy {
+      background: var(--accent-lime);
+      transition: transform var(--duration-ui) var(--ease-snappy);
+    }
+
+    .motion-puck.is-roll {
+      background: var(--text-secondary);
+      transition: transform var(--duration-roll) var(--ease-roll);
+    }
+
+    .motion-track.is-active .motion-puck {
+      transform: translateX(calc(100% + 140px));
+    }
+
+    /* Toast */
+    .ds-toast {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      z-index: var(--z-toast);
+      padding: 10px 18px;
+      border-radius: var(--radius-sharp);
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-lime);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all var(--duration-micro) var(--ease-snappy);
+    }
+
+    .ds-toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1023px) {
+      .ds-nav {
+        display: none;
+      }
+
+      .meta-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .discipline-switcher {
+        grid-template-columns: 1fr;
+      }
+
+      .discipline-list {
+        align-items: flex-start;
+      }
+
+      .discipline-item {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .ds-header-inner {
+        height: auto;
+        min-height: 64px;
+        padding-block: var(--space-3);
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+
+      .ds-brand {
+        font-size: 0.875rem;
+        gap: var(--space-2);
+      }
+
+      .ds-controls {
+        flex-wrap: wrap;
+      }
+
+      .ds-toggle-btn {
+        padding: 6px 10px;
+        font-size: 0.65rem;
+      }
+
+      .meta-strip {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        margin-bottom: var(--space-10);
+      }
+
+      .type-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+      }
+
+      .grid-overlay-inner {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .grid-col:nth-child(n+5) {
+        display: none;
+      }
+
+      .space-item {
+        grid-template-columns: 96px 52px minmax(0, 1fr);
+        gap: var(--space-3);
+      }
+
+      .discipline-switcher {
+        padding: var(--space-5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 12-Column Grid Visualizer Overlay -->
+  <div class="grid-overlay" id="gridOverlay" aria-hidden="true">
+    <div class="container grid-overlay-inner">
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+    </div>
+  </div>
+
+  <header class="ds-header">
+    <div class="container ds-header-inner">
+      <div class="ds-brand">
+        <span class="ds-dot" aria-hidden="true"></span>
+        <span>LUCAS IGREJA® — DS V2.0</span>
+      </div>
+      <nav class="ds-nav" aria-label="Specimen sections">
+        <a href="#colors">Colors</a>
+        <a href="#typography">Typography</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#components">Components</a>
+        <a href="#motion">Motion</a>
+      </nav>
+      <div class="ds-controls">
+        <button class="ds-toggle-btn" id="gridToggleBtn" aria-pressed="false" type="button">Grid Overlay</button>
+        <button class="ds-toggle-btn" id="langToggleBtn" aria-pressed="false" type="button">EN / PT</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Preview Section -->
+    <section class="ds-hero micro-grid-bg">
+      <div class="container">
+        <div class="meta-strip">
+          <div class="meta-cell">
+            <div>
+              <span class="font-mono meta-label" data-en="SPECIALTY" data-pt="ESPECIALIDADE">SPECIALTY</span>
+              <span class="meta-value" data-en="UI/UX &amp; GRAPHIC DESIGN" data-pt="UI/UX &amp; DESIGN GRÁFICO">UI/UX &amp; GRAPHIC DESIGN</span>
+            </div>
+            <span class="meta-arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="meta-cell">
+            <div>
+              <span class="font-mono meta-label" data-en="AVAILABILITY" data-pt="DISPONIBILIDADE">AVAILABILITY</span>
+              <span class="meta-value">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                <span data-en="OPEN FOR WORK" data-pt="DISPONÍVEL">OPEN FOR WORK</span>
+              </span>
+            </div>
+            <span class="meta-arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="meta-cell">
+            <div>
+              <span class="font-mono meta-label" data-en="EXPERIENCE" data-pt="EXPERIÊNCIA">EXPERIENCE</span>
+              <span class="meta-value" data-en="12+ YEARS" data-pt="12+ ANOS">12+ YEARS</span>
+            </div>
+            <span class="meta-arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="meta-cell">
+            <div>
+              <span class="font-mono meta-label" data-en="BASED IN" data-pt="LOCALIZAÇÃO">BASED IN</span>
+              <span class="meta-value">BRASÍLIA, BR · <span id="brtClock">--:--</span></span>
+            </div>
+            <span class="meta-arrow" aria-hidden="true">↗</span>
+          </div>
+        </div>
+
+        <div class="hero-split">
+          <h1 class="font-display ds-hero-title" data-en="DESIGN SYSTEMS MADE SHARP." data-pt="DESIGN GRÁFICO &amp; DIGITAL.">
+            DESIGN SYSTEMS MADE SHARP.
+          </h1>
+          <div class="hero-aside">
+            <p class="ds-hero-desc" data-en="Design System v2.0 synthesizing stark monochrome geometry, monolithic Clash Display typography, and one surgical accent (#D4FF00) before building your Figma mockup." data-pt="Design System v2.0 combinando arquitetura monocromática, tipografia Clash Display e um único destaque cirúrgico (#D4FF00) como base para o seu Figma.">
+              Design System v2.0 synthesizing stark monochrome geometry, monolithic Clash Display typography, and one surgical accent (#D4FF00) before building your Figma mockup.
+            </p>
+            <a href="#components" class="btn-pill-cta">
+              <span class="cta-dot" aria-hidden="true"></span>
+              <span class="roll-wrap">
+                <span class="roll-track">
+                  <span data-en="START IN FIGMA" data-pt="ABRIR NO FIGMA">START IN FIGMA</span>
+                  <span aria-hidden="true" data-en="START IN FIGMA" data-pt="ABRIR NO FIGMA">START IN FIGMA</span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01. Colors -->
+    <section class="ds-section" id="colors">
+      <div class="container">
+        <div class="ds-section-head">
+          <h2 class="font-display ds-section-title" data-en="COLOR ARCHITECTURE" data-pt="ARQUITETURA DE CORES">COLOR ARCHITECTURE</h2>
+          <span class="font-mono ds-section-index">// 01 / MONOCHROME + #D4FF00 //</span>
+        </div>
+        <div class="swatch-grid" id="swatchGrid"></div>
+      </div>
+    </section>
+
+    <!-- 02. Monolithic Typography -->
+    <section class="ds-section" id="typography">
+      <div class="container">
+        <div class="ds-section-head">
+          <h2 class="font-display ds-section-title" data-en="MONOLITHIC TYPOGRAPHY" data-pt="TIPOGRAFIA MONOLÍTICA">MONOLITHIC TYPOGRAPHY</h2>
+          <span class="font-mono ds-section-index">// 02 / CLASH DISPLAY + INTER + JETBRAINS MONO //</span>
+        </div>
+
+        <div class="type-stack">
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Hero Display</strong>
+              --text-hero (52px–132px)<br />Clash Display 600 / 0.92
+            </div>
+            <div class="font-display type-sample" style="font-size: var(--text-hero); line-height: var(--leading-hero);">
+              CRAFT &amp; CODE
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Discipline Contrast</strong>
+              --text-display (40px–96px)<br />#FFFFFF vs #2E2E2E
+            </div>
+            <div class="font-display type-sample" style="font-size: var(--text-display);">
+              <span style="color: var(--text-primary);">UI/UX</span>
+              <span style="color: var(--text-dim);"> BRANDING</span>
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Section H1</strong>
+              --text-h1 (36px–64px)<br />Clash Display 600 / 1.04
+            </div>
+            <div class="font-display type-sample" style="font-size: var(--text-h1);">
+              SELECTED WORKS (09)
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Card Title H3</strong>
+              --text-h3 (20px–26px)<br />Clash Display 600 / 1.15
+            </div>
+            <div class="font-display type-sample" style="font-size: var(--text-h3);">
+              SONAR BSB — TECHNO MUSIC EVENTS APP
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Body Standard</strong>
+              --text-body (16px)<br />Inter 400 / 1.6
+            </div>
+            <p class="type-sample" style="color: var(--text-secondary); max-width: 60ch;">
+              Graphic designer, art director, and UI/UX designer based in Brasília, Brazil. Over 12 years crafting brand identity systems, print campaigns, and modern digital products.
+            </p>
+          </div>
+
+          <div class="type-row">
+            <div class="type-spec font-mono">
+              <strong>Metadata &amp; Indices</strong>
+              --text-meta (12px)<br />JetBrains Mono / +0.08em
+            </div>
+            <div class="font-mono type-sample" style="color: var(--accent-lime);">
+              // 01 / 2026 • UI/UX DESIGN • FIGMA • PROTOTYPING
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Spacing & Sharp Geometry -->
+    <section class="ds-section" id="spacing">
+      <div class="container">
+        <div class="ds-section-head">
+          <h2 class="font-display ds-section-title" data-en="SPATIAL RHYTHM &amp; SHARP GEOMETRY" data-pt="RITMO ESPACIAL &amp; GEOMETRIA RETA">SPATIAL RHYTHM &amp; SHARP GEOMETRY</h2>
+          <span class="font-mono ds-section-index">// 03 / 0PX FRAMES VS 9999PX PILLS //</span>
+        </div>
+
+        <div class="space-list">
+          <div class="space-item"><span class="font-mono">--space-2</span><span class="font-mono" style="color: var(--text-secondary);">8px</span><div class="space-bar" style="width: 16px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-4</span><span class="font-mono" style="color: var(--text-secondary);">16px</span><div class="space-bar" style="width: 32px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-6</span><span class="font-mono" style="color: var(--text-secondary);">24px</span><div class="space-bar" style="width: 48px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-8</span><span class="font-mono" style="color: var(--text-secondary);">32px</span><div class="space-bar" style="width: 64px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-12</span><span class="font-mono" style="color: var(--text-secondary);">48px</span><div class="space-bar" style="width: 96px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-16</span><span class="font-mono" style="color: var(--text-secondary);">64px</span><div class="space-bar" style="width: 128px;"></div></div>
+          <div class="space-item"><span class="font-mono">--space-24</span><span class="font-mono" style="color: var(--text-secondary);">96px</span><div class="space-bar is-accent" style="width: 192px;"></div></div>
+        </div>
+
+        <div class="geometry-compare">
+          <div class="geo-box">
+            <div>
+              <span class="font-mono" style="color: var(--text-primary); display: block; margin-bottom: 4px;">--radius-sharp: 0px</span>
+              <span style="font-size: var(--text-sm); color: var(--text-secondary);">Project media, cards, modals, rows &amp; inputs</span>
+            </div>
+            <div class="geo-demo-sharp" aria-hidden="true"></div>
+          </div>
+          <div class="geo-box">
+            <div>
+              <span class="font-mono" style="color: var(--accent-lime); display: block; margin-bottom: 4px;">--radius-pill: 9999px</span>
+              <span style="font-size: var(--text-sm); color: var(--text-secondary);">Primary CTAs, filter pills, toggle &amp; icon chips</span>
+            </div>
+            <div class="geo-demo-pill" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Core Components & Interactive Demos -->
+    <section class="ds-section" id="components">
+      <div class="container">
+        <div class="ds-section-head">
+          <h2 class="font-display ds-section-title" data-en="CORE COMPONENTS" data-pt="COMPONENTES PRINCIPAIS">CORE COMPONENTS</h2>
+          <span class="font-mono ds-section-index">// 04 / NEXTWAVE + PORTX PATTERNS //</span>
+        </div>
+
+        <div class="comp-grid">
+          <div class="comp-panel">
+            <span class="font-mono" style="color: var(--text-secondary);">Rolling CTAs, Chips &amp; Filter Pills</span>
+            <div class="comp-row">
+              <button class="btn-pill-cta" type="button">
+                <span class="cta-dot" aria-hidden="true"></span>
+                <span class="roll-wrap">
+                  <span class="roll-track">
+                    <span>LET'S CONTACT</span>
+                    <span aria-hidden="true">LET'S CONTACT</span>
+                  </span>
+                </span>
+              </button>
+
+              <a href="#components" class="btn-section-action">
+                <span>VIEW ALL</span>
+                <span class="btn-arrow-chip" aria-hidden="true">→</span>
+              </a>
+
+              <a href="#components" class="inline-roll-link">
+                <span class="roll-wrap">
+                  <span class="roll-track">
+                    <span>ABOUT ME ↗</span>
+                    <span aria-hidden="true">ABOUT ME ↗</span>
+                  </span>
+                </span>
+              </a>
+            </div>
+
+            <div class="comp-row" id="pillDemo">
+              <button class="filter-pill is-active" type="button">ALL 09</button>
+              <button class="filter-pill" type="button">UI/UX 02</button>
+              <button class="filter-pill" type="button">BRANDING 04</button>
+              <button class="filter-pill" type="button">EDITORIAL 03</button>
+            </div>
+
+            <div class="comp-row">
+              <span class="skill-pill">FIGMA</span>
+              <span class="skill-pill">ILLUSTRATOR</span>
+              <span class="skill-pill">INDESIGN</span>
+              <span class="skill-pill">PHOTOSHOP</span>
+              <span class="skill-pill">MOTION</span>
+            </div>
+          </div>
+
+          <!-- Sharp 0px Project Card Preview -->
+          <article class="sample-card">
+            <div class="sample-card-media">
+              <div class="sample-card-media-inner">
+                <div>
+                  <span class="font-mono" style="color: var(--accent-lime); display: block; margin-bottom: 6px;">01 / FREQUENCY FOUND.</span>
+                  <div class="font-display" style="font-size: 1.75rem; line-height: 1; color: #FFFFFF;">SONAR BSB<br />V1.0</div>
+                </div>
+                <div style="width: 72px; height: 120px; border: 2px solid rgba(255,255,255,0.28); background: #FFFFFF; padding: 8px; display: flex; flex-direction: column; gap: 6px;">
+                  <div style="height: 10px; width: 60%; background: #000000;"></div>
+                  <div style="height: 36px; background: linear-gradient(135deg, #5B21B6, #D4FF00);"></div>
+                  <div style="height: 8px; width: 85%; background: #D4D4D4;"></div>
+                  <div style="height: 8px; width: 65%; background: #D4D4D4;"></div>
+                </div>
+              </div>
+              <span class="view-case-badge">VIEW CASE</span>
+            </div>
+            <div class="sample-card-body">
+              <h3 class="sample-card-title">SONAR BSB</h3>
+              <span class="font-mono" style="color: var(--text-secondary);">2026 · UI/UX &amp; MOTION</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Interactive Oversized Disciplines Switcher -->
+        <div class="discipline-switcher" id="disciplineSwitcher">
+          <div class="discipline-backdrop" id="disciplineBackdrop" style="background: radial-gradient(circle at 80% 30%, rgba(212, 255, 0, 0.25), transparent 60%);"></div>
+          <div class="discipline-info">
+            <div>
+              <span class="font-mono" style="color: var(--accent-lime); display: block; margin-bottom: var(--space-3);">// DISCIPLINES SWITCHER //</span>
+              <p class="discipline-desc" id="disciplineDesc">
+                End-to-end digital product architecture, mobile and desktop prototypes, and interactive Figma systems built for real user clarity.
+              </p>
+            </div>
+            <button class="btn-pill-cta" type="button">
+              <span class="cta-dot" aria-hidden="true"></span>
+              <span class="roll-wrap">
+                <span class="roll-track">
+                  <span>EXPLORE WORK</span>
+                  <span aria-hidden="true">EXPLORE WORK</span>
+                </span>
+              </span>
+            </button>
+          </div>
+          <div class="discipline-list" role="tablist" aria-label="Design disciplines">
+            <button class="discipline-item is-active" type="button" role="tab" aria-selected="true"
+              data-desc="End-to-end digital product architecture, mobile and desktop prototypes, and interactive Figma systems built for real user clarity."
+              data-bg="radial-gradient(circle at 80% 30%, rgba(212, 255, 0, 0.26), transparent 60%)">
+              <span class="disc-idx">01</span><span>UI/UX DESIGN</span>
+            </button>
+            <button class="discipline-item" type="button" role="tab" aria-selected="false"
+              data-desc="Institutional and commercial visual identity systems—marks, typography, and civic symbolism built to endure at scale."
+              data-bg="radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.16), transparent 60%)">
+              <span class="disc-idx">02</span><span>BRAND IDENTITY</span>
+            </button>
+            <button class="discipline-item" type="button" role="tab" aria-selected="false"
+              data-desc="12+ years of advertising art direction across out-of-home launches, editorial layouts, and public communication campaigns."
+              data-bg="radial-gradient(circle at 75% 65%, rgba(160, 160, 160, 0.20), transparent 60%)">
+              <span class="disc-idx">03</span><span>ART DIRECTION</span>
+            </button>
+            <button class="discipline-item" type="button" role="tab" aria-selected="false"
+              data-desc="Intentional UI choreography, scroll-driven reveals, and high-contrast micro-interactions that guide attention."
+              data-bg="radial-gradient(circle at 85% 80%, rgba(212, 255, 0, 0.18), transparent 60%)">
+              <span class="disc-idx">04</span><span>MOTION &amp; PROTOTYPING</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Motion Language -->
+    <section class="ds-section" id="motion">
+      <div class="container">
+        <div class="ds-section-head">
+          <h2 class="font-display ds-section-title" data-en="MOTION LANGUAGE" data-pt="LINGUAGEM DE MOVIMENTO">MOTION LANGUAGE</h2>
+          <button class="btn-pill-cta" id="triggerMotionBtn" type="button">
+            <span class="cta-dot" aria-hidden="true"></span>
+            <span class="roll-wrap">
+              <span class="roll-track">
+                <span>TRIGGER MOTION DEMO</span>
+                <span aria-hidden="true">TRIGGER MOTION DEMO</span>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div class="comp-grid">
+          <div class="comp-panel">
+            <span class="font-mono" style="color: var(--text-primary);">--ease-editorial (800ms)</span>
+            <p style="font-size: var(--text-sm); color: var(--text-secondary);">cubic-bezier(0.22, 1, 0.36, 1) — Scroll reveals &amp; image zoom</p>
+            <div class="motion-track" id="trackEditorial">
+              <div class="motion-puck is-editorial"></div>
+            </div>
+          </div>
+
+          <div class="comp-panel">
+            <span class="font-mono" style="color: var(--accent-lime);">--ease-snappy (420ms)</span>
+            <p style="font-size: var(--text-sm); color: var(--text-secondary);">cubic-bezier(0.16, 1, 0.3, 1) — Switchers &amp; filter pills</p>
+            <div class="motion-track" id="trackSnappy">
+              <div class="motion-puck is-snappy"></div>
+            </div>
+          </div>
+
+          <div class="comp-panel">
+            <span class="font-mono" style="color: var(--text-secondary);">--ease-roll (360ms)</span>
+            <p style="font-size: var(--text-sm); color: var(--text-secondary);">cubic-bezier(0.76, 0, 0.24, 1) — Dual-label rolling-text CTAs</p>
+            <div class="motion-track" id="trackRoll">
+              <div class="motion-puck is-roll"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="ds-toast" id="dsToast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Live Brasília Clock (America/Sao_Paulo)
+    const clockEl = document.getElementById('brtClock');
+    function updateClock() {
+      try {
+        const fmt = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Sao_Paulo',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        clockEl.textContent = `${fmt.format(new Date())} BRT`;
+      } catch {
+        clockEl.textContent = 'BRT';
+      }
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // Sharp Color Swatches
+    const SWATCHES = [
+      { name: 'Pure Black Canvas', token: '--bg-canvas', hex: '#000000' },
+      { name: 'Surface Charcoal', token: '--bg-surface', hex: '#0E0E0E' },
+      { name: 'Elevated Surface', token: '--bg-elevated', hex: '#141414' },
+      { name: 'Hairline Subtle', token: '--border-subtle', hex: '#282828' },
+      { name: 'Inactive Dim Type', token: '--text-dim', hex: '#2E2E2E' },
+      { name: 'Muted Stone', token: '--text-secondary', hex: '#8A8A8A' },
+      { name: 'Pure White Primary', token: '--text-primary', hex: '#FFFFFF' },
+      { name: 'Surgical Lime Accent', token: '--accent-lime', hex: '#D4FF00' }
+    ];
+
+    const swatchGrid = document.getElementById('swatchGrid');
+    const toast = document.getElementById('dsToast');
+    let toastTimer;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2000);
+    }
+
+    SWATCHES.forEach((s) => {
+      const btn = document.createElement('button');
+      btn.className = 'swatch-card';
+      btn.type = 'button';
+      btn.innerHTML = `
+        <div class="swatch-preview" style="background: ${s.hex};">
+          <span class="swatch-copy-hint">Copy ${s.hex}</span>
+        </div>
+        <div class="swatch-meta">
+          <div class="swatch-name">${s.name}</div>
+          <div class="font-mono swatch-token">${s.token} · ${s.hex}</div>
+        </div>
+      `;
+      btn.addEventListener('click', () => {
+        navigator.clipboard?.writeText(s.hex);
+        showToast(`Copied ${s.hex} (${s.token})`);
+      });
+      swatchGrid.appendChild(btn);
+    });
+
+    // Grid Overlay Toggle
+    const gridBtn = document.getElementById('gridToggleBtn');
+    const gridOverlay = document.getElementById('gridOverlay');
+    gridBtn.addEventListener('click', () => {
+      const active = gridOverlay.classList.toggle('is-visible');
+      gridBtn.setAttribute('aria-pressed', String(active));
+    });
+
+    // Bilingual EN / PT Toggle
+    const langBtn = document.getElementById('langToggleBtn');
+    let currentLang = 'en';
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'pt' : 'en';
+      langBtn.setAttribute('aria-pressed', String(currentLang === 'pt'));
+      document.querySelectorAll('[data-en][data-pt]').forEach((el) => {
+        el.innerHTML = el.dataset[currentLang];
+      });
+      showToast(currentLang === 'pt' ? 'Idioma: Português (PT-BR)' : 'Language: English');
+    });
+
+    // Filter Pill Demo
+    document.querySelectorAll('#pillDemo .filter-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#pillDemo .filter-pill').forEach((p) => p.classList.remove('is-active'));
+        pill.classList.add('is-active');
+      });
+    });
+
+    // Oversized Disciplines Switcher
+    const discItems = document.querySelectorAll('.discipline-item');
+    const discDesc = document.getElementById('disciplineDesc');
+    const discBg = document.getElementById('disciplineBackdrop');
+
+    function activateDiscipline(item) {
+      discItems.forEach((btn) => {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      item.classList.add('is-active');
+      item.setAttribute('aria-selected', 'true');
+      discDesc.textContent = item.dataset.desc;
+      discBg.style.background = item.dataset.bg;
+    }
+
+    discItems.forEach((item) => {
+      item.addEventListener('click', () => activateDiscipline(item));
+      item.addEventListener('mouseenter', () => activateDiscipline(item));
+    });
+
+    // Motion Demo
+    const motionBtn = document.getElementById('triggerMotionBtn');
+    motionBtn.addEventListener('click', () => {
+      document.getElementById('trackEditorial').classList.toggle('is-active');
+      document.getElementById('trackSnappy').classList.toggle('is-active');
+      document.getElementById('trackRoll').classList.toggle('is-active');
+    });
+  </script>
+</body>
+</html>

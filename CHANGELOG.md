@@ -6,6 +6,21 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.7] - 2026-11-21
+
+**Git Tag:** `v0.7` · **Archive:** [`./Versions/v0.7/`](./Versions/v0.7/VERSION_INFO.md)
+
+### Changed
+- **Project Case-Study Popups (`js/components/portfolio.js`, `js/data/projects.js`, `css/modal.css`):**
+  - Replaced `CLOSE [ESC]` with the borderless bold `X` icon button (`.modal-close-icon-btn` + `.drawer-close-icon`).
+  - Styled `.modal-index` in `Clash Display` (`--font-display`, matching `.modal-title`) in electric lime (`#D4FF00`).
+  - Removed the `ROLE / YEAR / ERA / TOOLS` metadata grid (`.modal-meta-grid`), bottom subtitle/Behance CTA row (`.modal-cta-row`), and `PREV / NEXT` footer bar (`.modal-footer-nav`).
+  - Consolidated `01 / CONTEXT`, `02 / DESIGN APPROACH`, and `03 / OUTCOME & CRAFT` into a single `01 / OVERVIEW` (`01 / VISÃO GERAL`) column spanning 2 of 3 columns (`grid-column: span 2`), paired with a dedicated `02 / TOOLS` (`02 / FERRAMENTAS`) column on the 3rd column.
+- **Minimal Single-Line Footer (`index.html`, `css/components.css`):** Removed the footer bio and `MAIN` navigation columns, consolidating copyright (`© 2026 LUCAS IGREJA. ALL RIGHTS RESERVED.`) and inline contact links (`EMAIL`, `BEHANCE`, `LINKEDIN`) into a single compact `.footer-bar` with `#D4FF00` lime hover.
+- **Cache Busting (`index.html`):** Updated all stylesheet and script query strings to `?v=0.7`.
+
+---
+
 ## [0.6] - 2026-11-21
 
 **Git Tag:** `v0.6` · **Archive:** [`./Versions/v0.6/`](./Versions/v0.6/VERSION_INFO.md)
