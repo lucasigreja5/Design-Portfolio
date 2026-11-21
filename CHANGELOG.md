@@ -6,6 +6,16 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.5.1] - 2026-11-21
+
+**Git Tag:** `v0.5.1` · **Archive:** [`./Versions/v0.5.1/`](./Versions/v0.5.1/VERSION_INFO.md)
+
+### Changed
+- **Borderless, Larger Carousel Swipe Buttons (`css/components.css`):** Removed the border/outline from `.carousel-nav-btn`, increased desktop button hit areas and SVG arrows to `56×56` / `32×32` (`44×44` / `26×26` on tablet & mobile `<= 1023px`), and changed hover color to electric lime (`var(--accent-lime)`, `#D4FF00`) with a `3px` directional glide.
+- **Cache Busting:** Updated stylesheet and script query strings in `index.html` to `?v=0.5.1`.
+
+---
+
 ## [0.5] - 2026-11-21
 
 **Git Tag:** `v0.5` · **Archive:** [`./Versions/v0.5/`](./Versions/v0.5/VERSION_INFO.md)

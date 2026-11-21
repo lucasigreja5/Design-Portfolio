@@ -7,7 +7,7 @@ This folder preserves immutable, runnable snapshots of every released version of
 ## How Versioning Works
 
 - **Repository Root (`/`):** Always holds the active, deployable website so `http://localhost:4173/` and GitHub Pages (`/`) always serve the latest release.
-- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.5`).
+- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.5.1`).
 - **Release History ([`../CHANGELOG.md`](../CHANGELOG.md)):** Records what changed in each version.
 - **Version Archives (`Versions/vX.Y/`):** Frozen snapshots of the deployable site at each release milestone.
 - **GitHub Sync (Annotated Tags):** Every release has a matching Git tag (`v0.1`, `v0.2`, ...) visible in GitHub's **Tags / Releases** view.
@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.5.1** | 2026-11-21 | [`./v0.5.1/`](./v0.5.1/VERSION_INFO.md) | `v0.5.1` | Borderless larger Projects carousel swipe buttons with electric lime hover |
 | **v0.5** | 2026-11-21 | [`./v0.5/`](./v0.5/VERSION_INFO.md) | `v0.5` | Horizontal Projects carousel with architectural nav buttons and underline-free Career toggle |
 | **v0.4.3** | 2026-11-21 | [`./v0.4.3/`](./v0.4.3/VERSION_INFO.md) | `v0.4.3` | Remove About Career CTA, elevate Career toggle visibility, nest Disciplines inside Career, and switch top nav Disciplines to Contact |
 | **v0.4.1** | 2026-11-20 | [`./v0.4.1/`](./v0.4.1/VERSION_INFO.md) | `v0.4.1` | Replaced Other section and Career Evolution modal with inline Career section between Projects and Disciplines |
@@ -64,8 +65,8 @@ git push origin main --follow-tags
 
 Because all CSS, JS, and asset paths are relative, any archived version runs directly from the local preview server (`./scripts/serve.sh`):
 
-- **v0.5 Portfolio:** http://localhost:4173/Versions/v0.5/
-- **v0.5 Design System:** http://localhost:4173/Versions/v0.5/design-system.html
+- **v0.5.1 Portfolio:** http://localhost:4173/Versions/v0.5.1/
+- **v0.5.1 Design System:** http://localhost:4173/Versions/v0.5.1/design-system.html
 - **v0.3 Portfolio:** http://localhost:4173/Versions/v0.3/
 - **v0.3 Design System:** http://localhost:4173/Versions/v0.3/design-system.html
 - **v0.2 Portfolio:** http://localhost:4173/Versions/v0.2/

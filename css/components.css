@@ -549,7 +549,7 @@
 .projects-carousel-controls {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-top: var(--space-3);
 }
 
@@ -557,41 +557,39 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sharp);
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
   background: transparent;
   color: var(--text-primary);
   cursor: pointer;
-  transition: background-color var(--duration-micro) var(--ease-snappy),
-              border-color var(--duration-micro) var(--ease-snappy),
-              color var(--duration-micro) var(--ease-snappy),
+  transition: color var(--duration-micro) var(--ease-snappy),
               opacity var(--duration-micro) var(--ease-snappy);
 }
 
 .carousel-nav-btn svg {
+  width: 32px;
+  height: 32px;
   transition: transform var(--duration-micro) var(--ease-snappy);
 }
 
 .carousel-nav-btn:hover:not(:disabled) {
-  background: var(--cta-bg);
-  border-color: var(--cta-bg);
-  color: var(--cta-text);
+  color: var(--accent-lime);
 }
 
 #projectsPrevBtn:hover:not(:disabled) svg {
-  transform: translateX(-2px);
+  transform: translateX(-3px);
 }
 
 #projectsNextBtn:hover:not(:disabled) svg {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 .carousel-nav-btn:disabled {
-  border-color: var(--border-subtle);
   color: var(--text-muted);
-  opacity: 0.35;
+  opacity: 0.32;
   cursor: not-allowed;
 }
 
@@ -1276,11 +1274,17 @@
     grid-column: 3;
     grid-row: 1;
     margin-top: 0;
+    gap: var(--space-1);
   }
 
   .projects-rail .carousel-nav-btn {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .projects-rail .carousel-nav-btn svg {
+    width: 26px;
+    height: 26px;
   }
 
   .projects-rail .rail-progress-wrap {
