@@ -477,27 +477,21 @@
   margin-bottom: var(--space-12);
 }
 
-/* Asymmetric Sticky Grid bleeding cleanly to right edge without overflow */
+/* Asymmetric Grid bleeding cleanly to right edge without overflow */
 .projects-bleed-layout {
-  --project-media-h: clamp(280px, 44vw, 620px);
-  --project-caption-h: 50px;
-  --rail-block-h: 190px;
+  --project-media-h: clamp(280px, 42vw, 580px);
   padding-left: var(--page-gutter);
   padding-right: 0;
   display: grid;
   grid-template-columns: minmax(220px, 28%) minmax(0, 1fr);
   gap: var(--space-6);
-  align-items: start;
+  align-items: end;
 }
 
 .projects-rail {
-  position: sticky;
-  margin-top: max(0px, calc(var(--project-media-h) + var(--project-caption-h) - var(--rail-block-h)));
-  top: min(
-    calc(100vh - var(--rail-block-h) - var(--space-10)),
-    calc(var(--nav-height) + var(--space-8) + max(0px, calc(var(--project-media-h) + var(--project-caption-h) - var(--rail-block-h))))
-  );
+  position: static;
   padding-right: var(--space-6);
+  padding-bottom: 4px;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -552,17 +546,78 @@
   color: var(--text-secondary);
 }
 
+.projects-carousel-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.carousel-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sharp);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-micro) var(--ease-snappy),
+              border-color var(--duration-micro) var(--ease-snappy),
+              color var(--duration-micro) var(--ease-snappy),
+              opacity var(--duration-micro) var(--ease-snappy);
+}
+
+.carousel-nav-btn svg {
+  transition: transform var(--duration-micro) var(--ease-snappy);
+}
+
+.carousel-nav-btn:hover:not(:disabled) {
+  background: var(--cta-bg);
+  border-color: var(--cta-bg);
+  color: var(--cta-text);
+}
+
+#projectsPrevBtn:hover:not(:disabled) svg {
+  transform: translateX(-2px);
+}
+
+#projectsNextBtn:hover:not(:disabled) svg {
+  transform: translateX(2px);
+}
+
+.carousel-nav-btn:disabled {
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .projects-stack {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-16);
+  flex-direction: row;
+  gap: var(--space-6);
   min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-right: var(--page-gutter);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.projects-stack::-webkit-scrollbar {
+  display: none;
 }
 
 .project-card {
   display: block;
-  width: 100%;
+  flex: 0 0 min(86%, 820px);
   min-width: 0;
+  scroll-snap-align: start;
 }
 
 .project-trigger {
@@ -578,9 +633,7 @@
   height: var(--project-media-h);
   border-radius: var(--radius-sharp);
   overflow: hidden;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  border-left: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
 }
 
@@ -603,7 +656,7 @@
 
 .project-caption-bar {
   padding-top: var(--space-4);
-  padding-right: var(--page-gutter);
+  padding-right: 0;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -889,22 +942,19 @@
 
 .career-sep {
   color: var(--text-muted);
-  padding-bottom: 10px;
   user-select: none;
   cursor: pointer;
 }
 
 .career-option {
   display: inline-block;
-  padding: 0 0 10px;
+  padding: 0;
   border: none;
-  border-bottom: 2px solid transparent;
   background: transparent;
   color: var(--text-secondary);
   text-align: left;
   cursor: pointer;
   transition: color var(--duration-micro) var(--ease-snappy),
-              border-color var(--duration-micro) var(--ease-snappy),
               transform var(--duration-ui) var(--ease-editorial);
 }
 
@@ -915,7 +965,6 @@
 
 .career-option.is-active {
   color: var(--accent-lime);
-  border-bottom-color: var(--accent-lime);
   transform: translateX(5px);
 }
 
@@ -1176,23 +1225,19 @@
   }
 
   .projects-rail {
-    position: sticky;
-    top: var(--nav-height);
-    z-index: calc(var(--z-sticky) - 5);
+    position: static;
     margin-top: 0;
     margin-inline: calc(var(--container-pad) * -1);
     margin-bottom: var(--space-6);
     padding: var(--space-3) var(--container-pad);
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: var(--bg-canvas);
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-rows: auto auto;
-    column-gap: var(--space-4);
-    row-gap: 4px;
+    column-gap: var(--space-3);
+    row-gap: 6px;
     align-items: center;
   }
 
@@ -1227,6 +1272,17 @@
     max-width: 100%;
   }
 
+  .projects-rail .projects-carousel-controls {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  .projects-rail .carousel-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+
   .projects-rail .rail-progress-wrap {
     grid-column: 1 / -1;
     grid-row: 2;
@@ -1236,12 +1292,15 @@
     margin-top: 4px;
   }
 
-  .project-media-box {
-    border-right: 1px solid var(--border-subtle);
+  .projects-stack {
+    margin-inline: calc(var(--container-pad) * -1);
+    padding-inline: var(--container-pad);
+    scroll-padding-inline: var(--container-pad);
+    gap: var(--space-4);
   }
 
-  .project-caption-bar {
-    padding-right: 0;
+  .project-card {
+    flex: 0 0 84%;
   }
 
   .disciplines-container {
@@ -1282,6 +1341,10 @@
     justify-content: flex-start;
   }
 
+  .project-card {
+    flex: 0 0 88%;
+  }
+
   .career-section {
     padding-top: var(--space-16);
     padding-bottom: 0;
@@ -1295,14 +1358,6 @@
   .career-option,
   .career-sep {
     font-size: clamp(1rem, 4.4vw, 1.35rem);
-  }
-
-  .career-option {
-    padding-bottom: 8px;
-  }
-
-  .career-sep {
-    padding-bottom: 8px;
   }
 
   .disciplines-section {

@@ -6,6 +6,18 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.5] - 2026-11-21
+
+**Git Tag:** `v0.5` · **Archive:** [`./Versions/v0.5/`](./Versions/v0.5/VERSION_INFO.md)
+
+### Added & Changed
+- **Horizontal Projects Carousel (`index.html`, `css/components.css`, `js/motion/animations.js`, `js/components/portfolio.js`, `js/data/projects.js`):** Converted `.projects-stack` into a horizontal CSS scroll-snap carousel showing all 9 projects on a single row with a next-card edge peek, keeping `.projects-rail` (`01 / 09` index counter, `#D4FF00` progress bar, and active project title) on the left on desktop and at the top on tablet/mobile.
+- **Architectural Carousel Controls:** Added sharp `0px` square `Prev` / `Next` arrow buttons (`#projectsPrevBtn` / `#projectsNextBtn`) inside `.projects-rail` with `#4A4A4A` borders, crisp white/black hover inversion, disabled boundary states, localized `EN / PT` `aria-label` strings, `ArrowLeft` / `ArrowRight` keyboard navigation, and `requestAnimationFrame`-synced horizontal scroll tracking.
+- **Underline-Free Career Toggle (`css/components.css`):** Removed the bottom border underline and bottom padding overrides from `.career-option` and `.career-sep` while preserving the prominent `Clash Display` scale, secondary contrast, and `EN / PT` horizontal glide animation.
+- **Cache Busting:** Updated stylesheet and script query strings in `index.html` to `?v=0.5`.
+
+---
+
 ## [0.4.3] - 2026-11-21
 
 **Git Tag:** `v0.4.3` · **Archive:** [`./Versions/v0.4.3/`](./Versions/v0.4.3/VERSION_INFO.md)

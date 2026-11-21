@@ -273,6 +273,11 @@
       });
     });
 
+    const prevBtn = document.getElementById('projectsPrevBtn');
+    const nextBtn = document.getElementById('projectsNextBtn');
+    if (prevBtn && copy.prevProject) prevBtn.setAttribute('aria-label', copy.prevProject);
+    if (nextBtn && copy.nextProject) nextBtn.setAttribute('aria-label', copy.nextProject);
+
     if (global.PortfolioMotion && typeof global.PortfolioMotion.refreshSticky === 'function') {
       global.PortfolioMotion.refreshSticky(list.length);
     }

@@ -47,7 +47,9 @@
             editorial: 'EDITORIAL & OOH (03)'
           },
           viewCase: 'VIEW CASE',
-          scrollHint: 'ACTIVE INDEX'
+          scrollHint: 'ACTIVE INDEX',
+          prevProject: 'Previous project',
+          nextProject: 'Next project'
         },
         disciplines: {
           eyebrow: '// DISCIPLINES //'
@@ -137,7 +139,9 @@
             editorial: 'EDITORIAL & OOH (03)'
           },
           viewCase: 'VER CASE',
-          scrollHint: 'ÍNDICE ATIVO'
+          scrollHint: 'ÍNDICE ATIVO',
+          prevProject: 'Projeto anterior',
+          nextProject: 'Próximo projeto'
         },
         disciplines: {
           eyebrow: '// DISCIPLINAS //'

@@ -21,34 +21,49 @@
     }
     lastActiveIdx = -1;
 
-    const cards = Array.from(document.querySelectorAll('.project-card'));
-    if (!cards.length) return;
+    const track = document.getElementById('projectsStack');
+    const cards = track ? Array.from(track.querySelectorAll('.project-card')) : [];
+    if (!track || !cards.length) return;
 
-    const railEl = document.querySelector('.projects-rail');
     const numEl = document.getElementById('stickyCounterNum');
     const titleEl = document.getElementById('railTitle');
     const progressEl = document.getElementById('railProgressFill');
+    const prevBtn = document.getElementById('projectsPrevBtn');
+    const nextBtn = document.getElementById('projectsNextBtn');
 
-    function getAnchorY() {
-      if (window.innerWidth <= 1023) {
-        const rawBottom = railEl ? railEl.getBoundingClientRect().bottom : 140;
-        const railBottom = Math.min(window.innerHeight * 0.5, Math.max(0, rawBottom));
-        return railBottom + (window.innerHeight - railBottom) * 0.25;
-      }
-      return window.innerHeight * 0.42;
+    function getTargetLeft(idx) {
+      const clamped = Math.max(0, Math.min(cards.length - 1, idx));
+      const baseLeft = cards[0].offsetLeft;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      return Math.min(maxScroll, Math.max(0, cards[clamped].offsetLeft - baseLeft));
+    }
+
+    function updateNavButtons(activeIdx) {
+      if (prevBtn) prevBtn.disabled = activeIdx <= 0;
+      if (nextBtn) nextBtn.disabled = activeIdx >= cards.length - 1;
     }
 
     function updateActiveCard(animate) {
-      const anchorY = getAnchorY();
-      let activeIdx = 0;
+      const baseLeft = cards[0].offsetLeft;
+      const scrollLeft = track.scrollLeft;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
 
-      for (let i = 0; i < cards.length; i += 1) {
-        if (cards[i].getBoundingClientRect().top <= anchorY) {
-          activeIdx = i;
-        } else {
-          break;
+      let activeIdx = 0;
+      if (maxScroll > 0 && scrollLeft >= maxScroll - 4) {
+        activeIdx = cards.length - 1;
+      } else {
+        let bestDist = Infinity;
+        for (let i = 0; i < cards.length; i += 1) {
+          const offset = Math.max(0, cards[i].offsetLeft - baseLeft);
+          const dist = Math.abs(scrollLeft - offset);
+          if (dist < bestDist) {
+            bestDist = dist;
+            activeIdx = i;
+          }
         }
       }
+
+      updateNavButtons(activeIdx);
 
       if (activeIdx === lastActiveIdx) return;
 
@@ -65,8 +80,8 @@
           const dir = activeIdx > prevIdx ? 1 : -1;
           numAnim = numEl.animate(
             [
-              { transform: `translateY(${dir * 12}px)`, opacity: 0.2 },
-              { transform: 'translateY(0)', opacity: 1 }
+              { transform: `translateX(${dir * 12}px)`, opacity: 0.2 },
+              { transform: 'translateX(0)', opacity: 1 }
             ],
             { duration: 240, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
           );
@@ -79,6 +94,14 @@
       }
     }
 
+    function scrollToIndex(idx) {
+      const targetIdx = Math.max(0, Math.min(cards.length - 1, idx));
+      track.scrollTo({
+        left: getTargetLeft(targetIdx),
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+      });
+    }
+
     let rafId = 0;
     const scheduleUpdate = () => {
       if (rafId) return;
@@ -88,12 +111,30 @@
       });
     };
 
-    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    const onPrevClick = () => scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) - 1);
+    const onNextClick = () => scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) + 1);
+    const onTrackKeydown = (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) + 1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) - 1);
+      }
+    };
+
+    track.addEventListener('scroll', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate, { passive: true });
+    prevBtn?.addEventListener('click', onPrevClick);
+    nextBtn?.addEventListener('click', onNextClick);
+    track.addEventListener('keydown', onTrackKeydown);
 
     cleanupSticky = () => {
-      window.removeEventListener('scroll', scheduleUpdate);
+      track.removeEventListener('scroll', scheduleUpdate);
       window.removeEventListener('resize', scheduleUpdate);
+      prevBtn?.removeEventListener('click', onPrevClick);
+      nextBtn?.removeEventListener('click', onNextClick);
+      track.removeEventListener('keydown', onTrackKeydown);
       if (rafId) {
         window.cancelAnimationFrame(rafId);
         rafId = 0;
