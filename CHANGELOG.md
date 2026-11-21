@@ -6,6 +6,17 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.4.3] - 2026-11-21
+
+**Git Tag:** `v0.4.3` · **Archive:** [`./Versions/v0.4.3/`](./Versions/v0.4.3/VERSION_INFO.md)
+
+### Changed
+- **About Section Cleanup (`index.html`):** Removed the `.about-actions` (`CAREER EVOLUTION`) CTA from `#about`.
+- **High-Visibility Career Toggle (`index.html`, `css/components.css`, `js/components/portfolio.js`):** Upgraded the `PROFESSIONAL EXPERIENCE / SPECIALIZATIONS & DEGREES` (`EXPERIÊNCIA PROFISSIONAL / ESPECIALIZAÇÕES & FORMAÇÃO`) toggle to a prominent `Clash Display` scale (`clamp(1.15rem, 2.2vw, 2rem)`), raised inactive contrast (`--text-secondary`), and added a `2px` `--accent-lime` active underline alongside the `EN / PT` hover/active horizontal glide animation.
+- **Disciplines Nested Inside Career & Top Nav `CONTACT` (`index.html`, `js/data/projects.js`, `css/components.css`):** Moved `#disciplines` inside `#career` while preserving its full-bleed ambient band layout, replaced `DISCIPLINES` (`DISCIPLINAS`) with `CONTACT` (`CONTATO`, `#contact`) in the top navigation bar, mobile drawer, and footer `MAIN` column, added `scroll-margin-top: var(--nav-height)` to `.closing-cta-section`, and bumped asset query strings to `?v=0.4.3`.
+
+---
+
 ## [0.4.1] - 2026-11-20
 
 **Git Tag:** `v0.4.1` · **Archive:** [`./Versions/v0.4.1/`](./Versions/v0.4.1/VERSION_INFO.md)

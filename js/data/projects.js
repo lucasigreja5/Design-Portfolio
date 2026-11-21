@@ -21,7 +21,7 @@
           about: 'ABOUT',
           projects: 'PROJECTS',
           career: 'CAREER',
-          disciplines: 'DISCIPLINES'
+          contact: 'CONTACT'
         },
         hero: {
           eyebrowLeft: 'UI/UX & GRAPHIC DESIGN',
@@ -72,7 +72,7 @@
             about: 'ABOUT',
             projects: 'PROJECTS',
             career: 'CAREER',
-            disciplines: 'DISCIPLINES',
+            contact: 'CONTACT',
             email: 'EMAIL ↗',
             whatsapp: 'WHATSAPP ↗',
             behance: 'BEHANCE ↗',
@@ -111,7 +111,7 @@
           about: 'SOBRE',
           projects: 'PROJETOS',
           career: 'CARREIRA',
-          disciplines: 'DISCIPLINAS'
+          contact: 'CONTATO'
         },
         hero: {
           eyebrowLeft: 'UI/UX & DESIGN GRÁFICO',
@@ -162,7 +162,7 @@
             about: 'SOBRE',
             projects: 'PROJETOS',
             career: 'CARREIRA',
-            disciplines: 'DISCIPLINAS',
+            contact: 'CONTATO',
             email: 'E-MAIL ↗',
             whatsapp: 'WHATSAPP ↗',
             behance: 'BEHANCE ↗',
