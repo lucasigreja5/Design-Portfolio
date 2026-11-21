@@ -26,25 +26,6 @@
     toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
   }
 
-  function updateClock() {
-    const clockTargets = document.querySelectorAll('[data-brt-clock]');
-    let formatted = 'BRT';
-    try {
-      const fmt = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Sao_Paulo',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-      });
-      formatted = `${fmt.format(new Date())} BRT`;
-    } catch {
-      formatted = 'BRT';
-    }
-    clockTargets.forEach((el) => {
-      el.textContent = formatted;
-    });
-  }
-
   function getFilteredProjects() {
     if (activeFilter === 'all') return DATA.projects;
     return DATA.projects.filter((p) => p.category === activeFilter);
@@ -377,22 +358,6 @@
     });
   }
 
-  function renderFooterProjects() {
-    const listEl = document.getElementById('footerProjectsList');
-    if (!listEl) return;
-    listEl.innerHTML = '';
-    DATA.projects.slice(0, 6).forEach((proj) => {
-      const li = document.createElement('li');
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'footer-link';
-      btn.textContent = proj[lang].title;
-      btn.addEventListener('click', () => openProjectModal(proj.id, btn));
-      li.appendChild(btn);
-      listEl.appendChild(li);
-    });
-  }
-
   function applyStaticCopy() {
     const copy = DATA.copy[lang];
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -519,7 +484,6 @@
     renderProjects();
     renderCareer();
     renderDisciplines();
-    renderFooterProjects();
 
     if (currentModalProjectId) {
       openProjectModal(currentModalProjectId, lastFocusedEl);
@@ -533,14 +497,10 @@
   }
 
   function init() {
-    updateClock();
-    setInterval(updateClock, 30000);
-
     applyStaticCopy();
     renderProjects();
     renderCareer();
     renderDisciplines();
-    renderFooterProjects();
 
     // Language toggle (clicking inactive switches to it; clicking active or '/' toggles)
     const langToggle = document.getElementById('langToggle');

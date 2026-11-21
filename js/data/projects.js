@@ -75,11 +75,9 @@
             projects: 'PROJECTS',
             career: 'CAREER',
             contact: 'CONTACT',
-            email: 'EMAIL ↗',
-            whatsapp: 'WHATSAPP ↗',
-            behance: 'BEHANCE ↗',
-            linkedin: 'LINKEDIN ↗',
-            designSystem: 'DESIGN SYSTEM ↗'
+            email: 'EMAIL',
+            behance: 'BEHANCE',
+            linkedin: 'LINKEDIN'
           },
           backToTop: 'BACK TO TOP ↑',
           rights: '© 2026 LUCAS IGREJA. ALL RIGHTS RESERVED.'
@@ -167,11 +165,9 @@
             projects: 'PROJETOS',
             career: 'CARREIRA',
             contact: 'CONTATO',
-            email: 'E-MAIL ↗',
-            whatsapp: 'WHATSAPP ↗',
-            behance: 'BEHANCE ↗',
-            linkedin: 'LINKEDIN ↗',
-            designSystem: 'DESIGN SYSTEM ↗'
+            email: 'E-MAIL',
+            behance: 'BEHANCE',
+            linkedin: 'LINKEDIN'
           },
           backToTop: 'VOLTAR AO TOPO ↑',
           rights: '© 2026 LUCAS IGREJA. TODOS OS DIREITOS RESERVADOS.'

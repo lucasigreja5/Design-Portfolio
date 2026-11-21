@@ -48,9 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
       setDrawer(false);
     }
   });
-
-  // Back to Top
-  document.getElementById('backToTopBtn')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 });

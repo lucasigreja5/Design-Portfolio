@@ -6,6 +6,20 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.6] - 2026-11-21
+
+**Git Tag:** `v0.6` · **Archive:** [`./Versions/v0.6/`](./Versions/v0.6/VERSION_INFO.md)
+
+### Changed
+- **3-Column Footer Cleanup (`index.html`, `css/components.css`, `js/data/projects.js`, `js/components/portfolio.js`, `js/main.js`):**
+  - Removed the `BRASÍLIA, BR · --:-- BRT` live clock indicator (`.footer-clock`, `updateClock()`) from the footer.
+  - Removed the `PROJECTS` shortcuts column (`#footerProjectsList`, `renderFooterProjects()`) and updated `.footer-grid` from 4 columns to 3 (`1.5fr 0.85fr 0.95fr`).
+  - Removed `WHATSAPP` and `DESIGN SYSTEM` links from the footer `CONTACT ME` column and removed `↗` arrows from `EMAIL` (`E-MAIL`), `BEHANCE`, and `LINKEDIN`.
+  - Removed `#backToTopBtn` (`.footer-back-top`) and its scroll-to-top click handler.
+- **Career Toggle & Cache Busting (`css/components.css`, `index.html`):** Included the `#2E2E2E` (`var(--text-dim)`) unselected Career toggle color refinement and updated all stylesheet/script query strings in `index.html` to `?v=0.6`.
+
+---
+
 ## [0.5.1] - 2026-11-21
 
 **Git Tag:** `v0.5.1` · **Archive:** [`./Versions/v0.5.1/`](./Versions/v0.5.1/VERSION_INFO.md)

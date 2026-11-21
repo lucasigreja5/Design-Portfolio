@@ -939,7 +939,7 @@
 }
 
 .career-sep {
-  color: var(--text-muted);
+  color: var(--text-dim);
   user-select: none;
   cursor: pointer;
 }
@@ -949,7 +949,7 @@
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--text-dim);
   text-align: left;
   cursor: pointer;
   transition: color var(--duration-micro) var(--ease-snappy),
@@ -1078,7 +1078,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.45fr 0.85fr 0.95fr 0.95fr;
+  grid-template-columns: 1.5fr 0.85fr 0.95fr;
   gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
@@ -1096,11 +1096,6 @@
   line-height: 1.65;
   color: var(--text-secondary);
   max-width: 38ch;
-  margin-bottom: var(--space-4);
-}
-
-.footer-clock {
-  color: var(--accent-lime);
 }
 
 .footer-col-title {
@@ -1140,19 +1135,6 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-}
-
-.footer-back-top {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: var(--tracking-mono);
-  text-transform: uppercase;
-  color: var(--text-primary);
-  transition: color var(--duration-micro) var(--ease-snappy);
-}
-
-.footer-back-top:hover {
-  color: var(--accent-lime);
 }
 
 /* Custom Desktop Cursor Badge (hidden on touch/reduced motion) */
