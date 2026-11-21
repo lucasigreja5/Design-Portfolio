@@ -126,11 +126,14 @@
 }
 
 .modal-narrative-col h4 {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: var(--tracking-mono);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h3);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
   color: var(--accent-lime);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .modal-narrative-col p {
@@ -150,11 +153,13 @@
 }
 
 .modal-tools-list li {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: var(--tracking-mono);
-  text-transform: uppercase;
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-secondary);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -162,6 +167,21 @@
 .modal-tools-list li:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.modal-carousel-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+#modalPrevBtn:hover svg {
+  transform: translateX(-3px);
+}
+
+#modalNextBtn:hover svg {
+  transform: translateX(3px);
 }
 
 @media (max-width: 767px) {

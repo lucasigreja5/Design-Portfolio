@@ -38,7 +38,7 @@ DesignPortfolio/
 ├── index.html                  # Main bilingual portfolio website
 ├── design-system.html          # Interactive Design System v2.0 specimen
 ├── design.md                   # Complete Design System v2.0 spec & Figma checklist
-├── VERSION                     # Active project version (currently 0.7)
+├── VERSION                     # Active project version (currently 0.7.1)
 ├── CHANGELOG.md                # Release notes & version history
 ├── HANDOFF.md                  # Full technical handoff & AI resume prompt
 ├── README.md                   # Project setup & deployment guide
@@ -54,7 +54,8 @@ DesignPortfolio/
 │   ├── v0.5/                   # Runnable immutable snapshot of v0.5
 │   ├── v0.5.1/                 # Runnable immutable snapshot of v0.5.1
 │   ├── v0.6/                   # Runnable immutable snapshot of v0.6
-│   └── v0.7/                   # Runnable immutable snapshot of v0.7
+│   ├── v0.7/                   # Runnable immutable snapshot of v0.7
+│   └── v0.7.1/                 # Runnable immutable snapshot of v0.7.1
 ├── css/
 │   ├── tokens.css              # Design tokens (#000000, #FFFFFF, #D4FF00, Clash Display, motion)
 │   ├── base.css                # Reset, typography utilities, reduced-motion & focus guards
@@ -93,8 +94,8 @@ DesignPortfolio/
 
 ## Versioning & Releases
 
-- **Active Version:** Tracked in [`VERSION`](./VERSION) (`0.7`) with release notes in [`CHANGELOG.md`](./CHANGELOG.md).
-- **Archived Snapshots:** Immutable, runnable snapshots live under [`Versions/`](./Versions/README.md) ([`Versions/v0.7/`](./Versions/v0.7/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.7/`, [`Versions/v0.6/`](./Versions/v0.6/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.6/`, [`Versions/v0.5.1/`](./Versions/v0.5.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.5.1/`, [`Versions/v0.5/`](./Versions/v0.5/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.5/`, [`Versions/v0.4.3/`](./Versions/v0.4.3/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4.3/`, [`Versions/v0.4.1/`](./Versions/v0.4.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4.1/`, [`Versions/v0.4/`](./Versions/v0.4/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4/`, [`Versions/v0.3.1/`](./Versions/v0.3.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.3.1/`, [`Versions/v0.3/`](./Versions/v0.3/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.3/`, [`Versions/v0.2/`](./Versions/v0.2/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.2/`, and [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.1/`).
+- **Active Version:** Tracked in [`VERSION`](./VERSION) (`0.7.1`) with release notes in [`CHANGELOG.md`](./CHANGELOG.md).
+- **Archived Snapshots:** Immutable, runnable snapshots live under [`Versions/`](./Versions/README.md) ([`Versions/v0.7.1/`](./Versions/v0.7.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.7.1/`, [`Versions/v0.7/`](./Versions/v0.7/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.7/`, [`Versions/v0.6/`](./Versions/v0.6/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.6/`, [`Versions/v0.5.1/`](./Versions/v0.5.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.5.1/`, [`Versions/v0.5/`](./Versions/v0.5/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.5/`, [`Versions/v0.4.3/`](./Versions/v0.4.3/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4.3/`, [`Versions/v0.4.1/`](./Versions/v0.4.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4.1/`, [`Versions/v0.4/`](./Versions/v0.4/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.4/`, [`Versions/v0.3.1/`](./Versions/v0.3.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.3.1/`, [`Versions/v0.3/`](./Versions/v0.3/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.3/`, [`Versions/v0.2/`](./Versions/v0.2/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.2/`, and [`Versions/v0.1/`](./Versions/v0.1/VERSION_INFO.md) at `http://localhost:4173/Versions/v0.1/`).
 - **Cut a New Version:** Run `./scripts/release-version.sh 0.8 "Summary of changes"`, update [`CHANGELOG.md`](./CHANGELOG.md) and [`Versions/README.md`](./Versions/README.md), then commit and push with an annotated tag (`git tag -a v0.8 -m "..."` and `git push origin main --follow-tags`).
 
 ---

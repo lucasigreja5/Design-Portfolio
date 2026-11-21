@@ -6,6 +6,19 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.7.1] - 2026-11-21
+
+**Git Tag:** `v0.7.1` · **Archive:** [`./Versions/v0.7.1/`](./Versions/v0.7.1/VERSION_INFO.md)
+
+### Changed
+- **Project Popup Typography & Navigation (`js/data/projects.js`, `js/components/portfolio.js`, `css/modal.css`):**
+  - Removed the `01 /` and `02 /` prefixes from `OVERVIEW` (`VISÃO GERAL`) and `TOOLS` (`FERRAMENTAS`) headings and styled `.modal-narrative-col h4` in **Card Title H3** (`Clash Display`, `var(--text-h3)`, `--accent-lime` `#D4FF00`).
+  - Updated `.modal-tools-list li` to **Body Standard** (`Inter`, `var(--text-body)`, `line-height: 1.6`, sentence case).
+  - Added `.modal-carousel-controls` (`#modalPrevBtn` / `#modalNextBtn`) directly below `.modal-tools-list` reusing `.carousel-nav-btn` borderless `56×56px` / `32×32px` SVG arrow styling and `#D4FF00` lime hover to jump between projects inside the modal.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.7.1`.
+
+---
+
 ## [0.7] - 2026-11-21
 
 **Git Tag:** `v0.7` · **Archive:** [`./Versions/v0.7/`](./Versions/v0.7/VERSION_INFO.md)

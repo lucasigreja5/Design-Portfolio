@@ -393,6 +393,9 @@
 
     const loc = project[lang];
     const m = DATA.copy[lang].modal;
+    const pCopy = DATA.copy[lang].projects;
+    const prevProj = listForNav[(idx - 1 + listForNav.length) % listForNav.length];
+    const nextProj = listForNav[(idx + 1) % listForNav.length];
     const toolsHtml = project.tools.map((tool) => `<li>${tool}</li>`).join('');
 
     bodyEl.innerHTML = `
@@ -420,11 +423,36 @@
           <div class="modal-narrative-col modal-tools-col">
             <h4>${m.toolsHeading}</h4>
             <ul class="modal-tools-list">${toolsHtml}</ul>
+            <div class="modal-carousel-controls" role="group" aria-label="${pCopy.heading}">
+              <button
+                class="carousel-nav-btn"
+                id="modalPrevBtn"
+                type="button"
+                data-modal-jump="${prevProj.id}"
+                aria-label="${pCopy.prevProject} — ${prevProj[lang].title}"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
+                </svg>
+              </button>
+              <button
+                class="carousel-nav-btn"
+                id="modalNextBtn"
+                type="button"
+                data-modal-jump="${nextProj.id}"
+                aria-label="${pCopy.nextProject} — ${nextProj[lang].title}"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     `;
 
+    bodyEl.scrollTop = 0;
     backdrop.classList.add('is-open');
     backdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -432,6 +460,10 @@
     const closeBtn = document.getElementById('modalCloseBtn');
     closeBtn?.addEventListener('click', closeModal);
     closeBtn?.focus();
+
+    bodyEl.querySelectorAll('[data-modal-jump]').forEach((btn) => {
+      btn.addEventListener('click', () => openProjectModal(btn.dataset.modalJump, triggerEl));
+    });
   }
 
   function closeModal() {
