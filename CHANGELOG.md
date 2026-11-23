@@ -6,6 +6,17 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.8.1] - 2026-11-23
+
+**Git Tag:** `v0.8.1` · **Archive:** [`./Versions/v0.8.1/`](./Versions/v0.8.1/VERSION_INFO.md)
+
+### Changed
+- **Mobile Single-Line Project Card Titles (`css/components.css`):**
+  - Under `@media (max-width: 767px)`, stacked `.project-caption-bar` vertically (`flex-direction: column; align-items: flex-start; gap: 4px;`) so `.project-caption-title` spans full card width on a single line with `...` ellipsis truncation (`white-space: nowrap; overflow: hidden; text-overflow: ellipsis;`), while `.project-caption-meta` (year and discipline) sits cleanly on the second line below.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.8.1`.
+
+---
+
 ## [0.8] - 2026-11-23
 
 **Git Tag:** `v0.8` · **Archive:** [`./Versions/v0.8/`](./Versions/v0.8/VERSION_INFO.md)

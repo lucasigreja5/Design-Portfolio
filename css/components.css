@@ -1328,6 +1328,20 @@
     flex: 0 0 88%;
   }
 
+  .project-caption-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .project-caption-title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .projects-rail .projects-carousel-controls {
     gap: var(--space-1);
   }

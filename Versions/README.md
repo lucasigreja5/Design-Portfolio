@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.8.1** | 2026-11-23 | [`./v0.8.1/`](./v0.8.1/VERSION_INFO.md) | `v0.8.1` | Single-line ellipsis truncation on mobile Projects carousel card titles |
 | **v0.8** | 2026-11-23 | [`./v0.8/`](./v0.8/VERSION_INFO.md) | `v0.8` | Bespoke Hero UI/brand collage PNG, 3-layer crossfading Disciplines PNGs, and silent EN/PT switching |
 | **v0.7.2** | 2026-11-23 | [`./v0.7.2/`](./v0.7.2/VERSION_INFO.md) | `v0.7.2` | Consistent `PREV / NEXT` rolling-text stepper in modal header & Projects carousel (Desktop/Tablet) |
 | **v0.7.1** | 2026-11-21 | [`./v0.7.1/`](./v0.7.1/VERSION_INFO.md) | `v0.7.1` | Card Title H3 lime Overview/Tools titles, Body Standard tools list, and carousel-style modal navigation buttons |
