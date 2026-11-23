@@ -94,3 +94,25 @@ This document preserves the full chronological context, audits, user feedback, a
   - Zero console errors, zero uncaught page errors, zero failed network requests.
   - All interactive flows tested and passing: discipline filters (`ALL 09`, `UI/UX 02`, `BRANDING 04`, `EDITORIAL & OOH 03`), sticky `01`–`09` counter scroll updates, Case-Study Modal (Prev/Next + `Esc`), 3-row Disciplines Switcher, Career Evolution Modal (6 milestones), `DESIGN SYSTEM V2.0` link, bilingual `EN / PT` switching, and `COPY EMAIL` toast.
 - Created portable handoff bundle (`HANDOFF.md`, `README.md`, `docs/`, `scripts/`) for seamless cross-machine access.
+
+---
+
+## Session 5 (2026-11-23) — Weekend Sync (`v0.7.1`) → `v0.7.2` → `v0.8` → `v0.8.1`
+
+### Weekend Handoff Sync (`v0.7.1`)
+- Synced `DesignPortfolio-handoff-231126` (built over the weekend on macOS) into the Windows workspace, restoring `.git` (`github.com/lucasigreja5/Design-Portfolio`), `VERSION` (`0.7.1`), `CHANGELOG.md`, `Versions/v0.1`–`v0.7.1`, horizontal Projects carousel, inline `CAREER` section, single-line footer, and redesigned Case-Study Popups.
+- Switched Git remote `origin` from SSH to HTTPS (`https://github.com/lucasigreja5/Design-Portfolio.git`) for seamless pushes via **GitHub Desktop** on Windows.
+
+### `v0.7.2` — Consistent `PREV / NEXT` Rolling-Text Stepper
+- **Modal Header Stepper (`/grill-me`):** Moved project navigation out from under `TOOLS` into the sticky `.modal-header` as a `← PREV / NEXT →` (`ANT / PRÓX` in PT) rolling-text stepper separated from `X` by a `1px` vertical divider, with infinite looping (`01 ↔ 09`), `ArrowLeft`/`ArrowRight` keyboard navigation, scroll reset, and focus preservation.
+- **Projects Carousel Consistency:** Applied the same `← PREV / NEXT →` rolling-text stepper to `#projectsPrevBtn` / `#projectsNextBtn` in `.projects-rail` across Desktop (`>= 1024px`) and Tablet (`768px–1023px`), keeping compact arrow-only controls on Mobile (`<= 767px`).
+
+### `v0.8` — Bespoke Hero & 3-Layer Disciplines PNGs + Silent Language Switch
+- **Art Direction (`/grill-me`):** Locked **Obsidian Monochrome + Surgical `#D4FF00` Lime** for a curated dark UI & brand collage in Hero and 3 distinct crossfading atmospheric backgrounds in `#disciplines`.
+- **Assets Converted & Wired (`2752×1536` PNG):** Converted Lucas's generated `.jpg` renders to `assets/hero-banner.png`, `assets/discipline-uiux.png`, `assets/discipline-branding.png`, and `assets/discipline-direction.png`; wired GSAP scroll-zoom + desktop mouse parallax on `#heroBannerImg` and `650ms` editorial crossfades across all 3 discipline layers.
+- **Silent `EN / PT` Switch:** Removed the bottom-right `#siteToast` notification when toggling languages.
+
+### `v0.8.1` — Mobile Stacked 2-Line Card Captions
+- Under `@media (max-width: 767px)`, stacked `.project-caption-bar` vertically (`flex-direction: column; align-items: flex-start; gap: 4px;`) so `.project-caption-title` spans full card width on a single line with `...` ellipsis truncation, while `.project-caption-meta` (`year · discipline`) sits cleanly on the second line below.
+- Verified on Desktop (`1440×900`), Tablet (`820×1180`), and Mobile (`390×844`) with zero horizontal overflow and zero console errors.
+

@@ -54,7 +54,11 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`js/components/portfolio.js`](./js/components/portfolio.js) | Rendering engine, filters, art-directed covers, modals, live `BRT` clock, `EN / PT` toggle |
 | [`js/motion/animations.js`](./js/motion/animations.js) | GSAP + ScrollTrigger reveals/zoom, sticky rail `IntersectionObserver`, custom desktop cursor |
 | [`js/main.js`](./js/main.js) | Entry bootstrap, mobile drawer, Back-to-Top scroll |
-| [`assets/hero-ambient.png`](./assets/hero-ambient.png) | Local Figma ambient curve artwork (`146,551` bytes) |
+| [`assets/hero-banner.png`](./assets/hero-banner.png) | Bespoke `2752×1536` Hero dark UI & brand showcase collage |
+| [`assets/discipline-uiux.png`](./assets/discipline-uiux.png) | `2752×1536` atmospheric wireframe glass background (`01 UI/UX DESIGN`) |
+| [`assets/discipline-branding.png`](./assets/discipline-branding.png) | `2752×1536` sculptural obsidian monoliths background (`02 BRAND IDENTITY`) |
+| [`assets/discipline-direction.png`](./assets/discipline-direction.png) | `2752×1536` chiaroscuro light-beam background (`03 ART DIRECTION`) |
+| [`assets/hero-ambient.png`](./assets/hero-ambient.png) | Original Figma ambient curve artwork (`146,551` bytes, kept for reference) |
 | [`assets/projects/README.md`](./assets/projects/README.md) | Instructions for swapping bespoke covers with high-res Behance/Figma PNG/WebP exports |
 | [`scripts/release-version.sh`](./scripts/release-version.sh) | Archives a new immutable `Versions/vX.Y/` snapshot and updates `VERSION` |
 | [`scripts/serve.ps1`](./scripts/serve.ps1) | Zero-dependency Windows PowerShell static HTTP server (`localhost:4173`) |
