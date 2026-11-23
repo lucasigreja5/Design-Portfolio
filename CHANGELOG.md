@@ -15,6 +15,8 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
   - Replaced the `.modal-carousel-controls` buttons below `TOOLS` with a compact `← PREV / NEXT →` (`ANT / PRÓX` in PT) rolling-text stepper inside `.modal-header`, separated from the bold `X` close icon by a `1px` vertical divider.
   - Styled with `Clash Display` uppercase, `.roll-wrap` vertical hover roll, `#D4FF00` lime hover/focus state, and `3px` directional arrow glide; hides text labels on mobile (`<= 767px`) leaving compact arrow icons + `X`.
   - Added infinite project looping (`01 ↔ 09`), `ArrowLeft` / `ArrowRight` keyboard navigation while the modal is open, scroll-to-top reset, and focus preservation on the active stepper button.
+- **Projects Carousel Stepper Consistency (`index.html`, `css/components.css`):**
+  - Applied the same `← PREV / NEXT →` (`ANT / PRÓX` in PT) rolling-text stepper to `#projectsPrevBtn` / `#projectsNextBtn` in `.projects-rail` across Desktop and Tablet (`>= 768px`), keeping compact arrow-only controls on Mobile (`<= 767px`).
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.7.2`.
 
 ---

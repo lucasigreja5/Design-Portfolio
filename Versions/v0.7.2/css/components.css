@@ -556,27 +556,36 @@
 .carousel-nav-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  padding: 0;
+  gap: 6px;
+  padding: 6px 2px;
   border: none;
   border-radius: 0;
   background: transparent;
-  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: color var(--duration-micro) var(--ease-snappy),
               opacity var(--duration-micro) var(--ease-snappy);
 }
 
 .carousel-nav-btn svg {
-  width: 32px;
-  height: 32px;
-  transition: transform var(--duration-micro) var(--ease-snappy);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--duration-ui) var(--ease-editorial);
 }
 
-.carousel-nav-btn:hover:not(:disabled) {
+.carousel-nav-btn:hover:not(:disabled),
+.carousel-nav-btn:focus-visible:not(:disabled) {
   color: var(--accent-lime);
+}
+
+.carousel-nav-btn:hover:not(:disabled) .roll-track {
+  transform: translateY(-50%);
 }
 
 #projectsPrevBtn:hover:not(:disabled) svg {
@@ -587,9 +596,17 @@
   transform: translateX(3px);
 }
 
+.carousel-step-sep {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-dim);
+  user-select: none;
+}
+
 .carousel-nav-btn:disabled {
   color: var(--text-muted);
-  opacity: 0.32;
+  opacity: 0.28;
   cursor: not-allowed;
 }
 
@@ -1231,17 +1248,11 @@
     grid-column: 3;
     grid-row: 1;
     margin-top: 0;
-    gap: var(--space-1);
+    gap: var(--space-3);
   }
 
   .projects-rail .carousel-nav-btn {
-    width: 44px;
-    height: 44px;
-  }
-
-  .projects-rail .carousel-nav-btn svg {
-    width: 26px;
-    height: 26px;
+    font-size: 0.95rem;
   }
 
   .projects-rail .rail-progress-wrap {
@@ -1304,6 +1315,24 @@
 
   .project-card {
     flex: 0 0 88%;
+  }
+
+  .projects-rail .projects-carousel-controls {
+    gap: var(--space-1);
+  }
+
+  .projects-rail .carousel-nav-btn {
+    padding: 8px;
+  }
+
+  .projects-rail .carousel-step-label,
+  .projects-rail .carousel-step-sep {
+    display: none;
+  }
+
+  .projects-rail .carousel-nav-btn svg {
+    width: 20px;
+    height: 20px;
   }
 
   .career-section {
