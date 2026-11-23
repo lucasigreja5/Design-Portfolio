@@ -189,7 +189,7 @@
         clearProps: 'transform,opacity'
       });
 
-      // Scroll-zoom on Hero ambient showcase
+      // Scroll-zoom on Hero banner image
       gsap.to('.hero-media-img', {
         scale: 1.14,
         ease: 'none',
@@ -201,9 +201,9 @@
         }
       });
 
-      // Parallax on Disciplines ambient backdrop
-      gsap.to('.disciplines-bg img', {
-        yPercent: 8,
+      // Parallax on Disciplines atmospheric backdrop
+      gsap.to('.disciplines-bg', {
+        yPercent: 6,
         ease: 'none',
         scrollTrigger: {
           trigger: '.disciplines-section',
@@ -231,8 +231,28 @@
     }
   }
 
+  function initHeroTilt() {
+    if (prefersReducedMotion()) return;
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+    const frame = document.getElementById('heroMediaFrame');
+    const img = document.getElementById('heroBannerImg');
+    if (!frame || !img) return;
+
+    frame.addEventListener('mousemove', (e) => {
+      const rect = frame.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      img.style.transform = `scale(1.09) translate(${nx * -14}px, ${ny * -10}px)`;
+    });
+
+    frame.addEventListener('mouseleave', () => {
+      img.style.transform = '';
+    });
+  }
+
   function init() {
     initCursor();
+    initHeroTilt();
     initGSAPMotion();
     refreshSticky();
   }

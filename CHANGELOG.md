@@ -6,6 +6,20 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.8] - 2026-11-23
+
+**Git Tag:** `v0.8` · **Archive:** [`./Versions/v0.8/`](./Versions/v0.8/VERSION_INFO.md)
+
+### Changed
+- **Bespoke Hero Banner (`index.html`, `css/components.css`, `js/motion/animations.js`, `assets/hero-banner.png`):**
+  - Replaced `assets/hero-ambient.png` in `#heroMediaFrame` with a custom `2752×1536` dark obsidian & `#D4FF00` UI/UX and brand showcase collage (`assets/hero-banner.png`), paired with GSAP scroll-zoom and subtle desktop mouse parallax.
+- **3-Layer Crossfading Disciplines Backgrounds (`index.html`, `css/components.css`, `js/components/portfolio.js`):**
+  - Added 3 distinct `2752×1536` atmospheric PNG layers (`assets/discipline-uiux.png`, `assets/discipline-branding.png`, `assets/discipline-direction.png`) that crossfade smoothly (`650ms` editorial ease) when hovering or clicking `UI/UX DESIGN`, `BRAND IDENTITY`, and `ART DIRECTION`.
+- **Silent Language Switching (`js/components/portfolio.js`):** Removed the bottom-right toast notification when toggling between `EN` and `PT`.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.8`.
+
+---
+
 ## [0.7.2] - 2026-11-23
 
 **Git Tag:** `v0.7.2` · **Archive:** [`./Versions/v0.7.2/`](./Versions/v0.7.2/VERSION_INFO.md)

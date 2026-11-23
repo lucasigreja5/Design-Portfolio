@@ -15,10 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=0.7.2" />
-  <link rel="stylesheet" href="css/base.css?v=0.7.2" />
-  <link rel="stylesheet" href="css/components.css?v=0.7.2" />
-  <link rel="stylesheet" href="css/modal.css?v=0.7.2" />
+  <link rel="stylesheet" href="css/tokens.css?v=0.8" />
+  <link rel="stylesheet" href="css/base.css?v=0.8" />
+  <link rel="stylesheet" href="css/components.css?v=0.8" />
+  <link rel="stylesheet" href="css/modal.css?v=0.8" />
 </head>
 <body>
   <!-- Sticky Minimal Navigation -->
@@ -88,8 +88,8 @@
         </div>
       </div>
 
-      <div class="hero-media-frame">
-        <img src="assets/hero-ambient.png" alt="Abstract architectural light curves" class="hero-media-img" />
+      <div class="hero-media-frame" id="heroMediaFrame">
+        <img src="assets/hero-banner.png" alt="Curated dark UI/UX and brand design showcase collage" class="hero-media-img" id="heroBannerImg" />
         <div class="hero-media-scrim" aria-hidden="true"></div>
       </div>
     </section>
@@ -189,7 +189,9 @@
       <!-- Core Disciplines Full-Bleed Band (nested inside Career) -->
       <div class="disciplines-section" id="disciplines">
         <div class="disciplines-bg" aria-hidden="true">
-          <img src="assets/hero-ambient.png" alt="" id="disciplineBgImg" />
+          <img src="assets/discipline-uiux.png" alt="" class="disc-bg-layer is-active" data-disc-bg="uiux" />
+          <img src="assets/discipline-branding.png" alt="" class="disc-bg-layer" data-disc-bg="branding" />
+          <img src="assets/discipline-direction.png" alt="" class="disc-bg-layer" data-disc-bg="direction" />
         </div>
         <div class="disciplines-scrim" aria-hidden="true"></div>
 
@@ -251,11 +253,11 @@
   <!-- Motion Engine (GSAP CDN + Graceful Fallback) & App Scripts -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="js/data/projects.js?v=0.7.2"></script>
-  <script defer src="js/components/portfolio.js?v=0.7.2"></script>
-  <script defer src="js/motion/animations.js?v=0.7.2"></script>
-  <script defer src="js/main.js?v=0.7.2"></script>
+  <script defer src="js/data/projects.js?v=0.8"></script>
+  <script defer src="js/components/portfolio.js?v=0.8"></script>
+  <script defer src="js/motion/animations.js?v=0.8"></script>
+  <script defer src="js/main.js?v=0.8"></script>
   <!-- DEV ONLY (PRE-v1.0 QA): Viewport Preview Toggle — REMOVE BEFORE SHIPPING v1.0 -->
-  <script defer src="js/dev/viewport-toggle.js?v=0.7.2"></script>
+  <script defer src="js/dev/viewport-toggle.js?v=0.8"></script>
 </body>
 </html>

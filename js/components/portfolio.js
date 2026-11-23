@@ -316,11 +316,11 @@
   function renderDisciplines() {
     const listEl = document.getElementById('disciplinesList');
     const copyEl = document.getElementById('disciplineCopy');
-    const bgImg = document.getElementById('disciplineBgImg');
+    const bgLayers = document.querySelectorAll('.disc-bg-layer');
     if (!listEl) return;
 
     listEl.innerHTML = '';
-    DATA.disciplines.forEach((disc, idx) => {
+    DATA.disciplines.forEach((disc) => {
       const loc = disc[lang];
       const isActive = disc.id === activeDisciplineId;
       const btn = document.createElement('button');
@@ -341,11 +341,10 @@
           el.classList.toggle('is-active', active);
           el.setAttribute('aria-selected', String(active));
         });
+        bgLayers.forEach((layer) => {
+          layer.classList.toggle('is-active', layer.dataset.discBg === disc.id);
+        });
         if (copyEl) copyEl.textContent = loc.description;
-        if (bgImg) {
-          const scale = 1.06 + idx * 0.03;
-          bgImg.style.transform = `scale(${scale})`;
-        }
       };
 
       btn.addEventListener('click', activate);
@@ -520,8 +519,6 @@
     if (currentModalProjectId) {
       openProjectModal(currentModalProjectId, lastFocusedEl);
     }
-
-    showToast(DATA.copy[lang].toasts.langSwitched);
   }
 
   function toggleLanguage() {
