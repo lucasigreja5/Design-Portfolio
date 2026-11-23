@@ -6,6 +6,19 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.7.2] - 2026-11-23
+
+**Git Tag:** `v0.7.2` · **Archive:** [`./Versions/v0.7.2/`](./Versions/v0.7.2/VERSION_INFO.md)
+
+### Changed
+- **Sticky Modal Header Stepper (`js/components/portfolio.js`, `css/modal.css`, `js/data/projects.js`):**
+  - Replaced the `.modal-carousel-controls` buttons below `TOOLS` with a compact `← PREV / NEXT →` (`ANT / PRÓX` in PT) rolling-text stepper inside `.modal-header`, separated from the bold `X` close icon by a `1px` vertical divider.
+  - Styled with `Clash Display` uppercase, `.roll-wrap` vertical hover roll, `#D4FF00` lime hover/focus state, and `3px` directional arrow glide; hides text labels on mobile (`<= 767px`) leaving compact arrow icons + `X`.
+  - Added infinite project looping (`01 ↔ 09`), `ArrowLeft` / `ArrowRight` keyboard navigation while the modal is open, scroll-to-top reset, and focus preservation on the active stepper button.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.7.2`.
+
+---
+
 ## [0.7.1] - 2026-11-21
 
 **Git Tag:** `v0.7.1` · **Archive:** [`./Versions/v0.7.1/`](./Versions/v0.7.1/VERSION_INFO.md)

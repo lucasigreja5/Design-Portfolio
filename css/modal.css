@@ -76,6 +76,70 @@
   line-height: 1.05;
 }
 
+.modal-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.modal-header-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.modal-step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 2px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color var(--duration-micro) var(--ease-snappy);
+}
+
+.modal-step-btn:hover,
+.modal-step-btn:focus-visible {
+  color: var(--accent-lime);
+}
+
+.modal-step-btn:hover .roll-track {
+  transform: translateY(-50%);
+}
+
+.modal-step-btn svg {
+  flex-shrink: 0;
+  transition: transform var(--duration-ui) var(--ease-editorial);
+}
+
+#modalPrevBtn:hover svg {
+  transform: translateX(-3px);
+}
+
+#modalNextBtn:hover svg {
+  transform: translateX(3px);
+}
+
+.modal-step-sep {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  user-select: none;
+}
+
+.modal-header-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
 .modal-close-icon-btn {
   display: inline-flex;
   align-items: center;
@@ -169,22 +233,29 @@
   padding-bottom: 0;
 }
 
-.modal-carousel-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-6);
-}
-
-#modalPrevBtn:hover svg {
-  transform: translateX(-3px);
-}
-
-#modalNextBtn:hover svg {
-  transform: translateX(3px);
-}
-
 @media (max-width: 767px) {
+  .modal-header {
+    padding: var(--space-4) var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .modal-header-actions {
+    gap: var(--space-2);
+  }
+
+  .modal-header-nav {
+    gap: var(--space-1);
+  }
+
+  .modal-step-label,
+  .modal-step-sep {
+    display: none;
+  }
+
+  .modal-step-btn {
+    padding: 6px;
+  }
+
   .modal-narrative-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);

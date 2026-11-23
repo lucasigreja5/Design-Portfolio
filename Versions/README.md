@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.7.2** | 2026-11-23 | [`./v0.7.2/`](./v0.7.2/VERSION_INFO.md) | `v0.7.2` | Sticky modal header PREV/NEXT rolling-text stepper, infinite loop, and keyboard navigation |
 | **v0.7.1** | 2026-11-21 | [`./v0.7.1/`](./v0.7.1/VERSION_INFO.md) | `v0.7.1` | Card Title H3 lime Overview/Tools titles, Body Standard tools list, and carousel-style modal navigation buttons |
 | **v0.7** | 2026-11-21 | [`./v0.7/`](./v0.7/VERSION_INFO.md) | `v0.7` | Single-line contact footer and redesigned project case-study popups |
 | **v0.6** | 2026-11-21 | [`./v0.6/`](./v0.6/VERSION_INFO.md) | `v0.6` | Clean 3-column footer without BRT clock, project shortcuts, WhatsApp/Design System links, arrow icons, or Back-to-Top button |

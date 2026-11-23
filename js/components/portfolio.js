@@ -377,25 +377,36 @@
   /* ------------------------------------------------------------------------
      MODALS (CASE STUDY)
      ------------------------------------------------------------------------ */
-  function openProjectModal(projectId, triggerEl) {
+  function getModalNeighbors(projectId) {
+    const activeList = getFilteredProjects();
+    const listForNav = activeList.some((p) => p.id === projectId) ? activeList : DATA.projects;
+    const idx = listForNav.findIndex((p) => p.id === projectId);
+    const safeIdx = idx >= 0 ? idx : 0;
+    return {
+      listForNav,
+      project: listForNav[safeIdx],
+      prevProj: listForNav[(safeIdx - 1 + listForNav.length) % listForNav.length],
+      nextProj: listForNav[(safeIdx + 1) % listForNav.length]
+    };
+  }
+
+  function openProjectModal(projectId, triggerEl, focusTargetId) {
     const backdrop = document.getElementById('caseModalBackdrop');
     const bodyEl = document.getElementById('caseModalContent');
     if (!backdrop || !bodyEl) return;
 
-    const activeList = getFilteredProjects();
-    const listForNav = activeList.some((p) => p.id === projectId) ? activeList : DATA.projects;
-    const idx = listForNav.findIndex((p) => p.id === projectId);
-    const project = listForNav[idx >= 0 ? idx : 0];
+    const { project, prevProj, nextProj } = getModalNeighbors(projectId);
     if (!project) return;
 
+    const wasAlreadyOpen = backdrop.classList.contains('is-open');
     currentModalProjectId = project.id;
-    lastFocusedEl = triggerEl || document.activeElement;
+    if (!wasAlreadyOpen || triggerEl) {
+      lastFocusedEl = triggerEl || document.activeElement;
+    }
 
     const loc = project[lang];
     const m = DATA.copy[lang].modal;
     const pCopy = DATA.copy[lang].projects;
-    const prevProj = listForNav[(idx - 1 + listForNav.length) % listForNav.length];
-    const nextProj = listForNav[(idx + 1) % listForNav.length];
     const toolsHtml = project.tools.map((tool) => `<li>${tool}</li>`).join('');
 
     bodyEl.innerHTML = `
@@ -404,12 +415,54 @@
           <span class="modal-index">${project.index}</span>
           <h2 class="modal-title" id="modalHeading">${loc.title}</h2>
         </div>
-        <button class="modal-close-icon-btn" type="button" id="modalCloseBtn" aria-label="${m.closeBtn}">
-          <span class="drawer-close-icon" aria-hidden="true">
-            <span></span>
-            <span></span>
-          </span>
-        </button>
+        <div class="modal-header-actions">
+          <div class="modal-header-nav" role="group" aria-label="${pCopy.heading}">
+            <button
+              class="modal-step-btn"
+              id="modalPrevBtn"
+              type="button"
+              data-modal-jump="${prevProj.id}"
+              aria-label="${pCopy.prevProject} — ${prevProj[lang].title}"
+              title="${prevProj.index} · ${prevProj[lang].title}"
+            >
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
+              </svg>
+              <span class="roll-wrap modal-step-label">
+                <span class="roll-track">
+                  <span>${m.prevShort}</span>
+                  <span aria-hidden="true">${m.prevShort}</span>
+                </span>
+              </span>
+            </button>
+            <span class="modal-step-sep" aria-hidden="true">/</span>
+            <button
+              class="modal-step-btn"
+              id="modalNextBtn"
+              type="button"
+              data-modal-jump="${nextProj.id}"
+              aria-label="${pCopy.nextProject} — ${nextProj[lang].title}"
+              title="${nextProj.index} · ${nextProj[lang].title}"
+            >
+              <span class="roll-wrap modal-step-label">
+                <span class="roll-track">
+                  <span>${m.nextShort}</span>
+                  <span aria-hidden="true">${m.nextShort}</span>
+                </span>
+              </span>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
+              </svg>
+            </button>
+          </div>
+          <span class="modal-header-divider" aria-hidden="true"></span>
+          <button class="modal-close-icon-btn" type="button" id="modalCloseBtn" aria-label="${m.closeBtn}">
+            <span class="drawer-close-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="modal-body">
         <div class="modal-hero-art">${renderCoverVisual(project, lang)}</div>
@@ -423,30 +476,6 @@
           <div class="modal-narrative-col modal-tools-col">
             <h4>${m.toolsHeading}</h4>
             <ul class="modal-tools-list">${toolsHtml}</ul>
-            <div class="modal-carousel-controls" role="group" aria-label="${pCopy.heading}">
-              <button
-                class="carousel-nav-btn"
-                id="modalPrevBtn"
-                type="button"
-                data-modal-jump="${prevProj.id}"
-                aria-label="${pCopy.prevProject} — ${prevProj[lang].title}"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
-                </svg>
-              </button>
-              <button
-                class="carousel-nav-btn"
-                id="modalNextBtn"
-                type="button"
-                data-modal-jump="${nextProj.id}"
-                aria-label="${pCopy.nextProject} — ${nextProj[lang].title}"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -459,11 +488,13 @@
 
     const closeBtn = document.getElementById('modalCloseBtn');
     closeBtn?.addEventListener('click', closeModal);
-    closeBtn?.focus();
 
     bodyEl.querySelectorAll('[data-modal-jump]').forEach((btn) => {
-      btn.addEventListener('click', () => openProjectModal(btn.dataset.modalJump, triggerEl));
+      btn.addEventListener('click', () => openProjectModal(btn.dataset.modalJump, lastFocusedEl, btn.id));
     });
+
+    const targetFocus = focusTargetId ? document.getElementById(focusTargetId) : closeBtn;
+    targetFocus?.focus();
   }
 
   function closeModal() {
@@ -534,13 +565,26 @@
       }
     });
 
-    // Modal backdrop + Esc close
+    // Modal backdrop + Esc + ArrowLeft/ArrowRight navigation
     const backdrop = document.getElementById('caseModalBackdrop');
     backdrop?.addEventListener('click', (e) => {
       if (e.target === backdrop) closeModal();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      if (!currentModalProjectId) return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const { prevProj } = getModalNeighbors(currentModalProjectId);
+        openProjectModal(prevProj.id, lastFocusedEl, 'modalPrevBtn');
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const { nextProj } = getModalNeighbors(currentModalProjectId);
+        openProjectModal(nextProj.id, lastFocusedEl, 'modalNextBtn');
+      }
     });
   }
 
