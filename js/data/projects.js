@@ -93,7 +93,7 @@
           approach: '02 / DESIGN APPROACH',
           outcome: '03 / OUTCOME & CRAFT',
           behanceBtn: 'VIEW FULL GALLERY ON BEHANCE ↗',
-        liveDemoCta: 'LIVE DEMO ↗',
+        liveDemoCta: 'LIVE DEMO',
         galleryHint: 'PROJECT GALLERY',
           prevShort: 'PREV',
           nextShort: 'NEXT',
@@ -189,7 +189,7 @@
           approach: '02 / ABORDAGEM DE DESIGN',
           outcome: '03 / RESULTADO & OFÍCIO',
           behanceBtn: 'VER PROJETO NO BEHANCE ↗',
-        liveDemoCta: 'DEMO AO VIVO ↗',
+        liveDemoCta: 'DEMO AO VIVO',
         galleryHint: 'GALERIA DO PROJETO',
           prevShort: 'ANT',
           nextShort: 'PRÓX',
@@ -218,8 +218,8 @@
         year: '2026',
         behanceUrl: 'https://www.behance.net/gallery/253500979/UIUX-Design-Sonar-BSB',
         liveDemoUrl: 'https://lucasigreja5.github.io/Sonar-BSB/',
-        liveDemoLabelEn: 'OPEN LIVE DEMO ↗',
-        liveDemoLabelPt: 'ABRIR DEMO AO VIVO ↗',
+        liveDemoLabelEn: 'OPEN LIVE DEMO',
+        liveDemoLabelPt: 'ABRIR DEMO AO VIVO',
         image: 'assets/projects/sonar-bsb-mockup.png',
         gallery: [
           {
@@ -299,8 +299,8 @@
         year: '2026',
         behanceUrl: 'https://www.behance.net/gallery/249639151/UIUX-Design-Olivias-Coffee-Beans',
         liveDemoUrl: 'https://www.figma.com/proto/V78KcA8hZVRIvB6y1Hh7T4/Ol%C3%ADvia-s-Coffee-Beans-Ecom-v1?node-id=42-91&p=f&viewport=172%2C240%2C0.11&t=itM93N8f9OIZUUG8-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=42%3A91&page-id=42%3A88',
-        liveDemoLabelEn: 'OPEN FIGMA PROTOTYPE ↗',
-        liveDemoLabelPt: 'ABRIR PROTÓTIPO FIGMA ↗',
+        liveDemoLabelEn: 'OPEN FIGMA PROTOTYPE',
+        liveDemoLabelPt: 'ABRIR PROTÓTIPO FIGMA',
         image: 'assets/projects/olivias-coffee-mockup.png',
         gallery: [
           {

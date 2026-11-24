@@ -519,7 +519,7 @@
             <ul class="modal-tools-list">${toolsHtml}</ul>
             ${(() => {
               if (!project.liveDemoUrl) return '';
-              const demoLabel = (lang === 'pt' ? project.liveDemoLabelPt : project.liveDemoLabelEn) || m.liveDemoCta || 'OPEN LIVE DEMO ↗';
+              const demoLabel = (lang === 'pt' ? project.liveDemoLabelPt : project.liveDemoLabelEn) || m.liveDemoCta || 'OPEN LIVE DEMO';
               return `
                 <div class="modal-demo-wrap">
                   <a class="modal-demo-link" href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer">${demoLabel}</a>

@@ -12,10 +12,10 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ### Changed
 - **Modal Image Carousel Controls (`css/modal.css`, `js/components/portfolio.js`):**
-  - Added overlay `#modalGalleryPrevBtn` and `#modalGalleryNextBtn` (`0px` sharp architectural framing, dark translucent fill with `backdrop-filter: blur(8px)`, and `#D4FF00` hover/focus highlight) inside `.modal-hero-stage`, synced seamlessly with the thumbnail strip.
-- **Streamlined Modal Gallery & Tools/Demo Column (`css/modal.css`, `js/components/portfolio.js`):**
+  - Added borderless overlay `#modalGalleryPrevBtn` and `#modalGalleryNextBtn` (`44px × 44px` on desktop, `38px × 38px` on mobile) with `#D4FF00` hover/focus highlight inside `.modal-hero-stage`, synced seamlessly with the thumbnail strip.
+- **Streamlined Modal Gallery & Tools/Demo Column (`css/modal.css`, `js/components/portfolio.js`, `js/data/projects.js`):**
   - Removed the gallery caption subtitle (`#modalGalleryCaption`), slide counter (`#modalGalleryCounter`), and `VIEW FULL GALLERY ON BEHANCE` CTA row from the case-study modal.
-  - Moved the `OPEN LIVE DEMO ↗` / `OPEN FIGMA PROTOTYPE ↗` action into `.modal-tools-col` directly beneath `.modal-tools-list`, styled identically to the header `EN / PT` toggle (borderless `Clash Display` uppercase with `#D4FF00` lime hover shift).
+  - Moved the `OPEN LIVE DEMO` / `OPEN FIGMA PROTOTYPE` action into `.modal-tools-col` directly beneath `.modal-tools-list`, matched in scale to the `TOOLS` heading (`var(--text-h3)`) with borderless `EN / PT`-style hover shift and no trailing arrow icon.
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.1`.
 
 ---
