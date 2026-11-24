@@ -464,7 +464,45 @@
         </div>
       </div>
       <div class="modal-body">
-        <div class="modal-hero-art">${renderCoverVisual(project, lang)}</div>
+        ${(() => {
+          const gallery = Array.isArray(project.gallery) && project.gallery.length ? project.gallery : null;
+          if (!gallery) {
+            return `<div class="modal-hero-art">${renderCoverVisual(project, lang)}</div>`;
+          }
+          const totalPad = String(gallery.length).padStart(2, '0');
+          const firstItem = gallery[0];
+          const firstLabel = (lang === 'pt' ? firstItem.labelPt : firstItem.labelEn) || loc.title;
+          const thumbsHtml = gallery.map((item, idx) => {
+            const label = (lang === 'pt' ? item.labelPt : item.labelEn) || loc.title;
+            return `
+              <button
+                type="button"
+                class="modal-gallery-thumb${idx === 0 ? ' is-active' : ''}"
+                data-gallery-idx="${idx}"
+                role="tab"
+                aria-selected="${idx === 0 ? 'true' : 'false'}"
+                aria-label="${label}"
+                title="${label}"
+              >
+                <img src="${item.src}" alt="${label}" loading="lazy" />
+              </button>
+            `;
+          }).join('');
+          return `
+            <div class="modal-hero-showcase">
+              <div class="modal-hero-art modal-hero-stage">
+                <img id="modalHeroImg" class="modal-hero-img" src="${firstItem.src}" alt="${loc.title} — ${firstLabel}" />
+              </div>
+              <div class="modal-gallery-bar">
+                <span id="modalGalleryCaption" class="modal-gallery-caption">${firstLabel}</span>
+                <span id="modalGalleryCounter" class="modal-gallery-counter">01 / ${totalPad}</span>
+              </div>
+              <div class="modal-gallery-strip" role="tablist" aria-label="${m.galleryHint || 'Project Gallery'}">
+                ${thumbsHtml}
+              </div>
+            </div>
+          `;
+        })()}
         <div class="modal-narrative-grid">
           <div class="modal-narrative-col modal-overview-col">
             <h4>${m.overview}</h4>
@@ -477,6 +515,16 @@
             <ul class="modal-tools-list">${toolsHtml}</ul>
           </div>
         </div>
+        ${(() => {
+          const demoLabel = (lang === 'pt' ? project.liveDemoLabelPt : project.liveDemoLabelEn) || m.liveDemoCta || 'LIVE DEMO ↗';
+          const demoBtn = project.liveDemoUrl
+            ? `<a class="btn-pill-cta modal-demo-cta" href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer"><span class="cta-dot" aria-hidden="true"></span><span>${demoLabel}</span></a>`
+            : '';
+          const behanceBtn = project.behanceUrl
+            ? `<a class="modal-pill-secondary" href="${project.behanceUrl}" target="_blank" rel="noopener noreferrer">${m.behanceBtn}</a>`
+            : '';
+          return (demoBtn || behanceBtn) ? `<div class="modal-cta-row">${demoBtn}${behanceBtn}</div>` : '';
+        })()}
       </div>
     `;
 
@@ -491,6 +539,32 @@
     bodyEl.querySelectorAll('[data-modal-jump]').forEach((btn) => {
       btn.addEventListener('click', () => openProjectModal(btn.dataset.modalJump, lastFocusedEl, btn.id));
     });
+
+    const heroImgEl = document.getElementById('modalHeroImg');
+    const galleryCaptionEl = document.getElementById('modalGalleryCaption');
+    const galleryCounterEl = document.getElementById('modalGalleryCounter');
+    const thumbBtns = bodyEl.querySelectorAll('.modal-gallery-thumb');
+
+    if (heroImgEl && thumbBtns.length && Array.isArray(project.gallery)) {
+      const totalPad = String(project.gallery.length).padStart(2, '0');
+      thumbBtns.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          const idx = Number(thumb.dataset.galleryIdx);
+          const item = project.gallery[idx];
+          if (!item) return;
+          const label = (lang === 'pt' ? item.labelPt : item.labelEn) || loc.title;
+          heroImgEl.src = item.src;
+          heroImgEl.alt = `${loc.title} — ${label}`;
+          if (galleryCaptionEl) galleryCaptionEl.textContent = label;
+          if (galleryCounterEl) galleryCounterEl.textContent = `${String(idx + 1).padStart(2, '0')} / ${totalPad}`;
+          thumbBtns.forEach((btn) => {
+            const isCurrent = btn === thumb;
+            btn.classList.toggle('is-active', isCurrent);
+            btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+          });
+        });
+      });
+    }
 
     const targetFocus = focusTargetId ? document.getElementById(focusTargetId) : closeBtn;
     targetFocus?.focus();

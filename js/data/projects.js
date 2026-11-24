@@ -93,6 +93,8 @@
           approach: '02 / DESIGN APPROACH',
           outcome: '03 / OUTCOME & CRAFT',
           behanceBtn: 'VIEW FULL GALLERY ON BEHANCE ↗',
+        liveDemoCta: 'LIVE DEMO ↗',
+        galleryHint: 'PROJECT GALLERY',
           prevShort: 'PREV',
           nextShort: 'NEXT',
           prevBtn: '← PREV PROJECT',
@@ -187,6 +189,8 @@
           approach: '02 / ABORDAGEM DE DESIGN',
           outcome: '03 / RESULTADO & OFÍCIO',
           behanceBtn: 'VER PROJETO NO BEHANCE ↗',
+        liveDemoCta: 'DEMO AO VIVO ↗',
+        galleryHint: 'GALERIA DO PROJETO',
           prevShort: 'ANT',
           nextShort: 'PRÓX',
           prevBtn: '← PROJETO ANTERIOR',
@@ -213,8 +217,52 @@
         category: 'uiux',
         year: '2026',
         behanceUrl: 'https://www.behance.net/gallery/253500979/UIUX-Design-Sonar-BSB',
-        // Drop exported PNG/WebP inside assets/projects/ and set path below when ready:
-        image: '',
+        liveDemoUrl: 'https://lucasigreja5.github.io/Sonar-BSB/',
+        liveDemoLabelEn: 'OPEN LIVE DEMO ↗',
+        liveDemoLabelPt: 'ABRIR DEMO AO VIVO ↗',
+        image: 'assets/projects/sonar-bsb-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/sonar-bsb-mockup.png',
+            labelEn: '01 · 3D Product Mockup',
+            labelPt: '01 · Mockup 3D do Produto'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/01-cover.png',
+            labelEn: '02 · Overview Cover',
+            labelPt: '02 · Capa Geral'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/02-login.png',
+            labelEn: '03 · Login & Frequency Splash',
+            labelPt: '03 · Login & Splash Frequency'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/03-home.png',
+            labelEn: '04 · Discovery Feed (Behance)',
+            labelPt: '04 · Feed de Eventos (Behance)'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/04-search.png',
+            labelEn: '05 · Event Search & Filters',
+            labelPt: '05 · Busca & Filtros'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/05-event-details.png',
+            labelEn: '06 · Event Details Screen',
+            labelPt: '06 · Detalhes do Evento'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/06-live-demo-modal.png',
+            labelEn: '07 · Live Interactive Build',
+            labelPt: '07 · Build Interativa ao Vivo'
+          },
+          {
+            src: 'assets/projects/behance/sonar-bsb/07-tickets.png',
+            labelEn: '08 · My Tickets & E-Tickets',
+            labelPt: '08 · Meus Ingressos & E-Tickets'
+          }
+        ],
         coverStyle: 'sonar-bsb',
         tools: ['Figma', 'Motion Prototyping', 'Gemini AI'],
         en: {
@@ -250,7 +298,47 @@
         category: 'uiux',
         year: '2026',
         behanceUrl: 'https://www.behance.net/gallery/249639151/UIUX-Design-Olivias-Coffee-Beans',
-        image: '',
+        liveDemoUrl: 'https://www.figma.com/proto/V78KcA8hZVRIvB6y1Hh7T4/Ol%C3%ADvia-s-Coffee-Beans-Ecom-v1?node-id=42-91&p=f&viewport=172%2C240%2C0.11&t=itM93N8f9OIZUUG8-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=42%3A91&page-id=42%3A88',
+        liveDemoLabelEn: 'OPEN FIGMA PROTOTYPE ↗',
+        liveDemoLabelPt: 'ABRIR PROTÓTIPO FIGMA ↗',
+        image: 'assets/projects/olivias-coffee-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/olivias-coffee-mockup.png',
+            labelEn: '01 · 3D Product Mockup',
+            labelPt: '01 · Mockup 3D do Produto'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/01-cover.png',
+            labelEn: '02 · Eco-First Espresso Cover',
+            labelPt: '02 · Capa Eco-First Espresso'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/02-desktop-home.webp',
+            labelEn: '03 · Desktop Landing Page',
+            labelPt: '03 · Landing Page Desktop'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/03-desktop-commitments.webp',
+            labelEn: '04 · Sustainability Commitments',
+            labelPt: '04 · Compromissos Sustentáveis'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/04-desktop-checkout.webp',
+            labelEn: '05 · Desktop Checkout Flow',
+            labelPt: '05 · Fluxo de Checkout Desktop'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/05-mobile-home.webp',
+            labelEn: '06 · Mobile Storefront UI',
+            labelPt: '06 · Interface Mobile'
+          },
+          {
+            src: 'assets/projects/behance/olivias-coffee/06-mobile-checkout.webp',
+            labelEn: '07 · Mobile Checkout UI',
+            labelPt: '07 · Checkout Mobile'
+          }
+        ],
         coverStyle: 'olivias-coffee',
         tools: ['Figma', 'Wireframing', 'Mobile & Desktop UI', 'Gemini AI'],
         en: {

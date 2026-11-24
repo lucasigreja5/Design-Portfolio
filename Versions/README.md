@@ -7,7 +7,7 @@ This folder preserves immutable, runnable snapshots of every released version of
 ## How Versioning Works
 
 - **Repository Root (`/`):** Always holds the active, deployable website so `http://localhost:4173/` and GitHub Pages (`/`) always serve the latest release.
-- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.7.1`).
+- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.9`).
 - **Release History ([`../CHANGELOG.md`](../CHANGELOG.md)):** Records what changed in each version.
 - **Version Archives (`Versions/vX.Y/`):** Frozen snapshots of the deployable site at each release milestone.
 - **GitHub Sync (Annotated Tags):** Every release has a matching Git tag (`v0.1`, `v0.2`, ...) visible in GitHub's **Tags / Releases** view.
@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.9** | 2026-11-24 | [`./v0.9/`](./v0.9/VERSION_INFO.md) | `v0.9` | Behance assets, custom 3D mockups, and interactive modal gallery + demo CTAs for projects 01–02 |
 | **v0.8.2** | 2026-11-24 | [`./v0.8.2/`](./v0.8.2/VERSION_INFO.md) | `v0.8.2` | Improved readability of unselected Disciplines text over full-bleed background images |
 | **v0.8.1** | 2026-11-23 | [`./v0.8.1/`](./v0.8.1/VERSION_INFO.md) | `v0.8.1` | Single-line ellipsis truncation on mobile Projects carousel card titles |
 | **v0.8** | 2026-11-23 | [`./v0.8/`](./v0.8/VERSION_INFO.md) | `v0.8` | Bespoke Hero UI/brand collage PNG, 3-layer crossfading Disciplines PNGs, and silent EN/PT switching |

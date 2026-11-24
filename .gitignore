@@ -1,3 +1,7 @@
+# Environment & API secrets
+.env
+.env.local
+
 # OS & Finder clutter
 .DS_Store
 Thumbs.db

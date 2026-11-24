@@ -6,6 +6,21 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9] - 2026-11-24
+
+**Git Tag:** `v0.9` · **Archive:** [`./Versions/v0.9/`](./Versions/v0.9/VERSION_INFO.md)
+
+### Changed
+- **Pilot Behance Assets & Pixel-Faithful 3D Product Mockups (Projects `01`–`02`):**
+  - Pulled high-resolution Behance gallery assets for **01 Sonar BSB** (`assets/projects/behance/sonar-bsb/`) and **02 Olivia's Coffee Beans** (`assets/projects/behance/olivias-coffee/`), plus captured live interactive demo screen `06-live-demo-modal.png` from `https://lucasigreja5.github.io/Sonar-BSB/`.
+  - Added bespoke 16:9 3D product mockups (`assets/projects/sonar-bsb-mockup.png` and `assets/projects/olivias-coffee-mockup.png`) set against project-native indigo/lime and forest-green/gold backdrops as carousel covers and modal slide `01`.
+- **Interactive Modal Gallery & Demo / Prototype CTAs (`css/modal.css`, `js/components/portfolio.js`, `js/data/projects.js`):**
+  - Added `.modal-hero-showcase`, `.modal-hero-stage` (`object-fit: contain`), caption/counter bar (`01 / 08`), and sharp `0px` `.modal-gallery-strip` thumbnails with `#D4FF00` active highlight and live slide switching inside `openProjectModal`.
+  - Added bilingual `OPEN LIVE DEMO ↗` (`ABRIR DEMO AO VIVO ↗`) and `OPEN FIGMA PROTOTYPE ↗` (`ABRIR PROTÓTIPO FIGMA ↗`) primary pills alongside `VIEW FULL GALLERY ON BEHANCE ↗` (`VER PROJETO NO BEHANCE ↗`) in `.modal-cta-row`.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9`.
+
+---
+
 ## [0.8.2] - 2026-11-24
 
 **Git Tag:** `v0.8.2` · **Archive:** [`./Versions/v0.8.2/`](./Versions/v0.8.2/VERSION_INFO.md)
