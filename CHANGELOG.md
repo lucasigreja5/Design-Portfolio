@@ -6,6 +6,20 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.1] - 2026-11-24
+
+**Git Tag:** `v0.9.1` · **Archive:** [`./Versions/v0.9.1/`](./Versions/v0.9.1/VERSION_INFO.md)
+
+### Changed
+- **Modal Image Carousel Controls (`css/modal.css`, `js/components/portfolio.js`):**
+  - Added overlay `#modalGalleryPrevBtn` and `#modalGalleryNextBtn` (`0px` sharp architectural framing, dark translucent fill with `backdrop-filter: blur(8px)`, and `#D4FF00` hover/focus highlight) inside `.modal-hero-stage`, synced seamlessly with the thumbnail strip.
+- **Streamlined Modal Gallery & Tools/Demo Column (`css/modal.css`, `js/components/portfolio.js`):**
+  - Removed the gallery caption subtitle (`#modalGalleryCaption`), slide counter (`#modalGalleryCounter`), and `VIEW FULL GALLERY ON BEHANCE` CTA row from the case-study modal.
+  - Moved the `OPEN LIVE DEMO ↗` / `OPEN FIGMA PROTOTYPE ↗` action into `.modal-tools-col` directly beneath `.modal-tools-list`, styled identically to the header `EN / PT` toggle (borderless `Clash Display` uppercase with `#D4FF00` lime hover shift).
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.1`.
+
+---
+
 ## [0.9] - 2026-11-24
 
 **Git Tag:** `v0.9` · **Archive:** [`./Versions/v0.9/`](./Versions/v0.9/VERSION_INFO.md)

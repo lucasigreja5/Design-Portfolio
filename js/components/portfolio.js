@@ -469,9 +469,17 @@
           if (!gallery) {
             return `<div class="modal-hero-art">${renderCoverVisual(project, lang)}</div>`;
           }
-          const totalPad = String(gallery.length).padStart(2, '0');
           const firstItem = gallery[0];
           const firstLabel = (lang === 'pt' ? firstItem.labelPt : firstItem.labelEn) || loc.title;
+          const prevGalleryLabel = lang === 'pt' ? 'Imagem anterior' : 'Previous image';
+          const nextGalleryLabel = lang === 'pt' ? 'Próxima imagem' : 'Next image';
+          const stageControlsHtml = gallery.length > 1 ? `
+                <button type="button" id="modalGalleryPrevBtn" class="modal-stage-nav is-prev" aria-label="${prevGalleryLabel}">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10.5 3.2 5.7 8l4.8 4.8" /></svg>
+                </button>
+                <button type="button" id="modalGalleryNextBtn" class="modal-stage-nav is-next" aria-label="${nextGalleryLabel}">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 3.2 10.3 8l-4.8 4.8" /></svg>
+                </button>` : '';
           const thumbsHtml = gallery.map((item, idx) => {
             const label = (lang === 'pt' ? item.labelPt : item.labelEn) || loc.title;
             return `
@@ -491,11 +499,7 @@
           return `
             <div class="modal-hero-showcase">
               <div class="modal-hero-art modal-hero-stage">
-                <img id="modalHeroImg" class="modal-hero-img" src="${firstItem.src}" alt="${loc.title} — ${firstLabel}" />
-              </div>
-              <div class="modal-gallery-bar">
-                <span id="modalGalleryCaption" class="modal-gallery-caption">${firstLabel}</span>
-                <span id="modalGalleryCounter" class="modal-gallery-counter">01 / ${totalPad}</span>
+                <img id="modalHeroImg" class="modal-hero-img" src="${firstItem.src}" alt="${loc.title} — ${firstLabel}" />${stageControlsHtml}
               </div>
               <div class="modal-gallery-strip" role="tablist" aria-label="${m.galleryHint || 'Project Gallery'}">
                 ${thumbsHtml}
@@ -513,18 +517,17 @@
           <div class="modal-narrative-col modal-tools-col">
             <h4>${m.toolsHeading}</h4>
             <ul class="modal-tools-list">${toolsHtml}</ul>
+            ${(() => {
+              if (!project.liveDemoUrl) return '';
+              const demoLabel = (lang === 'pt' ? project.liveDemoLabelPt : project.liveDemoLabelEn) || m.liveDemoCta || 'OPEN LIVE DEMO ↗';
+              return `
+                <div class="modal-demo-wrap">
+                  <a class="modal-demo-link" href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer">${demoLabel}</a>
+                </div>
+              `;
+            })()}
           </div>
         </div>
-        ${(() => {
-          const demoLabel = (lang === 'pt' ? project.liveDemoLabelPt : project.liveDemoLabelEn) || m.liveDemoCta || 'LIVE DEMO ↗';
-          const demoBtn = project.liveDemoUrl
-            ? `<a class="btn-pill-cta modal-demo-cta" href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer"><span class="cta-dot" aria-hidden="true"></span><span>${demoLabel}</span></a>`
-            : '';
-          const behanceBtn = project.behanceUrl
-            ? `<a class="modal-pill-secondary" href="${project.behanceUrl}" target="_blank" rel="noopener noreferrer">${m.behanceBtn}</a>`
-            : '';
-          return (demoBtn || behanceBtn) ? `<div class="modal-cta-row">${demoBtn}${behanceBtn}</div>` : '';
-        })()}
       </div>
     `;
 
@@ -541,29 +544,40 @@
     });
 
     const heroImgEl = document.getElementById('modalHeroImg');
-    const galleryCaptionEl = document.getElementById('modalGalleryCaption');
-    const galleryCounterEl = document.getElementById('modalGalleryCounter');
+    const galleryPrevBtn = document.getElementById('modalGalleryPrevBtn');
+    const galleryNextBtn = document.getElementById('modalGalleryNextBtn');
     const thumbBtns = bodyEl.querySelectorAll('.modal-gallery-thumb');
 
     if (heroImgEl && thumbBtns.length && Array.isArray(project.gallery)) {
-      const totalPad = String(project.gallery.length).padStart(2, '0');
+      let activeGalleryIdx = 0;
+
+      const showGallerySlide = (nextIdx) => {
+        const count = project.gallery.length;
+        const wrappedIdx = ((nextIdx % count) + count) % count;
+        const item = project.gallery[wrappedIdx];
+        if (!item) return;
+        activeGalleryIdx = wrappedIdx;
+        const label = (lang === 'pt' ? item.labelPt : item.labelEn) || loc.title;
+        heroImgEl.src = item.src;
+        heroImgEl.alt = `${loc.title} — ${label}`;
+        thumbBtns.forEach((btn, i) => {
+          const isCurrent = i === wrappedIdx;
+          btn.classList.toggle('is-active', isCurrent);
+          btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+          if (isCurrent) {
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+          }
+        });
+      };
+
       thumbBtns.forEach((thumb) => {
         thumb.addEventListener('click', () => {
-          const idx = Number(thumb.dataset.galleryIdx);
-          const item = project.gallery[idx];
-          if (!item) return;
-          const label = (lang === 'pt' ? item.labelPt : item.labelEn) || loc.title;
-          heroImgEl.src = item.src;
-          heroImgEl.alt = `${loc.title} — ${label}`;
-          if (galleryCaptionEl) galleryCaptionEl.textContent = label;
-          if (galleryCounterEl) galleryCounterEl.textContent = `${String(idx + 1).padStart(2, '0')} / ${totalPad}`;
-          thumbBtns.forEach((btn) => {
-            const isCurrent = btn === thumb;
-            btn.classList.toggle('is-active', isCurrent);
-            btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
-          });
+          showGallerySlide(Number(thumb.dataset.galleryIdx));
         });
       });
+
+      galleryPrevBtn?.addEventListener('click', () => showGallerySlide(activeGalleryIdx - 1));
+      galleryNextBtn?.addEventListener('click', () => showGallerySlide(activeGalleryIdx + 1));
     }
 
     const targetFocus = focusTargetId ? document.getElementById(focusTargetId) : closeBtn;
