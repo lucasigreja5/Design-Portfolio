@@ -6,6 +6,19 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.2] - 2026-11-24
+
+**Git Tag:** `v0.9.2` · **Archive:** [`./Versions/v0.9.2/`](./Versions/v0.9.2/VERSION_INFO.md)
+
+### Changed
+- **Disambiguated Modal Project vs. Gallery Navigation (`css/modal.css`, `js/components/portfolio.js`, `js/data/projects.js`):**
+  - Relabeled the modal header project stepper on desktop to explicit **`PREV PROJECT / NEXT PROJECT`** (`EN`) and **`PROJETO ANT. / PRÓX. PROJETO`** (`PT`), with single-line ellipsis safety on `.modal-title`; on mobile (`<= 767px`), replaced bare arrows with an inline `01/09` monospaced project counter between arrows.
+  - Tuned in-image gallery chevrons to rest quietly (`opacity: 0.28`) on hover-capable desktops and reveal cleanly (`opacity: 1`) on `.modal-hero-stage` hover/focus, while remaining visible (`opacity: 0.85`) alongside native horizontal touch-swipe (`>= 40px`) on touch devices.
+  - Updated modal keyboard navigation so `ArrowLeft` / `ArrowRight` cycle the project's image gallery on multi-image projects (`Shift + ArrowLeft/Right` switches projects), while preserving direct `ArrowLeft` / `ArrowRight` project switching on single-cover projects.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.2`.
+
+---
+
 ## [0.9.1] - 2026-11-24
 
 **Git Tag:** `v0.9.1` · **Archive:** [`./Versions/v0.9.1/`](./Versions/v0.9.1/VERSION_INFO.md)

@@ -7,7 +7,7 @@ This folder preserves immutable, runnable snapshots of every released version of
 ## How Versioning Works
 
 - **Repository Root (`/`):** Always holds the active, deployable website so `http://localhost:4173/` and GitHub Pages (`/`) always serve the latest release.
-- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.9.1`).
+- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.9.2`).
 - **Release History ([`../CHANGELOG.md`](../CHANGELOG.md)):** Records what changed in each version.
 - **Version Archives (`Versions/vX.Y/`):** Frozen snapshots of the deployable site at each release milestone.
 - **GitHub Sync (Annotated Tags):** Every release has a matching Git tag (`v0.1`, `v0.2`, ...) visible in GitHub's **Tags / Releases** view.
@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.9.2** | 2026-11-24 | [`./v0.9.2/`](./v0.9.2/VERSION_INFO.md) | `v0.9.2` | Disambiguated modal project (`PREV/NEXT PROJECT`, mobile `01/09`) vs. hover/swipe gallery chevrons & Arrow/Shift+Arrow shortcuts |
 | **v0.9.1** | 2026-11-24 | [`./v0.9.1/`](./v0.9.1/VERSION_INFO.md) | `v0.9.1` | Modal gallery inside-image carousel buttons, removed gallery caption/counter & Behance CTA, and moved EN/PT-styled demo link into Tools column |
 | **v0.9** | 2026-11-24 | [`./v0.9/`](./v0.9/VERSION_INFO.md) | `v0.9` | Behance assets, custom 3D mockups, and interactive modal gallery + demo CTAs for projects 01–02 |
 | **v0.8.2** | 2026-11-24 | [`./v0.8.2/`](./v0.8.2/VERSION_INFO.md) | `v0.8.2` | Improved readability of unselected Disciplines text over full-bleed background images |

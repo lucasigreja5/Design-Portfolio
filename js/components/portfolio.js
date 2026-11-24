@@ -8,6 +8,7 @@
   let activeDisciplineId = 'uiux';
   let activeCareerTab = 'experience';
   let currentModalProjectId = null;
+  let activeModalGalleryStepper = null;
   let lastFocusedEl = null;
   let toastTimer = null;
 
@@ -399,6 +400,7 @@
 
     const wasAlreadyOpen = backdrop.classList.contains('is-open');
     currentModalProjectId = project.id;
+    activeModalGalleryStepper = null;
     if (!wasAlreadyOpen || triggerEl) {
       lastFocusedEl = triggerEl || document.activeElement;
     }
@@ -407,6 +409,10 @@
     const m = DATA.copy[lang].modal;
     const pCopy = DATA.copy[lang].projects;
     const toolsHtml = project.tools.map((tool) => `<li>${tool}</li>`).join('');
+
+    const totalProjectsPad = String(DATA.projects.length).padStart(2, '0');
+    const prevLabel = m.prevProjectBtn || m.prevShort;
+    const nextLabel = m.nextProjectBtn || m.nextShort;
 
     bodyEl.innerHTML = `
       <div class="modal-header">
@@ -429,12 +435,13 @@
               </svg>
               <span class="roll-wrap modal-step-label">
                 <span class="roll-track">
-                  <span>${m.prevShort}</span>
-                  <span aria-hidden="true">${m.prevShort}</span>
+                  <span>${prevLabel}</span>
+                  <span aria-hidden="true">${prevLabel}</span>
                 </span>
               </span>
             </button>
             <span class="modal-step-sep" aria-hidden="true">/</span>
+            <span class="modal-step-mobile-count" aria-hidden="true">${project.index}/${totalProjectsPad}</span>
             <button
               class="modal-step-btn"
               id="modalNextBtn"
@@ -445,8 +452,8 @@
             >
               <span class="roll-wrap modal-step-label">
                 <span class="roll-track">
-                  <span>${m.nextShort}</span>
-                  <span aria-hidden="true">${m.nextShort}</span>
+                  <span>${nextLabel}</span>
+                  <span aria-hidden="true">${nextLabel}</span>
                 </span>
               </span>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -578,6 +585,37 @@
 
       galleryPrevBtn?.addEventListener('click', () => showGallerySlide(activeGalleryIdx - 1));
       galleryNextBtn?.addEventListener('click', () => showGallerySlide(activeGalleryIdx + 1));
+
+      if (project.gallery.length > 1) {
+        activeModalGalleryStepper = (delta) => showGallerySlide(activeGalleryIdx + delta);
+
+        const heroStageEl = bodyEl.querySelector('.modal-hero-stage');
+        if (heroStageEl) {
+          let touchStartX = 0;
+          let touchStartY = 0;
+          heroStageEl.addEventListener(
+            'touchstart',
+            (e) => {
+              if (!e.touches || !e.touches.length) return;
+              touchStartX = e.touches[0].clientX;
+              touchStartY = e.touches[0].clientY;
+            },
+            { passive: true }
+          );
+          heroStageEl.addEventListener(
+            'touchend',
+            (e) => {
+              if (!e.changedTouches || !e.changedTouches.length) return;
+              const dx = e.changedTouches[0].clientX - touchStartX;
+              const dy = e.changedTouches[0].clientY - touchStartY;
+              if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) {
+                showGallerySlide(activeGalleryIdx + (dx < 0 ? 1 : -1));
+              }
+            },
+            { passive: true }
+          );
+        }
+      }
     }
 
     const targetFocus = focusTargetId ? document.getElementById(focusTargetId) : closeBtn;
@@ -591,6 +629,7 @@
     backdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentModalProjectId = null;
+    activeModalGalleryStepper = null;
     if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
       lastFocusedEl.focus();
     }
@@ -661,14 +700,19 @@
         return;
       }
       if (!currentModalProjectId) return;
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
-        const { prevProj } = getModalNeighbors(currentModalProjectId);
-        openProjectModal(prevProj.id, lastFocusedEl, 'modalPrevBtn');
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const { nextProj } = getModalNeighbors(currentModalProjectId);
-        openProjectModal(nextProj.id, lastFocusedEl, 'modalNextBtn');
+        const delta = e.key === 'ArrowLeft' ? -1 : 1;
+        if (!e.shiftKey && typeof activeModalGalleryStepper === 'function') {
+          activeModalGalleryStepper(delta);
+          return;
+        }
+        const { prevProj, nextProj } = getModalNeighbors(currentModalProjectId);
+        if (delta < 0) {
+          openProjectModal(prevProj.id, lastFocusedEl, 'modalPrevBtn');
+        } else {
+          openProjectModal(nextProj.id, lastFocusedEl, 'modalNextBtn');
+        }
       }
     });
   }

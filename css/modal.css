@@ -66,6 +66,7 @@
   font-size: clamp(1.25rem, 2.2vw, 1.875rem);
   line-height: 1.05;
   color: var(--accent-lime);
+  flex-shrink: 0;
 }
 
 .modal-title {
@@ -74,6 +75,9 @@
   font-size: clamp(1.25rem, 2.2vw, 1.875rem);
   text-transform: uppercase;
   line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .modal-header-actions {
@@ -131,6 +135,10 @@
   font-size: 0.95rem;
   color: var(--text-dim);
   user-select: none;
+}
+
+.modal-step-mobile-count {
+  display: none;
 }
 
 .modal-header-divider {
@@ -192,6 +200,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-2);
+  touch-action: pan-y;
 }
 
 .modal-hero-img {
@@ -215,11 +224,26 @@
   border-radius: 0;
   background: transparent;
   color: var(--text-primary);
+  opacity: 0.85;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: color var(--duration-micro) var(--ease-snappy);
+  transition: color var(--duration-micro) var(--ease-snappy),
+              opacity var(--duration-ui) var(--ease-editorial);
+}
+
+@media (hover: hover) {
+  .modal-stage-nav {
+    opacity: 0.28;
+  }
+
+  .modal-hero-stage:hover .modal-stage-nav,
+  .modal-hero-stage:focus-within .modal-stage-nav,
+  .modal-stage-nav:hover,
+  .modal-stage-nav:focus-visible {
+    opacity: 1;
+  }
 }
 
 .modal-stage-nav.is-prev {
@@ -403,6 +427,16 @@
   .modal-step-label,
   .modal-step-sep {
     display: none;
+  }
+
+  .modal-step-mobile-count {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    user-select: none;
   }
 
   .modal-step-btn {
