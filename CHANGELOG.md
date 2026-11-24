@@ -16,6 +16,8 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
   - Wired multi-image modal galleries (`gallery` arrays) across every remaining project so all `01`–`09` case studies feature real Behance imagery.
 - **Branding Stationery & Print Campaign Mockups (`assets/projects/*-mockup.png`, `js/data/projects.js`):**
   - Generated bespoke 16:9 dark-slate studio **stationery suite mockups** for all four branding identities (`gdf-undf-mockup.png`, `gdf-economia-mockup.png`, `gdf-clube-mockup.png`, `gdf-fabrica-mockup.png`) and **campaign/print mockups** for `volvo-xc60-mockup.png` and `volvo-selekt-mockup.png` (with `09 CAU/BR` displaying its pulled print ad cover).
+- **Non-Destructive Project Visibility Toggle (`js/data/projects.js`, `js/components/portfolio.js`, `index.html`):**
+  - Added per-project `visible` flag (`visible !== false`) so projects can be toggled off cleanly while preserving all gallery data and asset files (`gdf-fabrica` and `caubr-editorial` toggled to `visible: false`, keeping 7 active sequential projects `01`–`07`).
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.3`.
 
 ---

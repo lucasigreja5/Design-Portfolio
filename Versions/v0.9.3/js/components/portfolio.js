@@ -27,9 +27,14 @@
     toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
   }
 
+  function getVisibleProjects() {
+    return DATA.projects.filter((p) => p.visible !== false);
+  }
+
   function getFilteredProjects() {
-    if (activeFilter === 'all') return DATA.projects;
-    return DATA.projects.filter((p) => p.category === activeFilter);
+    const visible = getVisibleProjects();
+    if (activeFilter === 'all') return visible;
+    return visible.filter((p) => p.category === activeFilter);
   }
 
   /* Bespoke SVG/HTML cover art matching each of the 9 Behance projects */
@@ -379,14 +384,22 @@
      ------------------------------------------------------------------------ */
   function getModalNeighbors(projectId) {
     const activeList = getFilteredProjects();
-    const listForNav = activeList.some((p) => p.id === projectId) ? activeList : DATA.projects;
+    const visibleList = getVisibleProjects();
+    const listForNav = activeList.some((p) => p.id === projectId) ? activeList : visibleList;
     const idx = listForNav.findIndex((p) => p.id === projectId);
     const safeIdx = idx >= 0 ? idx : 0;
+    const total = listForNav.length;
+    const prevIdx = (safeIdx - 1 + total) % total;
+    const nextIdx = (safeIdx + 1) % total;
     return {
       listForNav,
+      totalCount: total,
+      displayIndex: String(safeIdx + 1).padStart(2, '0'),
+      prevDisplayIndex: String(prevIdx + 1).padStart(2, '0'),
+      nextDisplayIndex: String(nextIdx + 1).padStart(2, '0'),
       project: listForNav[safeIdx],
-      prevProj: listForNav[(safeIdx - 1 + listForNav.length) % listForNav.length],
-      nextProj: listForNav[(safeIdx + 1) % listForNav.length]
+      prevProj: listForNav[prevIdx],
+      nextProj: listForNav[nextIdx]
     };
   }
 
@@ -395,7 +408,7 @@
     const bodyEl = document.getElementById('caseModalContent');
     if (!backdrop || !bodyEl) return;
 
-    const { project, prevProj, nextProj } = getModalNeighbors(projectId);
+    const { project, prevProj, nextProj, displayIndex, prevDisplayIndex, nextDisplayIndex, totalCount } = getModalNeighbors(projectId);
     if (!project) return;
 
     const wasAlreadyOpen = backdrop.classList.contains('is-open');
@@ -410,14 +423,14 @@
     const pCopy = DATA.copy[lang].projects;
     const toolsHtml = project.tools.map((tool) => `<li>${tool}</li>`).join('');
 
-    const totalProjectsPad = String(DATA.projects.length).padStart(2, '0');
+    const totalProjectsPad = String(totalCount).padStart(2, '0');
     const prevLabel = m.prevProjectBtn || m.prevShort;
     const nextLabel = m.nextProjectBtn || m.nextShort;
 
     bodyEl.innerHTML = `
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-index">${project.index}</span>
+          <span class="modal-index">${displayIndex}</span>
           <h2 class="modal-title" id="modalHeading">${loc.title}</h2>
         </div>
         <div class="modal-header-actions">
@@ -428,7 +441,7 @@
               type="button"
               data-modal-jump="${prevProj.id}"
               aria-label="${pCopy.prevProject} — ${prevProj[lang].title}"
-              title="${prevProj.index} · ${prevProj[lang].title}"
+              title="${prevDisplayIndex} · ${prevProj[lang].title}"
             >
               <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
@@ -441,14 +454,14 @@
               </span>
             </button>
             <span class="modal-step-sep" aria-hidden="true">/</span>
-            <span class="modal-step-mobile-count" aria-hidden="true">${project.index}/${totalProjectsPad}</span>
+            <span class="modal-step-mobile-count" aria-hidden="true">${displayIndex}/${totalProjectsPad}</span>
             <button
               class="modal-step-btn"
               id="modalNextBtn"
               type="button"
               data-modal-jump="${nextProj.id}"
               aria-label="${pCopy.nextProject} — ${nextProj[lang].title}"
-              title="${nextProj.index} · ${nextProj[lang].title}"
+              title="${nextDisplayIndex} · ${nextProj[lang].title}"
             >
               <span class="roll-wrap modal-step-label">
                 <span class="roll-track">

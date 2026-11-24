@@ -213,10 +213,11 @@
       }
     },
 
-    /* All 9 Real Behance Projects (Newest -> Oldest) */
+    /* All 9 Real Behance Projects (Newest -> Oldest; set visible: false to hide without deleting assets) */
     projects: [
       {
         id: 'sonar-bsb',
+        visible: true,
         index: '01',
         category: 'uiux',
         year: '2026',
@@ -298,6 +299,7 @@
       },
       {
         id: 'olivias-coffee',
+        visible: true,
         index: '02',
         category: 'uiux',
         year: '2026',
@@ -374,6 +376,7 @@
       },
       {
         id: 'gdf-undf',
+        visible: true,
         index: '03',
         category: 'branding',
         year: '2021',
@@ -422,6 +425,7 @@
       },
       {
         id: 'gdf-economia',
+        visible: true,
         index: '04',
         category: 'branding',
         year: '2021',
@@ -470,6 +474,7 @@
       },
       {
         id: 'gdf-clube',
+        visible: true,
         index: '05',
         category: 'branding',
         year: '2020',
@@ -523,6 +528,7 @@
       },
       {
         id: 'gdf-fabrica',
+        visible: false,
         index: '06',
         category: 'branding',
         year: '2020',
@@ -571,6 +577,7 @@
       },
       {
         id: 'volvo-xc60',
+        visible: true,
         index: '07',
         category: 'editorial',
         year: '2018',
@@ -619,6 +626,7 @@
       },
       {
         id: 'volvo-selekt',
+        visible: true,
         index: '08',
         category: 'editorial',
         year: '2018',
@@ -677,6 +685,7 @@
       },
       {
         id: 'caubr-editorial',
+        visible: false,
         index: '09',
         category: 'editorial',
         year: '2015',
