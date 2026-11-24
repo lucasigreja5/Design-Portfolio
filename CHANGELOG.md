@@ -6,6 +6,18 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.8.2] - 2026-11-24
+
+**Git Tag:** `v0.8.2` · **Archive:** [`./Versions/v0.8.2/`](./Versions/v0.8.2/VERSION_INFO.md)
+
+### Changed
+- **Disciplines Unselected Text Readability (`css/components.css`):**
+  - Elevated unselected `.discipline-tab .word-primary` (`rgba(255, 255, 255, 0.56)`) and `.word-secondary` (`rgba(255, 255, 255, 0.34)`) contrast over the 3 full-bleed PNG backgrounds while preserving the two-tone hierarchy against active `#FFFFFF` / `#D4FF00` lime tabs.
+  - Added a subtle dark `text-shadow` on `.discipline-tab` and deepened `.disciplines-scrim` (`0.90` left → `0.56` center → `0.84` right) for crisp legibility across all 3 atmospheric layers.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.8.2`.
+
+---
+
 ## [0.8.1] - 2026-11-23
 
 **Git Tag:** `v0.8.1` · **Archive:** [`./Versions/v0.8.1/`](./Versions/v0.8.1/VERSION_INFO.md)
