@@ -378,7 +378,19 @@
         category: 'branding',
         year: '2021',
         behanceUrl: 'https://www.behance.net/gallery/126763223/GDF-Logomarca-Universidade-do-Distrito-Federal-UnDF',
-        image: '',
+        image: 'assets/projects/gdf-undf-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/gdf-undf-mockup.png',
+            labelEn: '01 · Stationery Suite Mockup',
+            labelPt: '01 · Mockup de Papelaria'
+          },
+          {
+            src: 'assets/projects/behance/gdf-undf/01-brand-board.png',
+            labelEn: '02 · Identity Presentation Board',
+            labelPt: '02 · Prancha de Identidade'
+          }
+        ],
         coverStyle: 'gdf-undf',
         tools: ['Adobe Illustrator', 'Brand Strategy', 'Typography'],
         en: {
@@ -414,7 +426,19 @@
         category: 'branding',
         year: '2021',
         behanceUrl: 'https://www.behance.net/gallery/116386429/GDF-Marca-Secretaria-de-Economia',
-        image: '',
+        image: 'assets/projects/gdf-economia-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/gdf-economia-mockup.png',
+            labelEn: '01 · Stationery Suite Mockup',
+            labelPt: '01 · Mockup de Papelaria'
+          },
+          {
+            src: 'assets/projects/behance/gdf-economia/01-brand-board.png',
+            labelEn: '02 · Identity Presentation Board',
+            labelPt: '02 · Prancha de Identidade'
+          }
+        ],
         coverStyle: 'gdf-economia',
         tools: ['Adobe Illustrator', 'Institutional Branding'],
         en: {
@@ -450,7 +474,24 @@
         category: 'branding',
         year: '2020',
         behanceUrl: 'https://www.behance.net/gallery/116385123/GDF-Clube-de-Desconto-do-Servidor',
-        image: '',
+        image: 'assets/projects/gdf-clube-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/gdf-clube-mockup.png',
+            labelEn: '01 · Stationery & Kit Mockup',
+            labelPt: '01 · Mockup de Papelaria & Kit'
+          },
+          {
+            src: 'assets/projects/behance/gdf-clube/01-brand-board.png',
+            labelEn: '02 · Identity Presentation Board',
+            labelPt: '02 · Prancha de Identidade'
+          },
+          {
+            src: 'assets/projects/behance/gdf-clube/02-social-campaign.webp',
+            labelEn: '03 · Social Media Campaign',
+            labelPt: '03 · Campanha Redes Sociais'
+          }
+        ],
         coverStyle: 'gdf-clube',
         tools: ['Adobe Illustrator', 'Adobe Photoshop', 'Social Media'],
         en: {
@@ -486,7 +527,19 @@
         category: 'branding',
         year: '2020',
         behanceUrl: 'https://www.behance.net/gallery/116382357/GDF-Nova-Marca-para-a-Fabrica-Social',
-        image: '',
+        image: 'assets/projects/gdf-fabrica-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/gdf-fabrica-mockup.png',
+            labelEn: '01 · Stationery & Certificate Mockup',
+            labelPt: '01 · Mockup de Papelaria & Certificado'
+          },
+          {
+            src: 'assets/projects/behance/gdf-fabrica/01-brand-board.png',
+            labelEn: '02 · Identity Presentation Board',
+            labelPt: '02 · Prancha de Identidade'
+          }
+        ],
         coverStyle: 'gdf-fabrica',
         tools: ['Adobe Illustrator', 'Rebranding'],
         en: {
@@ -522,7 +575,19 @@
         category: 'editorial',
         year: '2018',
         behanceUrl: 'https://www.behance.net/gallery/116386015/Champion-Volvo-Novo-XC60',
-        image: '',
+        image: 'assets/projects/volvo-xc60-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/volvo-xc60-mockup.png',
+            labelEn: '01 · Campaign Print Mockup',
+            labelPt: '01 · Mockup de Campanha Impressa'
+          },
+          {
+            src: 'assets/projects/behance/volvo-xc60/01-ooh-campaign.png',
+            labelEn: '02 · Monumental OOH Artwork',
+            labelPt: '02 · Peça OOH Monumental'
+          }
+        ],
         coverStyle: 'volvo-xc60',
         tools: ['Adobe Photoshop', 'Adobe Illustrator', 'OOH Print'],
         en: {
@@ -558,7 +623,29 @@
         category: 'editorial',
         year: '2018',
         behanceUrl: 'https://www.behance.net/gallery/116384255/Champion-Volvo-Brasilia-Design',
-        image: '',
+        image: 'assets/projects/volvo-selekt-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/volvo-selekt-mockup.png',
+            labelEn: '01 · Dealership Flyers Mockup',
+            labelPt: '01 · Mockup de Panfletos Impressos'
+          },
+          {
+            src: 'assets/projects/behance/volvo-selekt/01-flyer-v40-congresso.png',
+            labelEn: '02 · Front Option 1 (V40 · National Congress)',
+            labelPt: '02 · Frente Opção 1 (V40 · Congresso)'
+          },
+          {
+            src: 'assets/projects/behance/volvo-selekt/02-flyer-xc40-museu.webp',
+            labelEn: '03 · Front Option 2 (XC40 · National Museum)',
+            labelPt: '03 · Frente Opção 2 (XC40 · Museu Nacional)'
+          },
+          {
+            src: 'assets/projects/behance/volvo-selekt/03-flyer-verso.webp',
+            labelEn: '04 · Flyer Back (Approved Used Cars)',
+            labelPt: '04 · Verso (Approved Used Cars)'
+          }
+        ],
         coverStyle: 'volvo-selekt',
         tools: ['Adobe Photoshop', 'Adobe InDesign', 'Print Flyer'],
         en: {
@@ -594,7 +681,39 @@
         category: 'editorial',
         year: '2015',
         behanceUrl: 'https://www.behance.net/gallery/28966701/Informes-Publicitarios-CAUBR',
-        image: '',
+        image: 'assets/projects/behance/caubr-editorial/01-eleicoes-caubr.jpg',
+        gallery: [
+          {
+            src: 'assets/projects/behance/caubr-editorial/01-eleicoes-caubr.jpg',
+            labelEn: '01 · CAU Elections Print Ad',
+            labelPt: '01 · Informe Eleições CAU'
+          },
+          {
+            src: 'assets/projects/behance/caubr-editorial/02-dia-arquiteto.webp',
+            labelEn: '02 · Architect & Urbanist Day',
+            labelPt: '02 · Dia do Arquiteto e Urbanista'
+          },
+          {
+            src: 'assets/projects/behance/caubr-editorial/03-seminario-legislativo.webp',
+            labelEn: '03 · III Legislative Seminar',
+            labelPt: '03 · III Seminário Legislativo'
+          },
+          {
+            src: 'assets/projects/behance/caubr-editorial/04-projeto-arquitetonico.webp',
+            labelEn: '04 · Architectural Project Resolution',
+            labelPt: '04 · Projeto Arquitetônico (Res. 51)'
+          },
+          {
+            src: 'assets/projects/behance/caubr-editorial/05-rrt-museu-rodin.webp',
+            labelEn: '05 · RRT Institutional Report',
+            labelPt: '05 · Informe Institucional RRT'
+          },
+          {
+            src: 'assets/projects/behance/caubr-editorial/06-rrt-paraty.webp',
+            labelEn: '06 · Updated RRT Guidelines (FLIP)',
+            labelPt: '06 · Novas Regras de RRT (FLIP)'
+          }
+        ],
         coverStyle: 'caubr-editorial',
         tools: ['Adobe InDesign', 'Editorial Layout'],
         en: {

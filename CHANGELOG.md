@@ -6,6 +6,20 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.3] - 2026-11-24
+
+**Git Tag:** `v0.9.3` · **Archive:** [`./Versions/v0.9.3/`](./Versions/v0.9.3/VERSION_INFO.md)
+
+### Changed
+- **Full 9-Project Behance Galleries (`assets/projects/behance/`, `js/data/projects.js`):**
+  - Pulled high-resolution Behance artwork across projects `03`–`09`: **03 GDF — UnDF**, **04 GDF — Secretaria de Economia**, **05 GDF — Clube de Desconto**, **06 GDF — Fábrica Social**, **07 Champion Volvo — Novo XC60**, **08 Champion Volvo — Brasília Design**, and **09 CAU/BR — Informes Publicitários**.
+  - Wired multi-image modal galleries (`gallery` arrays) across every remaining project so all `01`–`09` case studies feature real Behance imagery.
+- **Branding Stationery & Print Campaign Mockups (`assets/projects/*-mockup.png`, `js/data/projects.js`):**
+  - Generated bespoke 16:9 dark-slate studio **stationery suite mockups** for all four branding identities (`gdf-undf-mockup.png`, `gdf-economia-mockup.png`, `gdf-clube-mockup.png`, `gdf-fabrica-mockup.png`) and **campaign/print mockups** for `volvo-xc60-mockup.png` and `volvo-selekt-mockup.png` (with `09 CAU/BR` displaying its pulled print ad cover).
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.3`.
+
+---
+
 ## [0.9.2] - 2026-11-24
 
 **Git Tag:** `v0.9.2` · **Archive:** [`./Versions/v0.9.2/`](./Versions/v0.9.2/VERSION_INFO.md)
