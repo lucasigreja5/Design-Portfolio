@@ -1204,7 +1204,7 @@
 
 .closing-cta-sep {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(1.5rem, 3vw, 2.75rem);
   line-height: 1.15;
   color: var(--text-dim);
