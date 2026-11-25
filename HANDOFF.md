@@ -60,6 +60,8 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`assets/discipline-direction.png`](./assets/discipline-direction.png) | `2752×1536` chiaroscuro light-beam background (`03 ART DIRECTION`) |
 | [`assets/hero-ambient.png`](./assets/hero-ambient.png) | Original Figma ambient curve artwork (`146,551` bytes, kept for reference) |
 | [`assets/projects/README.md`](./assets/projects/README.md) | Instructions for swapping bespoke covers with high-res Behance/Figma PNG/WebP exports |
+| [`assets/projects/*-mockup.png`](./assets/projects/) | Bespoke 16:9 3D device, stationery suite (`03–06`), and campaign print (`07–08`) studio mockups |
+| [`assets/projects/behance/`](./assets/projects/behance/) | Pulled full-resolution Behance gallery images & live demo capture across projects `01`–`09` |
 | [`scripts/release-version.sh`](./scripts/release-version.sh) | Archives a new immutable `Versions/vX.Y/` snapshot and updates `VERSION` |
 | [`scripts/serve.ps1`](./scripts/serve.ps1) | Zero-dependency Windows PowerShell static HTTP server (`localhost:4173`) |
 | [`scripts/serve.sh`](./scripts/serve.sh) | Portable macOS/Linux static HTTP server script |
@@ -78,6 +80,8 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 3. **Never Reintroduce Temporary Figma Asset URLs:** Always store images locally in `assets/`. Temporary `figma.com/api/mcp/asset/...` URLs expire after 7 days.
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
 5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
+6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-fabrica` and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`07`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
+7. **Secrets & Environment Files:** Keep local `.env` and `.env.local` git-ignored (never committed or included in handoff archives).
 
 ---
 
@@ -89,7 +93,8 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 
 ## Suggested Phase 3 Next Steps
 
-1. **Swap Real Project Imagery:** Export high-res `16:10` covers (`1600×1000` WebP) for each of the 9 Behance galleries into `assets/projects/` and populate `image` in [`js/data/projects.js`](./js/data/projects.js).
-2. **Custom Domain, Favicon & Social OG Image:** Add an SVG/PNG favicon and `og:image` meta tag inside [`index.html`](./index.html).
-3. **Deploy Statically:** Push this folder as a repository to GitHub Pages, Netlify, Vercel, or Cloudflare Pages—no build command needed (publish root `.`).
-4. **Optional Contact Form:** Wire a lightweight form service (Formspree, Web3Forms, or Netlify Forms) inside the Closing CTA or a contact drawer if you want direct form submissions alongside `mailto:` and WhatsApp.
+1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.3`):** All 9 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`06`), and campaign print (`07`–`08`) mockups (`gdf-fabrica` and `caubr-editorial` toggled `visible: false` with full assets preserved).
+2. **Optional `09 CAU/BR` Editorial Magazine Mockup:** If restoring `caubr-editorial` (`visible: true`), optionally swap `01-eleicoes-caubr.jpg` with a custom open-magazine spread mockup.
+3. **Custom Domain, Favicon & Social OG Image:** Add an SVG/PNG favicon and `og:image` meta tag inside [`index.html`](./index.html).
+4. **Deploy Statically:** Push via **GitHub Desktop** to `https://github.com/lucasigreja5/Design-Portfolio.git` and host on GitHub Pages, Netlify, Vercel, or Cloudflare Pages—no build command needed (publish root `.`).
+5. **Optional Contact Form:** Wire a lightweight form service (Formspree, Web3Forms, or Netlify Forms) inside the Closing CTA or a contact drawer alongside `mailto:` and WhatsApp.

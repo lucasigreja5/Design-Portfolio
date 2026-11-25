@@ -1,8 +1,8 @@
 # Conversation History & Design Decisions Log
 
 > **Project:** Lucas Igreja — Graphic Design & UI/UX Portfolio  
-> **Timeframe:** 2026-11-17 to 2026-11-19  
-> **Machine-Readable Log:** [`docs/history/conversation_log.json`](./history/conversation_log.json) (92 sanitized user & assistant turns)
+> **Timeframe:** 2026-11-17 to 2026-11-24  
+> **Machine-Readable Log:** [`docs/history/conversation_log.json`](./history/conversation_log.json) (461 sanitized user & assistant turns)
 
 This document preserves the full chronological context, audits, user feedback, and architectural decisions that shaped the portfolio so work can resume seamlessly on any machine.
 
@@ -115,4 +115,31 @@ This document preserves the full chronological context, audits, user feedback, a
 ### `v0.8.1` — Mobile Stacked 2-Line Card Captions
 - Under `@media (max-width: 767px)`, stacked `.project-caption-bar` vertically (`flex-direction: column; align-items: flex-start; gap: 4px;`) so `.project-caption-title` spans full card width on a single line with `...` ellipsis truncation, while `.project-caption-meta` (`year · discipline`) sits cleanly on the second line below.
 - Verified on Desktop (`1440×900`), Tablet (`820×1180`), and Mobile (`390×844`) with zero horizontal overflow and zero console errors.
+
+---
+
+## Session 6 (2026-11-24) — `v0.8.2` → `v0.9` → `v0.9.1` → `v0.9.2` → `v0.9.3` (Full Behance Galleries, Mockups & Project Toggle)
+
+### `v0.8.2` — Disciplines Unselected Label Readability
+- Elevated contrast of unselected `.discipline-tab .word-primary` (`0.56`) and `.word-secondary` (`0.34`), deepened `.disciplines-scrim` (`0.90` -> `0.56` -> `0.84`), and added subtle dark `text-shadow` over all 3 full-bleed PNG layers in `css/components.css`.
+
+### `v0.9` — 2-Project Behance Pilot, 3D Mockups & Interactive Modal Gallery
+- Extracted high-resolution Behance UI imagery for **01 Sonar BSB** (`6` screens + live web app screen `06-live-demo-modal.png` captured from `https://lucasigreja5.github.io/Sonar-BSB/`) and **02 Olivia's Coffee Beans** (`6` desktop/mobile screens + linked Figma prototype URL).
+- Integrated Lucas's pixel-faithful Gemini Web 3D studio product mockups (`assets/projects/sonar-bsb-mockup.png`, `assets/projects/olivias-coffee-mockup.png`) as card covers and modal slide `01`.
+- Built the modal gallery stage (`.modal-hero-showcase`, `.modal-hero-stage` with `object-fit: contain`), sharp `0px` `.modal-gallery-strip` thumbnails with `#D4FF00` active border, and bilingual demo/prototype CTAs (`OPEN LIVE DEMO` / `OPEN FIGMA PROTOTYPE`).
+
+### `v0.9.1` — Modal Gallery Chevrons & Streamlined Tools Column
+- Added borderless `44×44 px` (desktop) / `38×38 px` (mobile) overlay chevron buttons (`#modalGalleryPrevBtn`, `#modalGalleryNextBtn`) inside `.modal-hero-stage` synced bidirectionally with the thumbnail strip.
+- Removed `.modal-gallery-bar` (caption/counter) and the `VIEW FULL GALLERY ON BEHANCE` CTA row; relocated `OPEN LIVE DEMO` / `OPEN FIGMA PROTOTYPE` (without `↗`) directly under `.modal-tools-list` in `.modal-tools-col` matched in typography/size (`var(--text-h3)`) and hover behavior to the header `EN / PT` toggle.
+
+### `v0.9.2` — Modal Project vs. Gallery Navigation Disambiguation (`/grill-me`)
+- **Explicit Project Stepper:** Relabeled desktop header buttons to **`PREV PROJECT / NEXT PROJECT`** (`EN`) and **`PROJETO ANT. / PRÓX. PROJETO`** (`PT`) with ellipsis protection on `.modal-title`; replaced bare mobile arrows (`<= 767px`) with an inline monospaced `01/09` counter (`.modal-step-mobile-count`).
+- **Quiet Chevrons & Touch Swipe:** Kept desktop gallery chevrons subtle (`opacity: 0.28` fading to `1` on hover/focus under `@media (hover: hover)`) and visible (`opacity: 0.85`) with horizontal touch-swipe (`>= 40px`) on touch screens.
+- **Conflict-Free Keyboard Shortcuts:** Routed `ArrowLeft` / `ArrowRight` to image slides on multi-image galleries (`Shift + ArrowLeft/Right` switches projects), preserving direct `ArrowLeft` / `ArrowRight` project navigation on single-cover items.
+
+### `v0.9.3` — Full Behance Pull (`03`–`09`), Stationery/Print Mockups & Visibility Toggle
+- Pulled high-resolution Behance artwork across projects `03`–`09` (`assets/projects/behance/`), generated studio stationery suites for all 4 Branding projects (`gdf-undf-mockup.png`, `gdf-economia-mockup.png`, `gdf-clube-mockup.png`, `gdf-fabrica-mockup.png`) plus print campaign mockups for `volvo-xc60-mockup.png` and `volvo-selekt-mockup.png`, and wired full `gallery` arrays for all 9 projects.
+- Added non-destructive per-project `visible` flag (`visible !== false`) in `js/data/projects.js` and dynamic sequential indexing (`getVisibleProjects()`, `01`–`07`) in `js/components/portfolio.js`, toggling `gdf-fabrica` and `caubr-editorial` off (`visible: false`) while preserving all local assets and gallery configurations intact.
+- Verified Desktop (`1440×900`) & Mobile (`390×844`) live at `http://localhost:4173/` (`0` console/page/HTTP errors, `0` horizontal overflow), archived immutable `Versions/v0.9.3/`, and tagged `v0.9.3`.
+
 
