@@ -1185,6 +1185,31 @@
   gap: var(--space-4);
 }
 
+.closing-cta-link {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  line-height: 1.15;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color var(--duration-micro) var(--ease-snappy),
+              transform var(--duration-ui) var(--ease-editorial);
+}
+
+.closing-cta-link:hover,
+.closing-cta-link:focus-visible {
+  color: var(--accent-lime);
+  transform: translateX(5px);
+  outline: none;
+}
+
 .site-footer {
   border-top: 1px solid var(--border-subtle);
   padding-block: var(--space-8);

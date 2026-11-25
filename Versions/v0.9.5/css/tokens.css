@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Lucas Igreja Portfolio — Design System Tokens v2.0
+   Stark Monochrome Architecture + One Surgical Accent (#D4FF00)
+   Matches design.md v2.0 1:1 | Ready for Figma Variables & Phase 2
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. COLOR TOKENS
+     ------------------------------------------------------------------------ */
+  /* Surfaces (Stark Monochrome Dark) */
+  --bg-canvas: #000000;
+  --bg-surface: #0E0E0E;
+  --bg-elevated: #141414;
+  --bg-glass: rgba(0, 0, 0, 0.80);
+  --grid-line: rgba(255, 255, 255, 0.04);
+
+  /* Borders & Hairlines */
+  --border-subtle: #282828;
+  --border-strong: #4A4A4A;
+  --border-inverse: rgba(255, 255, 255, 0.35);
+  --border-focus: #D4FF00;
+
+  /* Ink / Typography */
+  --text-primary: #FFFFFF;      /* Pure White */
+  --text-secondary: #8A8A8A;    /* Muted Mid-Gray */
+  --text-muted: #5C5C5C;        /* Subtle Gray Metadata */
+  --text-dim: #2E2E2E;          /* Inactive Oversized Discipline Headings */
+  --text-inverse: #000000;      /* Inside White Pill CTAs & Selection */
+
+  /* Single Surgical Accent (Digital Energy / Sonar BSB) */
+  --accent-lime: #D4FF00;
+  --accent-lime-dim: rgba(212, 255, 0, 0.12);
+
+  /* Primary CTA Tokens */
+  --cta-bg: #FFFFFF;
+  --cta-text: #000000;
+
+  /* ------------------------------------------------------------------------
+     2. TYPOGRAPHY TOKENS
+     ------------------------------------------------------------------------ */
+  --font-display: 'Clash Display', 'Syne', -apple-system, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Fluid Type Scale */
+  --text-hero: clamp(2.5rem, 8.5vw, 8.25rem);        /* 40px -> 132px */
+  --text-display: clamp(2.5rem, 6.5vw, 6rem);       /* 40px -> 96px */
+  --text-h1: clamp(2.25rem, 4.5vw, 4rem);           /* 36px -> 64px */
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);          /* 28px -> 44px */
+  --text-h3: clamp(1.25rem, 1.8vw, 1.625rem);       /* 20px -> 26px */
+  --text-body-lg: clamp(1.0625rem, 1.2vw, 1.25rem); /* 17px -> 20px */
+  --text-body: 1rem;                                /* 16px */
+  --text-sm: 0.875rem;                              /* 14px */
+  --text-meta: 0.75rem;                             /* 12px */
+
+  /* Line Heights & Tracking */
+  --leading-hero: 0.86;
+  --leading-display: 0.96;
+  --leading-heading: 1.08;
+  --leading-body: 1.6;
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-mono: 0.08em;
+
+  /* ------------------------------------------------------------------------
+     3. SPACING & LAYOUT TOKENS (4px / 8px Rhythm)
+     ------------------------------------------------------------------------ */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+  /* Grid & Container */
+  --container-max: 1360px;
+  --container-pad: clamp(1.25rem, 3.5vw, 2.5rem);
+  --grid-gutter: 1.5rem; /* 24px */
+  --nav-height: 84px;
+
+  /* ------------------------------------------------------------------------
+     4. SHARP ARCHITECTURAL GEOMETRY (0px Media vs Pill CTAs)
+     ------------------------------------------------------------------------ */
+  --radius-sharp: 0px;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+
+  --shadow-none: none;
+  --shadow-glow-lime: 0 0 28px rgba(212, 255, 0, 0.16);
+
+  /* ------------------------------------------------------------------------
+     5. MOTION TOKENS (Kinetic Editorial)
+     ------------------------------------------------------------------------ */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-roll: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --duration-micro: 180ms;
+  --duration-roll: 360ms;
+  --duration-ui: 420ms;
+  --duration-reveal: 800ms;
+
+  /* Z-Index Scale */
+  --z-canvas: 0;
+  --z-base: 1;
+  --z-sticky: 40;
+  --z-modal: 80;
+  --z-cursor: 100;
+  --z-toast: 120;
+}

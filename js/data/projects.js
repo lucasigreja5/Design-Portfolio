@@ -61,7 +61,7 @@
         },
         cta: {
           heading: "HAVE A PROJECT IN MIND? LET'S DESIGN SOMETHING SHARP TOGETHER.",
-          primaryBtn: "LET'S WORK TOGETHER",
+          primaryBtn: 'GET IN CONTACT',
           copyEmail: 'COPY EMAIL · lucas.igreja@gmail.com'
         },
         footer: {
@@ -159,7 +159,7 @@
         },
         cta: {
           heading: 'TEM UM PROJETO EM MENTE? VAMOS CRIAR ALGO MARCANTE JUNTOS.',
-          primaryBtn: 'VAMOS CONVERSAR',
+          primaryBtn: 'ENTRAR EM CONTATO',
           copyEmail: 'COPIAR E-MAIL · lucas.igreja@gmail.com'
         },
         footer: {

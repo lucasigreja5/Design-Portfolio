@@ -6,6 +6,18 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.5] - 2026-11-25
+
+**Git Tag:** `v0.9.5` · **Archive:** [`./Versions/v0.9.5/`](./Versions/v0.9.5/VERSION_INFO.md)
+
+### Changed
+- **Contact CTA Style & Copy (`index.html`, `css/components.css`, `js/data/projects.js`):**
+  - Replaced the white pill `LET'S WORK TOGETHER` button (`.btn-pill-cta`) in `#contact` with `.closing-cta-link`, matching the borderless, transparent, `#D4FF00` hover/shift style of `.modal-demo-link` from project popups at a scaled-up display size (`clamp(1.5rem, 3vw, 2.75rem)`).
+  - Updated the closing CTA text to **`GET IN CONTACT`** (`EN`) and **`ENTRAR EM CONTATO`** (`PT`) while keeping the `mailto:lucas.igreja@gmail.com` link intact.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.5`.
+
+---
+
 ## [0.9.4] - 2026-11-24
 
 **Git Tag:** `v0.9.4` · **Archive:** [`./Versions/v0.9.4/`](./Versions/v0.9.4/VERSION_INFO.md)
