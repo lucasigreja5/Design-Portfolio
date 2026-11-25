@@ -4,7 +4,7 @@
 - **Archived Date:** 2026-11-25
 - **Git Tag:** `v0.9.5`
 - **Base Commit:** `6bb7f20`
-- **Summary:** Contact section typographic 'Get in Contact' CTA styled after modal demo link
+- **Summary:** Contact EMAIL / BEHANCE / LINKEDIN typographic row and centered single-line copyright footer
 
 ## Local Preview
 

@@ -11,9 +11,10 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 **Git Tag:** `v0.9.5` · **Archive:** [`./Versions/v0.9.5/`](./Versions/v0.9.5/VERSION_INFO.md)
 
 ### Changed
-- **Contact CTA Style & Copy (`index.html`, `css/components.css`, `js/data/projects.js`):**
-  - Replaced the white pill `LET'S WORK TOGETHER` button (`.btn-pill-cta`) in `#contact` with `.closing-cta-link`, matching the borderless, transparent, `#D4FF00` hover/shift style of `.modal-demo-link` from project popups at a scaled-up display size (`clamp(1.5rem, 3vw, 2.75rem)`).
-  - Updated the closing CTA text to **`GET IN CONTACT`** (`EN`) and **`ENTRAR EM CONTATO`** (`PT`) while keeping the `mailto:lucas.igreja@gmail.com` link intact.
+- **Contact Links Row & Centered Minimal Footer (`index.html`, `css/components.css`):**
+  - Replaced the single `#contact` CTA button with a centered horizontal **`EMAIL / BEHANCE / LINKEDIN`** row (`E-MAIL / BEHANCE / LINKEDIN` in `PT`) separated by muted `/` dividers (`.closing-cta-sep`), styled in scaled-up `Clash Display` (`clamp(1.5rem, 3vw, 2.75rem)`) with `#D4FF00` hover spotlight and `0.4` sibling dimming with zero horizontal shift.
+  - Stacked the 3 links vertically centered below `768px` (with `/` dividers hidden) for clean `>= 44px` mobile tap targets.
+  - Removed `ul.footer-list` from `<footer>` so contact links live solely in `#contact`, and centered the remaining single-line copyright notice (`.footer-bar`) across desktop and mobile.
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.5`.
 
 ---
