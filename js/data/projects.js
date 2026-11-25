@@ -41,9 +41,9 @@
         projects: {
           heading: 'PROJECTS',
           filters: {
-            all: 'ALL (09)',
+            all: 'ALL (10)',
             uiux: 'UI/UX (02)',
-            branding: 'BRANDING (04)',
+            branding: 'BRANDING (05)',
             editorial: 'EDITORIAL & OOH (03)'
           },
           viewCase: 'VIEW CASE',
@@ -139,9 +139,9 @@
         projects: {
           heading: 'PROJETOS',
           filters: {
-            all: 'TODOS (09)',
+            all: 'TODOS (10)',
             uiux: 'UI/UX (02)',
-            branding: 'MARCAS (04)',
+            branding: 'MARCAS (05)',
             editorial: 'EDITORIAL & OOH (03)'
           },
           viewCase: 'VER CASE',
@@ -213,7 +213,7 @@
       }
     },
 
-    /* All 9 Real Behance Projects (Newest -> Oldest; set visible: false to hide without deleting assets) */
+    /* All 10 Real Behance Projects (Newest -> Oldest; set visible: false to hide without deleting assets) */
     projects: [
       {
         id: 'sonar-bsb',
@@ -375,9 +375,58 @@
         }
       },
       {
-        id: 'gdf-undf',
+        id: 'gdf-cic',
         visible: true,
         index: '03',
+        category: 'branding',
+        year: '2022',
+        behanceUrl: 'https://www.behance.net/gallery/258989415/GDF-Logomarca-Capital-Ibero-Americana-das-Culturas',
+        image: 'assets/projects/gdf-cic-mockup.png',
+        gallery: [
+          {
+            src: 'assets/projects/gdf-cic-mockup.png',
+            labelEn: '01 · Stationery Suite Mockup',
+            labelPt: '01 · Mockup de Papelaria'
+          },
+          {
+            src: 'assets/projects/behance/gdf-cic/01-brand-board.png',
+            labelEn: '02 · Identity Presentation Board',
+            labelPt: '02 · Prancha de Identidade'
+          }
+        ],
+        coverStyle: 'gdf-cic',
+        tools: ['Adobe Illustrator', 'Brand Strategy', 'Typography'],
+        en: {
+          title: 'GDF — CAPITAL IBERO-AMERICANA DAS CULTURAS',
+          subtitle: 'Ibero-American Capital of Cultures (CIC 2022) Identity',
+          categoryLabel: 'BRAND IDENTITY',
+          era: '2019–2022 · BRAND SYSTEMS',
+          role: 'Art Director (GDF / SECOM)',
+          context:
+            'Created for Brasília’s 2022 tenure as the UCCI Ibero-American Capital of Cultures (CIC 2022), coordinated by the Secretariat of Culture and Creative Economy, the Office of International Affairs, and the GDF Curatorial Committee.',
+          approach:
+            'Paired the bold BSB 2022 typographic block with a modular geometric tile band inspired by Athos Bulcão’s panels, rendered in a contemporary blue-and-white palette aligned with the capital’s architectural heritage.',
+          outcome:
+            'Selected as the winning official emblem across horizontal, stacked, positive, and negative lockups for cultural programming and international institutional communications.'
+        },
+        pt: {
+          title: 'GDF — CAPITAL IBERO-AMERICANA DAS CULTURAS',
+          subtitle: 'Identidade da Capital Ibero-Americana das Culturas (CIC 2022)',
+          categoryLabel: 'IDENTIDADE VISUAL',
+          era: '2019–2022 · SISTEMAS DE MARCA',
+          role: 'Diretor de Arte (GDF / SECOM)',
+          context:
+            'Criada para o título de Brasília como Capital Ibero-Americana das Culturas 2022 (UCCI / CIC 2022), sob coordenação da Secretaria de Cultura e Economia Criativa, Escritório de Assuntos Internacionais e Comitê Curatorial do GDF.',
+          approach:
+            'Combinou a sigla BSB associada ao ano 2022 a uma faixa modular geométrica inspirada nos painéis de Athos Bulcão, com tipografia moderna e paleta em azul e branco conectada à arquitetura da capital.',
+          outcome:
+            'Escolhida como marca oficial vencedora em versões horizontal, vertical, positiva e negativa para a programação cultural e comunicação institucional internacional.'
+        }
+      },
+      {
+        id: 'gdf-undf',
+        visible: true,
+        index: '04',
         category: 'branding',
         year: '2021',
         behanceUrl: 'https://www.behance.net/gallery/126763223/GDF-Logomarca-Universidade-do-Distrito-Federal-UnDF',
@@ -426,7 +475,7 @@
       {
         id: 'gdf-economia',
         visible: true,
-        index: '04',
+        index: '05',
         category: 'branding',
         year: '2021',
         behanceUrl: 'https://www.behance.net/gallery/116386429/GDF-Marca-Secretaria-de-Economia',
@@ -475,7 +524,7 @@
       {
         id: 'gdf-clube',
         visible: true,
-        index: '05',
+        index: '06',
         category: 'branding',
         year: '2020',
         behanceUrl: 'https://www.behance.net/gallery/116385123/GDF-Clube-de-Desconto-do-Servidor',
@@ -529,7 +578,7 @@
       {
         id: 'gdf-fabrica',
         visible: false,
-        index: '06',
+        index: '07',
         category: 'branding',
         year: '2020',
         behanceUrl: 'https://www.behance.net/gallery/116382357/GDF-Nova-Marca-para-a-Fabrica-Social',
@@ -578,7 +627,7 @@
       {
         id: 'volvo-xc60',
         visible: true,
-        index: '07',
+        index: '08',
         category: 'editorial',
         year: '2018',
         behanceUrl: 'https://www.behance.net/gallery/116386015/Champion-Volvo-Novo-XC60',
@@ -627,7 +676,7 @@
       {
         id: 'volvo-selekt',
         visible: true,
-        index: '08',
+        index: '09',
         category: 'editorial',
         year: '2018',
         behanceUrl: 'https://www.behance.net/gallery/116384255/Champion-Volvo-Brasilia-Design',
@@ -686,7 +735,7 @@
       {
         id: 'caubr-editorial',
         visible: false,
-        index: '09',
+        index: '10',
         category: 'editorial',
         year: '2015',
         behanceUrl: 'https://www.behance.net/gallery/28966701/Informes-Publicitarios-CAUBR',

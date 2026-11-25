@@ -8,6 +8,7 @@
   let currentProjectCount = 9;
   let lastActiveIdx = -1;
   let numAnim = null;
+  let refreshNavSpyFn = null;
 
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -250,15 +251,82 @@
     });
   }
 
+  function initNavScrollSpy() {
+    const sectionIds = ['about', 'projects', 'career', 'contact'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const navLinks = Array.from(
+      document.querySelectorAll('.nav-link[href^="#"], .mobile-drawer-link[href^="#"]')
+    );
+    if (!sections.length || !navLinks.length) return;
+
+    const header = document.querySelector('.site-header');
+    let currentActiveId = undefined;
+
+    const updateActiveNav = () => {
+      const docEl = document.documentElement;
+      const atBottom =
+        window.innerHeight + window.scrollY >= docEl.scrollHeight - 24;
+
+      let activeId = null;
+      if (atBottom) {
+        activeId = 'contact';
+      } else {
+        const headerH = header ? header.offsetHeight : 84;
+        const refY = headerH + window.innerHeight * 0.28;
+        for (let i = 0; i < sections.length; i += 1) {
+          if (sections[i].getBoundingClientRect().top <= refY) {
+            activeId = sections[i].id;
+          }
+        }
+      }
+
+      if (activeId === currentActiveId) return;
+      currentActiveId = activeId;
+
+      navLinks.forEach((link) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const isCurrent = Boolean(activeId && targetId === activeId);
+        link.classList.toggle('is-active', isCurrent);
+        if (isCurrent) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    let rafId = 0;
+    const scheduleNavUpdate = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateActiveNav();
+      });
+    };
+
+    refreshNavSpyFn = () => {
+      currentActiveId = undefined;
+      updateActiveNav();
+    };
+
+    window.addEventListener('scroll', scheduleNavUpdate, { passive: true });
+    window.addEventListener('resize', scheduleNavUpdate, { passive: true });
+    updateActiveNav();
+  }
+
   function init() {
     initCursor();
     initHeroTilt();
     initGSAPMotion();
     refreshSticky();
+    initNavScrollSpy();
   }
 
   global.PortfolioMotion = {
     init,
-    refreshSticky
+    refreshSticky,
+    refreshNavSpy: () => refreshNavSpyFn && refreshNavSpyFn()
   };
 })(window);

@@ -6,6 +6,24 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.4] - 2026-11-24
+
+**Git Tag:** `v0.9.4` · **Archive:** [`./Versions/v0.9.4/`](./Versions/v0.9.4/VERSION_INFO.md)
+
+### Added
+- **New Project `03` — GDF — Capital Ibero-Americana das Culturas (`js/data/projects.js`, `assets/projects/behance/gdf-cic/`, `assets/projects/gdf-cic-mockup.png`):**
+  - Pulled high-resolution Behance artwork (`01-brand-board.png`) from [Behance gallery `258989415`](https://www.behance.net/gallery/258989415/GDF-Logomarca-Capital-Ibero-Americana-das-Culturas).
+  - Generated matching 16:9 dark-slate studio **stationery suite mockup** (`gdf-cic-mockup.png`) featuring the `BSB 2022` / Athos Bulcão modular identity across folder, letterhead, envelope, embossed notebook, and business cards.
+  - Added full bilingual (`EN / PT`) case-study copy, 2-slide modal gallery, and updated catalog numbering (`01`–`10`, with `01`–`08` active visible) and filter counts (`ALL (10)` / `BRANDING (05)`).
+
+### Changed
+- **Discipline-Only Project Subtitles (`js/components/portfolio.js`):** Removed the creation year from `.project-caption-meta` on project cards so subtitles display strictly the discipline label.
+- **Single-Line Desktop Project Captions (`css/components.css`, `js/components/portfolio.js`):** Set `.project-caption-bar` to `flex-wrap: nowrap`, kept `.project-caption-meta` unshrunk (`flex-shrink: 0`), and applied `text-overflow: ellipsis` truncation on `.project-caption-title` so numbered titles and discipline subtitles stay on the same single line on desktop while preserving the 2-line stacked mobile layout (`<= 767px`).
+- **Active Section Lime Highlight in Top Nav (`css/components.css`, `js/motion/animations.js`, `js/components/portfolio.js`):** Added `.nav-link.is-active` / `.mobile-drawer-link.is-active` (`#D4FF00`) driven by `initNavScrollSpy()` in `PortfolioMotion`, highlighting whichever section (`ABOUT`, `PROJECTS`, `CAREER`, `CONTACT`) is currently in view (with no link highlighted at the Hero).
+- **Cache Busting & Counter (`index.html`):** Updated stylesheet/script query strings to `?v=0.9.4` and `#stickyCounterTotal` initial label to `/ 08`.
+
+---
+
 ## [0.9.3] - 2026-11-24
 
 **Git Tag:** `v0.9.3` · **Archive:** [`./Versions/v0.9.3/`](./Versions/v0.9.3/VERSION_INFO.md)

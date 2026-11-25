@@ -142,4 +142,18 @@ This document preserves the full chronological context, audits, user feedback, a
 - Added non-destructive per-project `visible` flag (`visible !== false`) in `js/data/projects.js` and dynamic sequential indexing (`getVisibleProjects()`, `01`–`07`) in `js/components/portfolio.js`, toggling `gdf-fabrica` and `caubr-editorial` off (`visible: false`) while preserving all local assets and gallery configurations intact.
 - Verified Desktop (`1440×900`) & Mobile (`390×844`) live at `http://localhost:4173/` (`0` console/page/HTTP errors, `0` horizontal overflow), archived immutable `Versions/v0.9.3/`, and tagged `v0.9.3`.
 
+---
+
+## Session 7 (2026-11-24 Night, macOS) — Handoff Resume & `v0.9.4`
+
+### Cross-Machine Handoff Restore
+- Restored the `v0.9.3` repository into `/Users/lucas/Documents/Antigravity/DesignPortfolio`, verified `git` (`2.54.0`) + Google Drive (`gdrive`) + Figma plugins, and launched the local `localhost:4173` preview server.
+
+### `v0.9.4` — Discipline-Only Subtitles, Single-Line Desktop Captions, GDF CIC 2022 & Active Nav Highlight
+- **Discipline-Only Project Subtitles (`js/components/portfolio.js`):** Removed the creation year from `.project-caption-meta` so project cards display strictly the discipline label.
+- **Single-Line Desktop Project Titles (`css/components.css`, `js/components/portfolio.js`):** Updated `.project-caption-bar` (`flex-wrap: nowrap`), `.project-caption-meta` (`flex-shrink: 0`), and `.project-caption-title` (`text-overflow: ellipsis`) so numbered titles fit cleanly on the same line as the discipline subtitle on desktop while keeping the 2-line stacked layout on mobile (`<= 767px`).
+- **New Project `03` — GDF — Capital Ibero-Americana das Culturas (`js/data/projects.js`, `assets/projects/behance/gdf-cic/`, `assets/projects/gdf-cic-mockup.png`):** Pulled `01-brand-board.png` from Behance (`258989415`), generated a matching 16:9 dark-slate stationery suite mockup (`gdf-cic-mockup.png`), and added full bilingual copy + 2-slide modal gallery (`01`–`08` active visible projects).
+- **Active Section Lime Nav Highlight (`css/components.css`, `js/motion/animations.js`, `js/components/portfolio.js`):** Added `initNavScrollSpy()` and `.nav-link.is-active` / `.mobile-drawer-link.is-active` (`#D4FF00`) to highlight the currently viewed section (`ABOUT`, `PROJECTS`, `CAREER`, `CONTACT`) in the top nav bar.
+- Verified Desktop (`1440×900`) & Mobile (`390×844`) live at `http://localhost:4173/` (`0` console/page/HTTP errors, `0` horizontal overflow), archived immutable `Versions/v0.9.4/`, and tagged `v0.9.4`.
+
 

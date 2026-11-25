@@ -79,6 +79,19 @@
             </div>
           </div>`;
 
+      case 'gdf-cic':
+        return `
+          <div class="art-canvas art-gdf-cic">
+            <div>
+              <span class="art-badge-mono" style="color: #93C5FD;">GDF / SECOM · 2022</span>
+              <div class="art-headline">BSB 2022<br/>CIC CULTURAS</div>
+              <p class="art-subcopy">${loc.subtitle}</p>
+            </div>
+            <div class="art-emblem-card" aria-hidden="true">
+              <div class="font-display" style="color: #14234B; font-size: 1.5rem; line-height: 0.95; text-align: center;">BSB<br/>2022</div>
+            </div>
+          </div>`;
+
       case 'gdf-undf':
         return `
           <div class="art-canvas art-gdf-undf">
@@ -238,8 +251,8 @@
             </div>
           </div>
           <div class="project-caption-bar">
-            <h3 class="project-caption-title">${displayNum} / ${loc.title}</h3>
-            <span class="project-caption-meta">${proj.year} · ${loc.categoryLabel}</span>
+            <h3 class="project-caption-title" title="${displayNum} / ${loc.title}">${displayNum} / ${loc.title}</h3>
+            <span class="project-caption-meta">${loc.categoryLabel}</span>
           </div>
         </button>
       `;
@@ -316,6 +329,9 @@
     renderCareer();
     if (global.ScrollTrigger && typeof global.ScrollTrigger.refresh === 'function') {
       global.ScrollTrigger.refresh();
+    }
+    if (global.PortfolioMotion && typeof global.PortfolioMotion.refreshNavSpy === 'function') {
+      global.PortfolioMotion.refreshNavSpy();
     }
   }
 

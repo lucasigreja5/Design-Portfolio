@@ -1,7 +1,7 @@
 # Project Handoff — Lucas Igreja Portfolio
 
 > **Current Status:** **Phase 1 (Design System v2.0)** & **Phase 2 (Full Portfolio from Figma `10:57`)** are **complete and browser-verified**.  
-> **Current Version:** `v0.9.3` (Archived at [`Versions/v0.9.3/`](./Versions/v0.9.3/VERSION_INFO.md) & Git tag `v0.9.3`; prior `v0.9.2`, `v0.9.1`, `v0.9`, `v0.8.2`, `v0.8.1`, `v0.8`, `v0.7.2`, `v0.7.1`, `v0.7`, `v0.6`, `v0.5.1`, `v0.5`, `v0.4.3`, `v0.4.1`, `v0.4`, `v0.3.1`, `v0.3`, `v0.2`, and `v0.1` preserved under [`Versions/`](./Versions/README.md))  
+> **Current Version:** `v0.9.4` (Archived at [`Versions/v0.9.4/`](./Versions/v0.9.4/VERSION_INFO.md) & Git tag `v0.9.4`; prior `v0.9.3`, `v0.9.2`, `v0.9.1`, `v0.9`, `v0.8.2`, `v0.8.1`, `v0.8`, `v0.7.2`, `v0.7.1`, `v0.7`, `v0.6`, `v0.5.1`, `v0.5`, `v0.4.3`, `v0.4.1`, `v0.4`, `v0.3.1`, `v0.3`, `v0.2`, and `v0.1` preserved under [`Versions/`](./Versions/README.md))  
 > **Runtime Requirement:** **Zero build dependencies.** Pure static HTML5 + CSS3 Custom Properties + Vanilla JS (`window.PORTFOLIO_DATA` / `window.PortfolioUI` / `window.PortfolioMotion`) + GSAP CDN with graceful fallback. Works via local HTTP server (`scripts/serve.ps1` / `scripts/serve.sh`), static hosts, or direct `file://`.
 
 ---
@@ -16,7 +16,7 @@ Paste this prompt if you open this repository in a fresh AI conversation on anot
 
 ## Source-of-Truth References
 
-- **Behance Profile:** [`https://www.behance.net/lucasigreja`](https://www.behance.net/lucasigreja) (All 9 public galleries cataloged in [`js/data/projects.js`](./js/data/projects.js))
+- **Behance Profile:** [`https://www.behance.net/lucasigreja`](https://www.behance.net/lucasigreja) (All 10 public galleries cataloged in [`js/data/projects.js`](./js/data/projects.js))
 - **Figma Mockup:** [`Portfolio-Page` (`Desktop - 1`, `node-id=10:57`)](https://www.figma.com/design/RTPAVFPcYYvESGK77dI0XJ/Portfolio-Page?node-id=10-57&t=sjIMgLu0z6p0BB1K-1)
 - **Visual References Audited:**
   - [`https://nextwave-template.webflow.io/home`](https://nextwave-template.webflow.io/home) (Monochrome sharpness, `0px` media corners, white pill CTAs, sticky `01–04` rail, oversized discipline switcher)
@@ -43,16 +43,16 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`index.html`](./index.html) | Main bilingual portfolio page matching Figma `10:57` |
 | [`design-system.html`](./design-system.html) | Interactive Design System v2.0 specimen (color copy, Grid Overlay, motion playground) |
 | [`design.md`](./design.md) | Complete Design System v2.0 specification & Figma checklist |
-| [`VERSION`](./VERSION) | Active project version (`0.9.3`) |
+| [`VERSION`](./VERSION) | Active project version (`0.9.4`) |
 | [`CHANGELOG.md`](./CHANGELOG.md) | Release notes and version history (`0.1`, `0.2`, ...) |
 | [`Versions/`](./Versions/README.md) | Immutable runnable release snapshots (`Versions/v0.1/`, ...) & rollback guide |
 | [`css/tokens.css`](./css/tokens.css) | CSS Custom Properties matching `design.md` v2.0 1:1 |
 | [`css/base.css`](./css/base.css) | Reset, `.font-display`, `.font-mono`, `.micro-grid-bg`, sharp focus & reduced-motion guards |
-| [`css/components.css`](./css/components.css) | Header, Hero, About, sticky `01–09` Projects + bespoke covers, Disciplines band, asymmetric `OTHER`, CTA, Footer |
+| [`css/components.css`](./css/components.css) | Header (with active `#D4FF00` nav spy), Hero, About, sticky `01–08` Projects + bespoke covers, Disciplines band, Career, CTA, Footer |
 | [`css/modal.css`](./css/modal.css) | Sharp `0px` Case-Study Modal & Career Evolution Modal styles |
-| [`js/data/projects.js`](./js/data/projects.js) | Bilingual `copy` (`en`/`pt`), all 9 Behance projects, 3 disciplines, and 6 career evolution milestones |
-| [`js/components/portfolio.js`](./js/components/portfolio.js) | Rendering engine, filters, art-directed covers, modals, live `BRT` clock, `EN / PT` toggle |
-| [`js/motion/animations.js`](./js/motion/animations.js) | GSAP + ScrollTrigger reveals/zoom, sticky rail `IntersectionObserver`, custom desktop cursor |
+| [`js/data/projects.js`](./js/data/projects.js) | Bilingual `copy` (`en`/`pt`), all 10 Behance projects (`01–08` visible), 3 disciplines, and 6 career evolution milestones |
+| [`js/components/portfolio.js`](./js/components/portfolio.js) | Rendering engine, filters, discipline-only captions, modals, live `BRT` clock, `EN / PT` toggle |
+| [`js/motion/animations.js`](./js/motion/animations.js) | GSAP + ScrollTrigger reveals/zoom, carousel rail sync, nav scroll-spy (`initNavScrollSpy`), custom desktop cursor |
 | [`js/main.js`](./js/main.js) | Entry bootstrap, mobile drawer, Back-to-Top scroll |
 | [`assets/hero-banner.png`](./assets/hero-banner.png) | Bespoke `2752×1536` Hero dark UI & brand showcase collage |
 | [`assets/discipline-uiux.png`](./assets/discipline-uiux.png) | `2752×1536` atmospheric wireframe glass background (`01 UI/UX DESIGN`) |
@@ -61,7 +61,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`assets/hero-ambient.png`](./assets/hero-ambient.png) | Original Figma ambient curve artwork (`146,551` bytes, kept for reference) |
 | [`assets/projects/README.md`](./assets/projects/README.md) | Instructions for swapping bespoke covers with high-res Behance/Figma PNG/WebP exports |
 | [`assets/projects/*-mockup.png`](./assets/projects/) | Bespoke 16:9 3D device, stationery suite (`03–06`), and campaign print (`07–08`) studio mockups |
-| [`assets/projects/behance/`](./assets/projects/behance/) | Pulled full-resolution Behance gallery images & live demo capture across projects `01`–`09` |
+| [`assets/projects/behance/`](./assets/projects/behance/) | Pulled full-resolution Behance gallery images & live demo capture across projects `01`–`10` |
 | [`scripts/release-version.sh`](./scripts/release-version.sh) | Archives a new immutable `Versions/vX.Y/` snapshot and updates `VERSION` |
 | [`scripts/serve.ps1`](./scripts/serve.ps1) | Zero-dependency Windows PowerShell static HTTP server (`localhost:4173`) |
 | [`scripts/serve.sh`](./scripts/serve.sh) | Portable macOS/Linux static HTTP server script |
@@ -80,7 +80,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 3. **Never Reintroduce Temporary Figma Asset URLs:** Always store images locally in `assets/`. Temporary `figma.com/api/mcp/asset/...` URLs expire after 7 days.
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
 5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
-6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-fabrica` and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`07`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
+6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-fabrica` and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`08`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
 7. **Secrets & Environment Files:** Keep local `.env` and `.env.local` git-ignored (never committed or included in handoff archives).
 
 ---
@@ -93,8 +93,8 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 
 ## Suggested Phase 3 Next Steps
 
-1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.3`):** All 9 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`06`), and campaign print (`07`–`08`) mockups (`gdf-fabrica` and `caubr-editorial` toggled `visible: false` with full assets preserved).
-2. **Optional `09 CAU/BR` Editorial Magazine Mockup:** If restoring `caubr-editorial` (`visible: true`), optionally swap `01-eleicoes-caubr.jpg` with a custom open-magazine spread mockup.
+1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.4`):** All 10 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`07`), and campaign print (`08`–`09`) mockups (`gdf-fabrica` and `caubr-editorial` toggled `visible: false` with full assets preserved).
+2. **Optional `10 CAU/BR` Editorial Magazine Mockup:** If restoring `caubr-editorial` (`visible: true`), optionally swap `01-eleicoes-caubr.jpg` with a custom open-magazine spread mockup.
 3. **Custom Domain, Favicon & Social OG Image:** Add an SVG/PNG favicon and `og:image` meta tag inside [`index.html`](./index.html).
 4. **Deploy Statically:** Push via **GitHub Desktop** to `https://github.com/lucasigreja5/Design-Portfolio.git` and host on GitHub Pages, Netlify, Vercel, or Cloudflare Pages—no build command needed (publish root `.`).
 5. **Optional Contact Form:** Wire a lightweight form service (Formspree, Web3Forms, or Netlify Forms) inside the Closing CTA or a contact drawer alongside `mailto:` and WhatsApp.
