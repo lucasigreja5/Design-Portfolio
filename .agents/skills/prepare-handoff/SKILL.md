@@ -3,7 +3,7 @@ name: prepare-handoff
 description: >-
   Standard routine for preparing a project for cross-machine handoff. Use whenever
   the user asks to "prepare for handoff", "create handoff", or run the handoff
-  routine: updates and verifies handoff/history docs, creates a `<project>-handoff-<ddmmyy>.zip`
+  routine: updates and verifies handoff/history docs, creates a `<project>-handoff-<ddmmyy>-<HHMM>.zip`
   archive, saves it to `C:\Users\Lucas.Moreira\OneDrive - secom.df.gov.br\AGY\Handoffs`,
   and uploads it to Google Drive under `Antigravity/Handoffs`.
 ---
@@ -27,10 +27,10 @@ Follow this exact 4-step workflow whenever the user asks to **prepare for handof
 
 ---
 
-## 2. Build `<project>-handoff-<ddmmyy>.zip`
+## 2. Build `<project>-handoff-<ddmmyy>-<HHMM>.zip`
 
-1. Derive `<project>` from the workspace directory name (e.g., `DesignPortfolio`) and `<ddmmyy>` from the current local date (e.g., `231126`).
-2. Build the archive in `<appDataDir>\brain\<conversation-id>\scratch\<project>-handoff-<ddmmyy>.zip` using `System.IO.Compression.ZipFile` (excluding any existing `*.zip` files), with all entries rooted cleanly under `<project>/` using forward slashes (`/`).
+1. Derive `<project>` from the workspace directory name (e.g., `DesignPortfolio`), `<ddmmyy>` from the current local date (e.g., `251126`), and `<HHMM>` from the current 24-hour local time when the archive is created (e.g., `1836`).
+2. Build the archive in `<appDataDir>\brain\<conversation-id>\scratch\<project>-handoff-<ddmmyy>-<HHMM>.zip` using `System.IO.Compression.ZipFile` (excluding any existing `*.zip` files), with all entries rooted cleanly under `<project>/` using forward slashes (`/`).
 3. Verify the ZIP byte size and file count.
 
 ---
@@ -39,7 +39,7 @@ Follow this exact 4-step workflow whenever the user asks to **prepare for handof
 
 Copy the verified ZIP from scratch to:
 ```
-C:\Users\Lucas.Moreira\OneDrive - secom.df.gov.br\AGY\Handoffs\<project>-handoff-<ddmmyy>.zip
+C:\Users\Lucas.Moreira\OneDrive - secom.df.gov.br\AGY\Handoffs\<project>-handoff-<ddmmyy>-<HHMM>.zip
 ```
 *(Create the `Handoffs` directory if it does not exist. On Windows inside the sandbox, run the copy step with `BypassSandbox: true`.)*
 
@@ -52,6 +52,6 @@ Use the `gdrive` CLI (following the `gdrive` skill):
 2. Locate the `Handoffs` folder inside `Antigravity` (`gdrive readonly ls <antigravityId>`); create it via `gdrive mutate mkdir "Handoffs" --parent <antigravityId>` if missing.
 3. Upload the scratch ZIP via:
    ```powershell
-   gdrive mutate upload "<scratchDir>\<project>-handoff-<ddmmyy>.zip" --parent <handoffsFolderId>
+   gdrive mutate upload "<scratchDir>\<project>-handoff-<ddmmyy>-<HHMM>.zip" --parent <handoffsFolderId>
    ```
 4. Run `gdrive readonly url <uploadedFileId>` and report both the local `.zip` path and the Google Drive URL to the user.
