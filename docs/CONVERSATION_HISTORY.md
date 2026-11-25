@@ -2,7 +2,7 @@
 
 > **Project:** Lucas Igreja — Graphic Design & UI/UX Portfolio  
 > **Timeframe:** 2026-11-17 to 2026-11-24  
-> **Machine-Readable Log:** [`docs/history/conversation_log.json`](./history/conversation_log.json) (461 sanitized user & assistant turns)
+> **Machine-Readable Log:** [`docs/history/conversation_log.json`](./history/conversation_log.json) (536 sanitized user & assistant turns)
 
 This document preserves the full chronological context, audits, user feedback, and architectural decisions that shaped the portfolio so work can resume seamlessly on any machine.
 
@@ -155,5 +155,9 @@ This document preserves the full chronological context, audits, user feedback, a
 - **New Project `03` — GDF — Capital Ibero-Americana das Culturas (`js/data/projects.js`, `assets/projects/behance/gdf-cic/`, `assets/projects/gdf-cic-mockup.png`):** Pulled `01-brand-board.png` from Behance (`258989415`), generated a matching 16:9 dark-slate stationery suite mockup (`gdf-cic-mockup.png`), and added full bilingual copy + 2-slide modal gallery (`01`–`08` active visible projects).
 - **Active Section Lime Nav Highlight (`css/components.css`, `js/motion/animations.js`, `js/components/portfolio.js`):** Added `initNavScrollSpy()` and `.nav-link.is-active` / `.mobile-drawer-link.is-active` (`#D4FF00`) to highlight the currently viewed section (`ABOUT`, `PROJECTS`, `CAREER`, `CONTACT`) in the top nav bar.
 - Verified Desktop (`1440×900`) & Mobile (`390×844`) live at `http://localhost:4173/` (`0` console/page/HTTP errors, `0` horizontal overflow), archived immutable `Versions/v0.9.4/`, and tagged `v0.9.4`.
+
+### `#about` Portrait Layout (`/grill-me` & Placeholder Preview)
+- **Direction Locked:** Candid moody workspace/creative-director portrait in pure high-contrast B&W (`grayscale(100%) contrast(1.06)`), sharp `0px` frame (`1px solid #282828`), no caption, positioned in a `34%` left-column `4:5` grid cell beside the bottom-right-aligned `.about-statement` (stacking cleanly on mobile `<= 767px`).
+- **Staged Preview (`index.html`, `css/components.css`):** Built and browser-verified at `http://localhost:4173/#about` (`0` overflow, `0` console/page errors) with a dark `PORTRAIT · 4:5` grid placeholder ready for dropping in `assets/about-portrait.jpg` before cutting `v0.9.5`.
 
 
