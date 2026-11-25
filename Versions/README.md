@@ -26,7 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
-| **v0.9.5** | 2026-11-25 | [`./v0.9.5/`](./v0.9.5/VERSION_INFO.md) | `v0.9.5` | Contact `EMAIL / BEHANCE / LINKEDIN` typographic row with lime spotlight hover and centered single-line copyright footer |
+| **v0.9.5** | 2026-11-25 | [`./v0.9.5/`](./v0.9.5/VERSION_INFO.md) | `v0.9.5` | Contact `EMAIL / BEHANCE / LINKEDIN` dimmed typographic row with lime hover/click highlight and centered copyright footer |
 | **v0.9.4** | 2026-11-24 | [`./v0.9.4/`](./v0.9.4/VERSION_INFO.md) | `v0.9.4` | Discipline-only project subtitles, single-line desktop titles, GDF CIC 2022 project + stationery mockup, and active nav lime highlight |
 | **v0.9.3** | 2026-11-24 | [`./v0.9.3/`](./v0.9.3/VERSION_INFO.md) | `v0.9.3` | Pulled Behance assets (`03–09`) + stationery (`03–06`) & print campaign (`07–08`) studio mockups across all 9 projects |
 | **v0.9.2** | 2026-11-24 | [`./v0.9.2/`](./v0.9.2/VERSION_INFO.md) | `v0.9.2` | Disambiguated modal project (`PREV/NEXT PROJECT`, mobile `01/09`) vs. hover/swipe gallery chevrons & Arrow/Shift+Arrow shortcuts |

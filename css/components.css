@@ -1197,10 +1197,9 @@
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
   line-height: 1.15;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: color var(--duration-micro) var(--ease-snappy),
-              opacity var(--duration-micro) var(--ease-snappy);
+  transition: color var(--duration-micro) var(--ease-snappy);
 }
 
 .closing-cta-sep {
@@ -1208,19 +1207,14 @@
   font-weight: 400;
   font-size: clamp(1.5rem, 3vw, 2.75rem);
   line-height: 1.15;
-  color: var(--text-muted);
+  color: var(--text-dim);
   user-select: none;
 }
 
-.closing-cta-actions:has(.closing-cta-link:hover) .closing-cta-link:not(:hover),
-.closing-cta-actions:has(.closing-cta-link:focus-visible) .closing-cta-link:not(:focus-visible) {
-  opacity: 0.4;
-}
-
 .closing-cta-link:hover,
-.closing-cta-link:focus-visible {
+.closing-cta-link:focus-visible,
+.closing-cta-link:active {
   color: var(--accent-lime);
-  opacity: 1;
   outline: none;
 }
 

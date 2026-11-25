@@ -12,7 +12,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ### Changed
 - **Contact Links Row & Centered Minimal Footer (`index.html`, `css/components.css`):**
-  - Replaced the single `#contact` CTA button with a centered horizontal **`EMAIL / BEHANCE / LINKEDIN`** row (`E-MAIL / BEHANCE / LINKEDIN` in `PT`) separated by muted `/` dividers (`.closing-cta-sep`), styled in scaled-up `Clash Display` (`clamp(1.5rem, 3vw, 2.75rem)`) with `#D4FF00` hover spotlight and `0.4` sibling dimming with zero horizontal shift.
+  - Replaced the single `#contact` CTA button with a centered horizontal **`EMAIL / BEHANCE / LINKEDIN`** row (`E-MAIL / BEHANCE / LINKEDIN` in `PT`) separated by subtle `/` dividers (`.closing-cta-sep`, `#2E2E2E`), styled in scaled-up `Clash Display` (`clamp(1.5rem, 3vw, 2.75rem)`) resting dimmed in muted gray (`#8A8A8A`) and highlighting electric lime (`#D4FF00`) on hover, focus, or click with zero horizontal shift.
   - Stacked the 3 links vertically centered below `768px` (with `/` dividers hidden) for clean `>= 44px` mobile tap targets.
   - Removed `ul.footer-list` from `<footer>` so contact links live solely in `#contact`, and centered the remaining single-line copyright notice (`.footer-bar`) across desktop and mobile.
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.5`.
