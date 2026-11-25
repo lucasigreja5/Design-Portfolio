@@ -7,7 +7,7 @@ This folder preserves immutable, runnable snapshots of every released version of
 ## How Versioning Works
 
 - **Repository Root (`/`):** Always holds the active, deployable website so `http://localhost:4173/` and GitHub Pages (`/`) always serve the latest release.
-- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.9.5`).
+- **Current Version File ([`../VERSION`](../VERSION)):** Stores the active version string (`0.9.6`).
 - **Release History ([`../CHANGELOG.md`](../CHANGELOG.md)):** Records what changed in each version.
 - **Version Archives (`Versions/vX.Y/`):** Frozen snapshots of the deployable site at each release milestone.
 - **GitHub Sync (Annotated Tags):** Every release has a matching Git tag (`v0.1`, `v0.2`, ...) visible in GitHub's **Tags / Releases** view.
@@ -26,6 +26,7 @@ Excluded from snapshots: `.git/`, `Versions/` (prevents recursion), `docs/`, `sc
 
 | Version | Date | Archive | Git Tag | Summary |
 | :--- | :--- | :--- | :--- | :--- |
+| **v0.9.6** | 2026-11-25 | [`./v0.9.6/`](./v0.9.6/VERSION_INFO.md) | `v0.9.6` | Usability, stability, accessibility, PT parity, scroll-lock, and mobile modal/touch polish ahead of v0.10 |
 | **v0.9.5** | 2026-11-25 | [`./v0.9.5/`](./v0.9.5/VERSION_INFO.md) | `v0.9.5` | Contact `EMAIL / BEHANCE / LINKEDIN` dimmed typographic row with lime hover/click highlight and centered copyright footer |
 | **v0.9.4** | 2026-11-24 | [`./v0.9.4/`](./v0.9.4/VERSION_INFO.md) | `v0.9.4` | Discipline-only project subtitles, single-line desktop titles, GDF CIC 2022 project + stationery mockup, and active nav lime highlight |
 | **v0.9.3** | 2026-11-24 | [`./v0.9.3/`](./v0.9.3/VERSION_INFO.md) | `v0.9.3` | Pulled Behance assets (`03–09`) + stationery (`03–06`) & print campaign (`07–08`) studio mockups across all 9 projects |

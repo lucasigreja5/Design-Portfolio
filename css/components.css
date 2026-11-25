@@ -129,8 +129,8 @@
 
 .mobile-menu-btn {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: none;
   border-radius: 0;
@@ -221,6 +221,7 @@
   transform: translateX(100%);
   transition: transform var(--duration-ui) var(--ease-editorial);
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .mobile-drawer.is-open .mobile-drawer-panel {
@@ -234,8 +235,8 @@
 }
 
 .mobile-drawer-close {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: none;
   border-radius: 0;
@@ -1322,6 +1323,18 @@
     display: inline-flex;
   }
 
+  .lang-toggle {
+    gap: 0;
+  }
+
+  .lang-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .about-grid {
     grid-template-columns: minmax(210px, 36%) minmax(0, 1fr);
     gap: var(--space-8);
@@ -1481,7 +1494,10 @@
   }
 
   .projects-rail .carousel-nav-btn {
-    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 0;
   }
 
   .projects-rail .carousel-step-label,
@@ -1504,9 +1520,27 @@
     margin-bottom: var(--space-6);
   }
 
-  .career-option,
+  .career-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
   .career-sep {
+    display: none;
+  }
+
+  .career-option {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 8px;
     font-size: clamp(1rem, 4.4vw, 1.35rem);
+  }
+
+  .discipline-tab {
+    min-height: 44px;
+    padding-block: 6px;
   }
 
   .disciplines-section {

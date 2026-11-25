@@ -23,6 +23,21 @@
           career: 'CAREER',
           contact: 'CONTACT'
         },
+        aria: {
+          primaryNav: 'Primary navigation',
+          langSwitcher: 'Language switcher',
+          openMenu: 'Open navigation menu',
+          closeMenu: 'Close navigation menu',
+          mobileNav: 'Mobile Navigation',
+          mobileNavLinks: 'Mobile navigation links',
+          aboutPortrait: 'Portrait placeholder (4:5)',
+          activeProjectCounter: 'Active project counter',
+          carouselControls: 'Projects carousel controls',
+          projectsCarousel: 'Projects carousel',
+          careerSections: 'Career sections',
+          disciplines: 'Core design disciplines',
+          contactLinks: 'Contact links'
+        },
         hero: {
           eyebrowLeft: 'UI/UX & GRAPHIC DESIGN',
           eyebrowStatus: 'OPEN FOR WORK',
@@ -120,6 +135,21 @@
           projects: 'PROJETOS',
           career: 'CARREIRA',
           contact: 'CONTATO'
+        },
+        aria: {
+          primaryNav: 'Navegação principal',
+          langSwitcher: 'Seletor de idioma',
+          openMenu: 'Abrir menu de navegação',
+          closeMenu: 'Fechar menu de navegação',
+          mobileNav: 'Navegação mobile',
+          mobileNavLinks: 'Links de navegação mobile',
+          aboutPortrait: 'Espaço reservado para retrato (4:5)',
+          activeProjectCounter: 'Contador de projeto ativo',
+          carouselControls: 'Controles do carrossel de projetos',
+          projectsCarousel: 'Carrossel de projetos',
+          careerSections: 'Seções de carreira',
+          disciplines: 'Principais disciplinas de design',
+          contactLinks: 'Links de contato'
         },
         hero: {
           eyebrowLeft: 'UI/UX & DESIGN GRÁFICO',
@@ -834,8 +864,8 @@
           deliverables: 'LOGOTYPES · BRAND GUIDELINES · VISUAL SYSTEMS · ICONOGRAPHY'
         },
         pt: {
-          primary: 'BRAND',
-          secondary: 'IDENTITY',
+          primary: 'IDENTIDADE',
+          secondary: 'VISUAL',
           description:
             'Construindo sistemas de identidade visual institucionais e comerciais com símbolos geométricos memoráveis, tipografia rigorosa e aplicação consistente em portais e campanhas.',
           deliverables: 'LOGOTIPOS · MANUAIS DE MARCA · SISTEMAS VISUAIS · ICONOGRAFIA'
@@ -882,11 +912,13 @@
         category: 'experience',
         period: '2019 — PRESENT',
         en: {
+          period: '2019 — PRESENT',
           role: 'Art Director',
           org: 'Governo do Distrito Federal — SECOM',
           detail: 'Leading public-sector brand identities (UnDF, Secretaria de Economia, Clube de Desconto, Fábrica Social) and cross-channel government communication.'
         },
         pt: {
+          period: '2019 — ATUAL',
           role: 'Diretor de Arte',
           org: 'Governo do Distrito Federal — SECOM',
           detail: 'Liderança na criação de identidades institucionais (UnDF, Secretaria de Economia, Clube de Desconto, Fábrica Social) e comunicação multicanal.'

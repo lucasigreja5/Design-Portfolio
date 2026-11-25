@@ -15,14 +15,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=0.9.5" />
-  <link rel="stylesheet" href="css/base.css?v=0.9.5" />
-  <link rel="stylesheet" href="css/components.css?v=0.9.5" />
-  <link rel="stylesheet" href="css/modal.css?v=0.9.5" />
+  <link rel="stylesheet" href="css/tokens.css?v=0.9.6" />
+  <link rel="stylesheet" href="css/base.css?v=0.9.6" />
+  <link rel="stylesheet" href="css/components.css?v=0.9.6" />
+  <link rel="stylesheet" href="css/modal.css?v=0.9.6" />
 </head>
-<body>
+<body id="top">
   <!-- Sticky Minimal Navigation -->
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container site-header-inner">
       <a href="#top" class="brand-wordmark">
         <span class="brand-status-dot" aria-hidden="true"></span>
@@ -30,7 +30,7 @@
       </a>
 
       <div class="nav-right">
-        <nav class="primary-nav" aria-label="Primary navigation">
+        <nav class="primary-nav" aria-label="Primary navigation" data-i18n-aria="aria.primaryNav">
           <a href="#about" class="nav-link" data-i18n="nav.about">ABOUT</a>
           <a href="#projects" class="nav-link" data-i18n="nav.projects">PROJECTS</a>
           <a href="#career" class="nav-link" data-i18n="nav.career">CAREER</a>
@@ -38,12 +38,12 @@
         </nav>
 
         <div class="header-actions">
-          <div class="lang-toggle" id="langToggle" role="group" aria-label="Language switcher">
+          <div class="lang-toggle" id="langToggle" role="group" aria-label="Language switcher" data-i18n-aria="aria.langSwitcher">
             <button class="lang-option is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
             <span class="lang-sep" aria-hidden="true">/</span>
             <button class="lang-option" type="button" data-lang="pt" aria-pressed="false">PT</button>
           </div>
-          <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open navigation menu">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open navigation menu" data-i18n-aria="aria.openMenu">
             <span class="hamburger-icon" aria-hidden="true">
               <span></span>
               <span></span>
@@ -56,18 +56,18 @@
   </header>
 
   <!-- Mobile Navigation Drawer (Slides in Right -> Left) -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Mobile Navigation" data-i18n-aria="aria.mobileNav">
     <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
     <div class="mobile-drawer-panel">
       <div class="mobile-drawer-top">
-        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Close navigation menu">
+        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Close navigation menu" data-i18n-aria="aria.closeMenu">
           <span class="drawer-close-icon" aria-hidden="true">
             <span></span>
             <span></span>
           </span>
         </button>
       </div>
-      <nav class="mobile-drawer-nav" aria-label="Mobile navigation links">
+      <nav class="mobile-drawer-nav" aria-label="Mobile navigation links" data-i18n-aria="aria.mobileNavLinks">
         <a href="#about" class="mobile-drawer-link" data-i18n="nav.about">ABOUT</a>
         <a href="#projects" class="mobile-drawer-link" data-i18n="nav.projects">PROJECTS</a>
         <a href="#career" class="mobile-drawer-link" data-i18n="nav.career">CAREER</a>
@@ -100,7 +100,7 @@
         <h2 class="section-heading" data-i18n="about.heading">ABOUT</h2>
 
         <div class="about-grid">
-          <div class="about-portrait-frame is-placeholder" aria-label="Portrait placeholder (4:5)">
+          <div class="about-portrait-frame is-placeholder" aria-label="Portrait placeholder (4:5)" data-i18n-aria="aria.aboutPortrait">
             <!-- Drop real photo at assets/about-portrait.jpg and swap in:
                  <img src="assets/about-portrait.jpg" alt="Lucas Igreja — Art Director &amp; UI/UX Designer" class="about-portrait-img" loading="lazy" /> -->
             <div class="about-portrait-placeholder" aria-hidden="true">
@@ -125,7 +125,7 @@
       </div>
 
       <div class="projects-bleed-layout">
-        <aside class="projects-rail" aria-label="Active project counter">
+        <aside class="projects-rail" aria-label="Active project counter" data-i18n-aria="aria.activeProjectCounter">
           <div class="sticky-counter-row">
             <span class="sticky-counter-num" id="stickyCounterNum">01</span>
             <span class="sticky-counter-total" id="stickyCounterTotal">/ 08</span>
@@ -134,7 +134,7 @@
             <div class="rail-progress-fill" id="railProgressFill"></div>
           </div>
           <span class="rail-title-preview" id="railTitle">SONAR BSB</span>
-          <div class="projects-carousel-controls" role="group" aria-label="Projects carousel controls">
+          <div class="projects-carousel-controls" role="group" aria-label="Projects carousel controls" data-i18n-aria="aria.carouselControls">
             <button class="carousel-nav-btn" id="projectsPrevBtn" type="button" aria-label="Previous project" disabled>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M16 10H4M4 10L9 5M4 10L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
@@ -161,7 +161,7 @@
           </div>
         </aside>
 
-        <div class="projects-stack" id="projectsStack" tabindex="0" aria-label="Projects carousel"></div>
+        <div class="projects-stack" id="projectsStack" tabindex="0" aria-label="Projects carousel" data-i18n-aria="aria.projectsCarousel"></div>
       </div>
     </section>
 
@@ -170,7 +170,7 @@
       <div class="container">
         <div class="career-header">
           <h2 class="section-heading" data-i18n="career.heading">CAREER</h2>
-          <div class="career-toggle" id="careerToggle" role="tablist" aria-label="Career sections">
+          <div class="career-toggle" id="careerToggle" role="tablist" aria-label="Career sections" data-i18n-aria="aria.careerSections">
             <button
               class="career-option is-active"
               id="careerTabExperience"
@@ -207,7 +207,7 @@
         <div class="disciplines-scrim" aria-hidden="true"></div>
 
         <div class="container disciplines-container">
-          <div class="disciplines-list" id="disciplinesList" role="tablist" aria-label="Core design disciplines"></div>
+          <div class="disciplines-list" id="disciplinesList" role="tablist" aria-label="Core design disciplines" data-i18n-aria="aria.disciplines"></div>
 
           <div class="disciplines-detail" role="tabpanel" aria-live="polite">
             <p class="disciplines-copy" id="disciplineCopy"></p>
@@ -223,7 +223,7 @@
           HAVE A PROJECT IN MIND? LET'S DESIGN SOMETHING SHARP TOGETHER.
         </h2>
 
-        <nav class="closing-cta-actions" aria-label="Contact links">
+        <nav class="closing-cta-actions" aria-label="Contact links" data-i18n-aria="aria.contactLinks">
           <a href="mailto:lucas.igreja@gmail.com" class="closing-cta-link" data-i18n="footer.links.email">EMAIL</a>
           <span class="closing-cta-sep" aria-hidden="true">/</span>
           <a href="https://www.behance.net/lucasigreja" target="_blank" rel="noopener noreferrer" class="closing-cta-link" data-i18n="footer.links.behance">BEHANCE</a>
@@ -242,12 +242,9 @@
   </footer>
 
   <!-- Case-Study Modal -->
-  <div class="modal-backdrop" id="caseModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal-backdrop" id="caseModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true">
     <div class="modal-panel" id="caseModalContent"></div>
   </div>
-
-  <!-- Custom Desktop Cursor Badge -->
-  <div class="custom-cursor" id="customCursor" aria-hidden="true">VIEW CASE</div>
 
   <!-- Toast Feedback -->
   <div class="site-toast" id="siteToast" role="status" aria-live="polite"></div>
@@ -255,11 +252,11 @@
   <!-- Motion Engine (GSAP CDN + Graceful Fallback) & App Scripts -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="js/data/projects.js?v=0.9.5"></script>
-  <script defer src="js/components/portfolio.js?v=0.9.5"></script>
-  <script defer src="js/motion/animations.js?v=0.9.5"></script>
-  <script defer src="js/main.js?v=0.9.5"></script>
+  <script defer src="js/data/projects.js?v=0.9.6"></script>
+  <script defer src="js/components/portfolio.js?v=0.9.6"></script>
+  <script defer src="js/motion/animations.js?v=0.9.6"></script>
+  <script defer src="js/main.js?v=0.9.6"></script>
   <!-- DEV ONLY (PRE-v1.0 QA): Viewport Preview Toggle — REMOVE BEFORE SHIPPING v1.0 -->
-  <script defer src="js/dev/viewport-toggle.js?v=0.9.5"></script>
+  <script defer src="js/dev/viewport-toggle.js?v=0.9.6"></script>
 </body>
 </html>

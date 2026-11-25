@@ -6,6 +6,32 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 
 ---
 
+## [0.9.6] - 2026-11-25
+
+**Git Tag:** `v0.9.6` · **Archive:** [`./Versions/v0.9.6/`](./Versions/v0.9.6/VERSION_INFO.md)
+
+### Fixed
+- **Top Anchor, Scroll-Spy & Direct Jump Reveal (`index.html`, `js/main.js`, `js/motion/animations.js`):**
+  - Moved `id="top"` onto `<body>` with smooth scroll-to-top click handling on `.brand-wordmark` so clicking `LUCAS IGREJA®` from lower sections reliably returns to the Hero.
+  - Added `revealUpTo()` on `#section` anchor clicks/hashes, `start: 'top 95%'` (`fastScrollEnd: true`), and `fonts.ready`/`load` `ScrollTrigger` refreshes so direct nav jumps (such as `CAREER`) never land on an invisible opacity-0 section.
+  - Tuned `initNavScrollSpy()` thresholds (`atBottom = 80px`, `refY = headerH + 0.42 * innerHeight`) so `CONTACT` highlights in lime cleanly as it takes over the viewport.
+- **Background Scroll Lock, Modal `inert` & Focus Traps (`index.html`, `css/modal.css`, `css/components.css`, `js/components/portfolio.js`, `js/main.js`):**
+  - Added reference-counted `setScrollLock(owner, locked)` locking `html`/`body` overflow plus `wheel`/`touchmove` boundary guards outside scrollable `.modal-panel`/`.mobile-drawer-panel` containers, eliminating background page drift behind overlays while keeping modal inner scrolling smooth.
+  - Added `visibility: hidden` + `inert` on closed `#caseModalBackdrop` and `#mobileDrawer`, dynamic `aria-labelledby="modalHeading"`, focus placement on drawer open, and `Tab`/`Shift+Tab` focus traps (`trapFocus`) for both dialogs.
+- **Projects Carousel & Hero Motion Composition (`js/motion/animations.js`, `js/components/portfolio.js`):**
+  - Added optimistic `pendingTargetIdx` tracking on `#projectsPrevBtn`/`#projectsNextBtn` and `ArrowLeft`/`ArrowRight` so rapid stepper clicks advance sequentially without dropping inputs, and preserved the active project index across `EN / PT` language switches.
+  - Switched `initHeroTilt()` to GSAP `quickTo(img, 'x' | 'y')` so hover tilt composes cleanly with ScrollTrigger scroll-zoom without overwriting `scale`.
+  - Removed the unused `#customCursor` DOM node and `initCursor()` mousemove listener.
+- **Portuguese (`PT`) Parity & ARIA Accessibility (`js/data/projects.js`, `js/components/portfolio.js`, `index.html`):**
+  - Translated Discipline tab 2 (`BRAND IDENTITY` → **`IDENTIDADE VISUAL`**) and current SECOM period (`2019 — PRESENT` → **`2019 — ATUAL`**) in Portuguese mode.
+  - Added `copy.en.aria` / `copy.pt.aria` maps for `[data-i18n-aria]` landmark labels, WCAG label-in-name `aria-label` prefixes on modal steppers, and `ArrowUp`/`ArrowDown`/`ArrowLeft`/`ArrowRight` keyboard switching on `#disciplinesList`.
+- **Mobile Modal Header & `>= 44×44px` Touch Targets (`css/modal.css`, `css/components.css`):**
+  - Redesigned mobile (`<= 767px`) `.modal-header` into a 2-row grid giving project titles full width next to `×` on row 1 and the `← 01/08 →` stepper on row 2.
+  - Stacked `.career-toggle` tabs cleanly below `768px` (hiding the dangling `/` divider) and ensured `>= 44×44px` mobile hit boxes on `EN / PT`, menu/close icons, Career tabs, Disciplines tabs, carousel arrows, modal chevrons, modal steppers, and `OPEN LIVE DEMO`.
+- **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.6`.
+
+---
+
 ## [0.9.5] - 2026-11-25
 
 **Git Tag:** `v0.9.5` · **Archive:** [`./Versions/v0.9.5/`](./Versions/v0.9.5/VERSION_INFO.md)

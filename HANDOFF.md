@@ -1,7 +1,7 @@
 # Project Handoff — Lucas Igreja Portfolio
 
 > **Current Status:** **Phase 1 (Design System v2.0)** & **Phase 2 (Full Portfolio from Figma `10:57`)** are **complete and browser-verified**.  
-> **Current Version:** `v0.9.5` (Archived at [`Versions/v0.9.5/`](./Versions/v0.9.5/VERSION_INFO.md) & Git tag `v0.9.5`; prior `v0.9.4`, `v0.9.3`, `v0.9.2`, `v0.9.1`, `v0.9`, `v0.8.2`, `v0.8.1`, `v0.8`, `v0.7.2`, `v0.7.1`, `v0.7`, `v0.6`, `v0.5.1`, `v0.5`, `v0.4.3`, `v0.4.1`, `v0.4`, `v0.3.1`, `v0.3`, `v0.2`, and `v0.1` preserved under [`Versions/`](./Versions/README.md))  
+> **Current Version:** `v0.9.6` (Archived at [`Versions/v0.9.6/`](./Versions/v0.9.6/VERSION_INFO.md) & Git tag `v0.9.6`; prior `v0.9.5`, `v0.9.4`, `v0.9.3`, `v0.9.2`, `v0.9.1`, `v0.9`, `v0.8.2`, `v0.8.1`, `v0.8`, `v0.7.2`, `v0.7.1`, `v0.7`, `v0.6`, `v0.5.1`, `v0.5`, `v0.4.3`, `v0.4.1`, `v0.4`, `v0.3.1`, `v0.3`, `v0.2`, and `v0.1` preserved under [`Versions/`](./Versions/README.md))  
 > **Runtime Requirement:** **Zero build dependencies.** Pure static HTML5 + CSS3 Custom Properties + Vanilla JS (`window.PORTFOLIO_DATA` / `window.PortfolioUI` / `window.PortfolioMotion`) + GSAP CDN with graceful fallback. Works via local HTTP server (`scripts/serve.ps1` / `scripts/serve.sh`), static hosts, or direct `file://`.
 
 ---
@@ -43,7 +43,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`index.html`](./index.html) | Main bilingual portfolio page matching Figma `10:57` |
 | [`design-system.html`](./design-system.html) | Interactive Design System v2.0 specimen (color copy, Grid Overlay, motion playground) |
 | [`design.md`](./design.md) | Complete Design System v2.0 specification & Figma checklist |
-| [`VERSION`](./VERSION) | Active project version (`0.9.5`) |
+| [`VERSION`](./VERSION) | Active project version (`0.9.6`) |
 | [`CHANGELOG.md`](./CHANGELOG.md) | Release notes and version history (`0.1`, `0.2`, ...) |
 | [`Versions/`](./Versions/README.md) | Immutable runnable release snapshots (`Versions/v0.1/`, ...) & rollback guide |
 | [`css/tokens.css`](./css/tokens.css) | CSS Custom Properties matching `design.md` v2.0 1:1 |

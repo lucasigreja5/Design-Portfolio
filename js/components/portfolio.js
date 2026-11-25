@@ -11,8 +11,85 @@
   let activeModalGalleryStepper = null;
   let lastFocusedEl = null;
   let toastTimer = null;
+  const activeScrollLocks = new Set();
+  let lockTouchStartY = 0;
 
   const DATA = global.PORTFOLIO_DATA;
+
+  function onLockedTouchStart(e) {
+    if (e.touches && e.touches.length) {
+      lockTouchStartY = e.touches[0].clientY;
+    }
+  }
+
+  function preventLockedScroll(e, deltaY) {
+    if (activeScrollLocks.size === 0) return;
+    const scroller = e.target && e.target.closest ? e.target.closest('.modal-panel, .mobile-drawer-panel') : null;
+    if (!scroller) {
+      e.preventDefault();
+      return;
+    }
+    const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+    if (maxScroll <= 1) {
+      if (e.target.closest('.modal-gallery-strip')) return;
+      e.preventDefault();
+      return;
+    }
+    if ((deltaY < 0 && scroller.scrollTop <= 0) || (deltaY > 0 && scroller.scrollTop >= maxScroll - 1)) {
+      e.preventDefault();
+    }
+  }
+
+  function onLockedWheel(e) {
+    preventLockedScroll(e, e.deltaY);
+  }
+
+  function onLockedTouchMove(e) {
+    const dy = e.touches && e.touches.length ? lockTouchStartY - e.touches[0].clientY : 0;
+    preventLockedScroll(e, dy);
+  }
+
+  function setScrollLock(owner, locked) {
+    const wasLocked = activeScrollLocks.size > 0;
+    if (locked) {
+      activeScrollLocks.add(owner);
+    } else {
+      activeScrollLocks.delete(owner);
+    }
+    const isLocked = activeScrollLocks.size > 0;
+    const overflow = isLocked ? 'hidden' : '';
+    document.documentElement.style.overflow = overflow;
+    document.body.style.overflow = overflow;
+
+    if (isLocked && !wasLocked) {
+      document.addEventListener('wheel', onLockedWheel, { passive: false });
+      document.addEventListener('touchstart', onLockedTouchStart, { passive: true });
+      document.addEventListener('touchmove', onLockedTouchMove, { passive: false });
+    } else if (!isLocked && wasLocked) {
+      document.removeEventListener('wheel', onLockedWheel);
+      document.removeEventListener('touchstart', onLockedTouchStart);
+      document.removeEventListener('touchmove', onLockedTouchMove);
+    }
+  }
+
+  function trapFocus(container, e) {
+    if (!container || e.key !== 'Tab') return;
+    const focusables = Array.from(
+      container.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((el) => !el.hasAttribute('disabled') && el.getClientRects().length > 0);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !container.contains(document.activeElement))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
 
   function getNestedCopy(obj, path) {
     return path.split('.').reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : ''), obj);
@@ -232,6 +309,10 @@
 
     const list = getFilteredProjects();
     const copy = DATA.copy[lang].projects;
+    const preservedIdx =
+      global.PortfolioMotion && typeof global.PortfolioMotion.getActiveProjectIndex === 'function'
+        ? global.PortfolioMotion.getActiveProjectIndex()
+        : 0;
 
     stack.innerHTML = '';
     list.forEach((proj, idx) => {
@@ -279,7 +360,7 @@
     if (nextBtn && copy.nextProject) nextBtn.setAttribute('aria-label', copy.nextProject);
 
     if (global.PortfolioMotion && typeof global.PortfolioMotion.refreshSticky === 'function') {
-      global.PortfolioMotion.refreshSticky(list.length);
+      global.PortfolioMotion.refreshSticky(list.length, preservedIdx);
     }
   }
 
@@ -310,7 +391,7 @@
         const loc = item[lang];
         return `
           <div class="evolution-row">
-            <div class="font-mono evolution-period">${item.period}</div>
+            <div class="font-mono evolution-period">${loc.period || item.period}</div>
             <div>
               <h3 class="evolution-role">${loc.role}</h3>
               <div class="evolution-org">${loc.org}</div>
@@ -350,6 +431,7 @@
       btn.role = 'tab';
       btn.className = `discipline-tab${isActive ? ' is-active' : ''}`;
       btn.setAttribute('aria-selected', String(isActive));
+      btn.setAttribute('aria-controls', 'disciplineCopy');
       btn.dataset.discId = disc.id;
       btn.innerHTML = `
         <span class="word-primary">${loc.primary}</span>
@@ -386,6 +468,11 @@
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const val = getNestedCopy(copy, el.dataset.i18n);
       if (val) el.textContent = val;
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const val = getNestedCopy(copy, el.dataset.i18nAria);
+      if (val) el.setAttribute('aria-label', val);
     });
 
     document.querySelectorAll('#langToggle .lang-option').forEach((btn) => {
@@ -456,7 +543,7 @@
               id="modalPrevBtn"
               type="button"
               data-modal-jump="${prevProj.id}"
-              aria-label="${pCopy.prevProject} — ${prevProj[lang].title}"
+              aria-label="${prevLabel}: ${prevProj[lang].title}"
               title="${prevDisplayIndex} · ${prevProj[lang].title}"
             >
               <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -476,7 +563,7 @@
               id="modalNextBtn"
               type="button"
               data-modal-jump="${nextProj.id}"
-              aria-label="${pCopy.nextProject} — ${nextProj[lang].title}"
+              aria-label="${nextLabel}: ${nextProj[lang].title}"
               title="${nextDisplayIndex} · ${nextProj[lang].title}"
             >
               <span class="roll-wrap modal-step-label">
@@ -568,9 +655,11 @@
     `;
 
     bodyEl.scrollTop = 0;
+    backdrop.inert = false;
     backdrop.classList.add('is-open');
     backdrop.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    backdrop.setAttribute('aria-labelledby', 'modalHeading');
+    setScrollLock('modal', true);
 
     const closeBtn = document.getElementById('modalCloseBtn');
     closeBtn?.addEventListener('click', closeModal);
@@ -656,7 +745,9 @@
     if (!backdrop || !backdrop.classList.contains('is-open')) return;
     backdrop.classList.remove('is-open');
     backdrop.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    backdrop.removeAttribute('aria-labelledby');
+    backdrop.inert = true;
+    setScrollLock('modal', false);
     currentModalProjectId = null;
     activeModalGalleryStepper = null;
     if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
@@ -674,6 +765,12 @@
 
     if (currentModalProjectId) {
       openProjectModal(currentModalProjectId, lastFocusedEl);
+    }
+    if (global.ScrollTrigger && typeof global.ScrollTrigger.refresh === 'function') {
+      global.ScrollTrigger.refresh();
+    }
+    if (global.PortfolioMotion && typeof global.PortfolioMotion.refreshNavSpy === 'function') {
+      global.PortfolioMotion.refreshNavSpy();
     }
   }
 
@@ -718,7 +815,21 @@
       }
     });
 
-    // Modal backdrop + Esc + ArrowLeft/ArrowRight navigation
+    // Disciplines tablist keyboard navigation
+    const disciplinesList = document.getElementById('disciplinesList');
+    disciplinesList?.addEventListener('keydown', (e) => {
+      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+      const tabs = Array.from(disciplinesList.querySelectorAll('.discipline-tab'));
+      if (!tabs.length) return;
+      e.preventDefault();
+      const idx = tabs.indexOf(document.activeElement);
+      const delta = e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 1;
+      const nextIdx = idx >= 0 ? (idx + delta + tabs.length) % tabs.length : 0;
+      tabs[nextIdx].click();
+      tabs[nextIdx].focus();
+    });
+
+    // Modal backdrop + Esc + Tab focus trap + ArrowLeft/ArrowRight navigation
     const backdrop = document.getElementById('caseModalBackdrop');
     backdrop?.addEventListener('click', (e) => {
       if (e.target === backdrop) closeModal();
@@ -729,6 +840,10 @@
         return;
       }
       if (!currentModalProjectId) return;
+      if (e.key === 'Tab') {
+        trapFocus(backdrop, e);
+        return;
+      }
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
         const delta = e.key === 'ArrowLeft' ? -1 : 1;
@@ -749,6 +864,8 @@
   global.PortfolioUI = {
     init,
     openProjectModal,
-    closeModal
+    closeModal,
+    setScrollLock,
+    trapFocus
   };
 })(window);

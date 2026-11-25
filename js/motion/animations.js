@@ -5,16 +5,17 @@
 
 (function attachPortfolioMotion(global) {
   let cleanupSticky = null;
-  let currentProjectCount = 9;
+  let currentProjectCount = 8;
   let lastActiveIdx = -1;
   let numAnim = null;
   let refreshNavSpyFn = null;
+  let getActiveIdxFn = () => Math.max(0, lastActiveIdx);
 
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  function refreshSticky(totalCount) {
+  function refreshSticky(totalCount, initialIdx) {
     currentProjectCount = totalCount || currentProjectCount;
     if (cleanupSticky) {
       cleanupSticky();
@@ -32,6 +33,9 @@
     const prevBtn = document.getElementById('projectsPrevBtn');
     const nextBtn = document.getElementById('projectsNextBtn');
 
+    let pendingTargetIdx = null;
+    let settleTimer = null;
+
     function getTargetLeft(idx) {
       const clamped = Math.max(0, Math.min(cards.length - 1, idx));
       const baseLeft = cards[0].offsetLeft;
@@ -44,28 +48,8 @@
       if (nextBtn) nextBtn.disabled = activeIdx >= cards.length - 1;
     }
 
-    function updateActiveCard(animate) {
-      const baseLeft = cards[0].offsetLeft;
-      const scrollLeft = track.scrollLeft;
-      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-
-      let activeIdx = 0;
-      if (maxScroll > 0 && scrollLeft >= maxScroll - 4) {
-        activeIdx = cards.length - 1;
-      } else {
-        let bestDist = Infinity;
-        for (let i = 0; i < cards.length; i += 1) {
-          const offset = Math.max(0, cards[i].offsetLeft - baseLeft);
-          const dist = Math.abs(scrollLeft - offset);
-          if (dist < bestDist) {
-            bestDist = dist;
-            activeIdx = i;
-          }
-        }
-      }
-
+    function applyActiveState(activeIdx, animate) {
       updateNavButtons(activeIdx);
-
       if (activeIdx === lastActiveIdx) return;
 
       const prevIdx = lastActiveIdx;
@@ -95,8 +79,47 @@
       }
     }
 
+    function updateActiveCard(animate) {
+      if (pendingTargetIdx !== null) {
+        const targetLeft = getTargetLeft(pendingTargetIdx);
+        if (Math.abs(track.scrollLeft - targetLeft) <= 4) {
+          pendingTargetIdx = null;
+          clearTimeout(settleTimer);
+        } else {
+          return;
+        }
+      }
+
+      const baseLeft = cards[0].offsetLeft;
+      const scrollLeft = track.scrollLeft;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+
+      let activeIdx = 0;
+      if (maxScroll > 0 && scrollLeft >= maxScroll - 4) {
+        activeIdx = cards.length - 1;
+      } else {
+        let bestDist = Infinity;
+        for (let i = 0; i < cards.length; i += 1) {
+          const offset = Math.max(0, cards[i].offsetLeft - baseLeft);
+          const dist = Math.abs(scrollLeft - offset);
+          if (dist < bestDist) {
+            bestDist = dist;
+            activeIdx = i;
+          }
+        }
+      }
+
+      applyActiveState(activeIdx, animate);
+    }
+
     function scrollToIndex(idx) {
       const targetIdx = Math.max(0, Math.min(cards.length - 1, idx));
+      pendingTargetIdx = targetIdx;
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => {
+        pendingTargetIdx = null;
+      }, 900);
+      applyActiveState(targetIdx, true);
       track.scrollTo({
         left: getTargetLeft(targetIdx),
         behavior: prefersReducedMotion() ? 'auto' : 'smooth'
@@ -112,15 +135,18 @@
       });
     };
 
-    const onPrevClick = () => scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) - 1);
-    const onNextClick = () => scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) + 1);
+    const currentIdx = () => (pendingTargetIdx !== null ? pendingTargetIdx : Math.max(0, lastActiveIdx));
+    getActiveIdxFn = currentIdx;
+
+    const onPrevClick = () => scrollToIndex(currentIdx() - 1);
+    const onNextClick = () => scrollToIndex(currentIdx() + 1);
     const onTrackKeydown = (e) => {
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) + 1);
+        scrollToIndex(currentIdx() + 1);
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        scrollToIndex((lastActiveIdx >= 0 ? lastActiveIdx : 0) - 1);
+        scrollToIndex(currentIdx() - 1);
       }
     };
 
@@ -136,40 +162,38 @@
       prevBtn?.removeEventListener('click', onPrevClick);
       nextBtn?.removeEventListener('click', onNextClick);
       track.removeEventListener('keydown', onTrackKeydown);
+      clearTimeout(settleTimer);
       if (rafId) {
         window.cancelAnimationFrame(rafId);
         rafId = 0;
       }
     };
 
-    updateActiveCard(false);
+    if (typeof initialIdx === 'number' && initialIdx > 0) {
+      const clampedInit = Math.max(0, Math.min(cards.length - 1, initialIdx));
+      track.scrollLeft = getTargetLeft(clampedInit);
+      applyActiveState(clampedInit, false);
+    } else {
+      updateActiveCard(false);
+    }
   }
 
-  function initCursor() {
-    const cursor = document.getElementById('customCursor');
-    if (!cursor || prefersReducedMotion()) return;
-    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-
-    let cursorVisible = false;
-    window.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-      const target = e.target.closest('[data-cursor-label]');
-      if (target) {
-        cursor.textContent = target.dataset.cursorLabel;
-        if (!cursorVisible) {
-          cursor.classList.add('is-visible');
-          cursorVisible = true;
-        }
-      } else if (cursorVisible) {
-        cursor.classList.remove('is-visible');
-        cursorVisible = false;
+  function revealUpTo(targetId) {
+    const blocks = Array.from(document.querySelectorAll('.reveal-block'));
+    if (!blocks.length) return;
+    const targetEl = targetId ? document.getElementById(targetId) : null;
+    const blocksToReveal = targetEl
+      ? blocks.filter((b) => b === targetEl || b.contains(targetEl) || (b.compareDocumentPosition(targetEl) & Node.DOCUMENT_POSITION_FOLLOWING))
+      : blocks;
+    const list = blocksToReveal.length ? blocksToReveal : blocks;
+    list.forEach((block) => {
+      if (global.gsap) {
+        global.gsap.killTweensOf(block);
+        global.gsap.set(block, { opacity: 1, y: 0, clearProps: 'transform,opacity' });
+      } else {
+        block.style.opacity = '1';
+        block.style.transform = 'none';
       }
-    });
-
-    document.addEventListener('mouseleave', () => {
-      cursor.classList.remove('is-visible');
-      cursorVisible = false;
     });
   }
 
@@ -224,11 +248,21 @@
           clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: block,
-            start: 'top 86%',
+            start: 'top 95%',
+            fastScrollEnd: true,
             once: true
           }
         });
       });
+
+      const refreshAll = () => {
+        global.ScrollTrigger.refresh();
+        if (refreshNavSpyFn) refreshNavSpyFn();
+      };
+      window.addEventListener('load', refreshAll, { once: true });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(refreshAll).catch(() => {});
+      }
     }
   }
 
@@ -237,17 +271,22 @@
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
     const frame = document.getElementById('heroMediaFrame');
     const img = document.getElementById('heroBannerImg');
-    if (!frame || !img) return;
+    if (!frame || !img || !global.gsap) return;
+
+    const xTo = global.gsap.quickTo(img, 'x', { duration: 0.45, ease: 'power2.out' });
+    const yTo = global.gsap.quickTo(img, 'y', { duration: 0.45, ease: 'power2.out' });
 
     frame.addEventListener('mousemove', (e) => {
       const rect = frame.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width - 0.5;
       const ny = (e.clientY - rect.top) / rect.height - 0.5;
-      img.style.transform = `scale(1.09) translate(${nx * -14}px, ${ny * -10}px)`;
+      xTo(nx * -14);
+      yTo(ny * -10);
     });
 
     frame.addEventListener('mouseleave', () => {
-      img.style.transform = '';
+      xTo(0);
+      yTo(0);
     });
   }
 
@@ -267,14 +306,14 @@
     const updateActiveNav = () => {
       const docEl = document.documentElement;
       const atBottom =
-        window.innerHeight + window.scrollY >= docEl.scrollHeight - 24;
+        window.innerHeight + window.scrollY >= docEl.scrollHeight - 80;
 
       let activeId = null;
       if (atBottom) {
         activeId = 'contact';
       } else {
         const headerH = header ? header.offsetHeight : 84;
-        const refY = headerH + window.innerHeight * 0.28;
+        const refY = headerH + window.innerHeight * 0.42;
         for (let i = 0; i < sections.length; i += 1) {
           if (sections[i].getBoundingClientRect().top <= refY) {
             activeId = sections[i].id;
@@ -317,7 +356,6 @@
   }
 
   function init() {
-    initCursor();
     initHeroTilt();
     initGSAPMotion();
     refreshSticky();
@@ -327,6 +365,8 @@
   global.PortfolioMotion = {
     init,
     refreshSticky,
+    getActiveProjectIndex: () => getActiveIdxFn(),
+    revealUpTo,
     refreshNavSpy: () => refreshNavSpyFn && refreshNavSpyFn()
   };
 })(window);
