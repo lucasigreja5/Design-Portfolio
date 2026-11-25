@@ -504,7 +504,7 @@
       },
       {
         id: 'gdf-economia',
-        visible: true,
+        visible: false,
         index: '05',
         category: 'branding',
         year: '2021',
@@ -553,7 +553,7 @@
       },
       {
         id: 'gdf-clube',
-        visible: true,
+        visible: false,
         index: '06',
         category: 'branding',
         year: '2020',

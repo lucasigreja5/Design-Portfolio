@@ -48,9 +48,9 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`Versions/`](./Versions/README.md) | Immutable runnable release snapshots (`Versions/v0.1/`, ...) & rollback guide |
 | [`css/tokens.css`](./css/tokens.css) | CSS Custom Properties matching `design.md` v2.0 1:1 |
 | [`css/base.css`](./css/base.css) | Reset, `.font-display`, `.font-mono`, `.micro-grid-bg`, sharp focus & reduced-motion guards |
-| [`css/components.css`](./css/components.css) | Header (with active `#D4FF00` nav spy), Hero, About, sticky `01–08` Projects + bespoke covers, Disciplines band, Career, CTA, Footer |
+| [`css/components.css`](./css/components.css) | Header (with active `#D4FF00` nav spy), Hero, About, sticky `01–06` Projects + bespoke covers, Disciplines band, Career, CTA, Footer |
 | [`css/modal.css`](./css/modal.css) | Sharp `0px` Case-Study Modal & Career Evolution Modal styles |
-| [`js/data/projects.js`](./js/data/projects.js) | Bilingual `copy` (`en`/`pt`), all 10 Behance projects (`01–08` visible), 3 disciplines, and 6 career evolution milestones |
+| [`js/data/projects.js`](./js/data/projects.js) | Bilingual `copy` (`en`/`pt`), all 10 Behance projects (`01–06` visible), 3 disciplines, and 6 career evolution milestones |
 | [`js/components/portfolio.js`](./js/components/portfolio.js) | Rendering engine, filters, discipline-only captions, modals, live `BRT` clock, `EN / PT` toggle |
 | [`js/motion/animations.js`](./js/motion/animations.js) | GSAP + ScrollTrigger reveals/zoom, carousel rail sync, nav scroll-spy (`initNavScrollSpy`), custom desktop cursor |
 | [`js/main.js`](./js/main.js) | Entry bootstrap, mobile drawer, Back-to-Top scroll |
@@ -80,7 +80,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 3. **Never Reintroduce Temporary Figma Asset URLs:** Always store images locally in `assets/`. Temporary `figma.com/api/mcp/asset/...` URLs expire after 7 days.
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
 5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
-6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-fabrica` and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`08`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
+6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-economia`, `gdf-clube`, `gdf-fabrica`, and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`06`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
 7. **Secrets & Environment Files:** Keep local `.env` and `.env.local` git-ignored (never committed or included in handoff archives).
 
 ---
@@ -93,7 +93,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 
 ## Suggested Phase 3 Next Steps
 
-1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.4`):** All 10 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`07`), and campaign print (`08`–`09`) mockups (`gdf-fabrica` and `caubr-editorial` toggled `visible: false` with full assets preserved).
+1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.6`):** All 10 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`07`), and campaign print (`08`–`09`) mockups (`gdf-economia`, `gdf-clube`, `gdf-fabrica`, and `caubr-editorial` toggled `visible: false` with full assets preserved).
 2. **In Progress (Unarchived Preview on `main`):** Responsive `4:5` `#about` portrait layout (`index.html`, `css/components.css`) is staged with a dark architectural placeholder frame (pure high-contrast B&W candid workspace direction, sharp `0px` frame, no caption). Drop `assets/about-portrait.jpg` into place, swap out the placeholder, and cut `v0.9.5`.
 3. **Optional `10 CAU/BR` Editorial Magazine Mockup:** If restoring `caubr-editorial` (`visible: true`), optionally swap `01-eleicoes-caubr.jpg` with a custom open-magazine spread mockup.
 4. **Custom Domain, Favicon & Social OG Image:** Add an SVG/PNG favicon and `og:image` meta tag inside [`index.html`](./index.html).

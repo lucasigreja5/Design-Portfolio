@@ -28,6 +28,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 - **Mobile Modal Header & `>= 44×44px` Touch Targets (`css/modal.css`, `css/components.css`):**
   - Redesigned mobile (`<= 767px`) `.modal-header` into a 2-row grid giving project titles full width next to `×` on row 1 and the `← 01/08 →` stepper on row 2.
   - Stacked `.career-toggle` tabs cleanly below `768px` (hiding the dangling `/` divider) and ensured `>= 44×44px` mobile hit boxes on `EN / PT`, menu/close icons, Career tabs, Disciplines tabs, carousel arrows, modal chevrons, modal steppers, and `OPEN LIVE DEMO`.
+- **Non-Destructive Project Visibility Toggle (`js/data/projects.js`, `index.html`):** Disabled **GDF — Secretaria de Economia** (`gdf-economia`) and **GDF — Clube de Desconto** (`gdf-clube`) via `visible: false` while preserving all assets and gallery data (leaving `01`–`06` sequentially active, initial counter `/ 06`).
 - **Cache Busting (`index.html`):** Updated stylesheet and script query strings to `?v=0.9.6`.
 
 ---
