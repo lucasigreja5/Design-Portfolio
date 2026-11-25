@@ -62,6 +62,9 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 | [`assets/projects/README.md`](./assets/projects/README.md) | Instructions for swapping bespoke covers with high-res Behance/Figma PNG/WebP exports |
 | [`assets/projects/*-mockup.png`](./assets/projects/) | Bespoke 16:9 3D device, stationery suite (`03–06`), and campaign print (`07–08`) studio mockups |
 | [`assets/projects/behance/`](./assets/projects/behance/) | Pulled full-resolution Behance gallery images & live demo capture across projects `01`–`10` |
+| [`AGENTS.md`](./AGENTS.md) | Permanent workspace engineering, design, and pre-push privacy/secret-scrubbing rules |
+| [`scripts/check-sensitive.ps1`](./scripts/check-sensitive.ps1) | Windows pre-commit/pre-push scanner for secrets, local paths, and PII |
+| [`scripts/check-sensitive.sh`](./scripts/check-sensitive.sh) | Portable macOS/Linux pre-commit/pre-push sensitivity scanner |
 | [`scripts/release-version.sh`](./scripts/release-version.sh) | Archives a new immutable `Versions/vX.Y/` snapshot and updates `VERSION` |
 | [`scripts/serve.ps1`](./scripts/serve.ps1) | Zero-dependency Windows PowerShell static HTTP server (`localhost:4173`) |
 | [`scripts/serve.sh`](./scripts/serve.sh) | Portable macOS/Linux static HTTP server script |
@@ -81,7 +84,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 4. **Dynamic DOM Re-render on Language Toggle:** Calling `toggleLanguage()` in `js/components/portfolio.js` re-renders `[data-i18n]` nodes, project cards, disciplines, footer project links, and any open modal, then calls `PortfolioMotion.refreshSticky()` so the `IntersectionObserver` re-attaches to the newly created `.project-card` elements.
 5. **Versioning Discipline:** Keep every prior `Versions/vX.Y/` directory immutable. When cutting a new version (`0.2`, `0.3`, ...), run `./scripts/release-version.sh <ver> "<summary>"`, update `CHANGELOG.md` and `Versions/README.md`, commit, create an annotated tag (`git tag -a v<ver> -m "..."`), and push via `git push origin main --follow-tags`.
 6. **Non-Destructive Project Visibility Toggle:** Each entry in `PORTFOLIO_DATA.projects` supports `visible: false` (currently set on `gdf-economia`, `gdf-clube`, `gdf-fabrica`, and `caubr-editorial`) so projects can be hidden without deleting Behance gallery data or local mockup/asset files. Visible numbering (`01`–`06`) updates dynamically via `getVisibleProjects()` in `js/components/portfolio.js`.
-7. **Secrets & Environment Files:** Keep local `.env` and `.env.local` git-ignored (never committed or included in handoff archives).
+7. **Secrets, PII & Pre-Push Scrubbing (Mandatory):** Keep `.env` and `.env.local` git-ignored, scrub API keys, OAuth tokens, local home/workplace paths, personal phones, and private Drive URLs from `docs/` and `.agents/` before committing, and always run `scripts/check-sensitive.ps1` (Windows) or `./scripts/check-sensitive.sh` (macOS/Linux) prior to any GitHub push or handoff archive (see [`AGENTS.md`](./AGENTS.md)).
 
 ---
 

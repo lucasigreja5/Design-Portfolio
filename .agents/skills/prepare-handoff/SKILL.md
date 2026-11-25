@@ -20,10 +20,12 @@ Follow this exact 4-step workflow whenever the user asks to **prepare for handof
 2. **Update `HANDOFF.md`:** Ensure current version, status, file manifest, technical invariants, and next steps reflect the latest work.
 3. **Update `docs/CONVERSATION_HISTORY.md`:** Append a concise chronological summary of the current session's decisions, changes, and verification results.
 4. **Export Sanitized Transcript (`docs/history/conversation_log.json`):**
-   - Read `<appDataDir>\brain\<conversation-id>\.system_generated\logs\transcript.jsonl`.
+   - Read `<appDataDir>\brain\<conversation-id>\.system_generated\logs\transcript_full.jsonl` (falling back to `transcript.jsonl`).
    - Keep only `USER_INPUT` and `PLANNER_RESPONSE` entries (excluding `SYSTEM_MESSAGE`, `GENERIC`, and internal `thinking`).
-   - Strip machine-specific absolute home/workplace paths (e.g., `C:\Users\<user>\...`, OneDrive/org paths) AND redact all API keys, OAuth tokens, private keys, personal phone numbers, and private Drive URLs (`AQ.*`, `AIza*`, `ya29.*`, `GOCSPX-*`, `sk-*`, `gh*_*`, `-----BEGIN ... PRIVATE KEY-----`) before committing so zero secrets or private metadata enter Git history.
-5. **Commit Doc Updates (if Git repo):** Stage and commit updated handoff/history files cleanly so the archived repo has a clean working tree.
+   - Strip machine-specific absolute home/workplace paths (Windows user profile folders, macOS home directories, OneDrive/org paths) AND redact all API keys, OAuth tokens, GitHub/Figma tokens, private keys, personal phone numbers, and private Google Drive URLs before committing so zero secrets or private metadata enter Git history.
+5. **Run Sensitivity Scan (Mandatory):**
+   - Run `powershell -NoProfile -ExecutionPolicy Bypass -File "scripts\check-sensitive.ps1"` (Windows) or `./scripts/check-sensitive.sh` (macOS/Linux) and confirm `[PASS]` (`0` findings) before committing or zipping.
+6. **Commit Doc Updates (if Git repo):** Stage and commit updated handoff/history files cleanly so the archived repo has a clean working tree.
 
 ---
 
