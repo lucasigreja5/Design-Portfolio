@@ -17,7 +17,7 @@ This document preserves the full chronological context, audits, user feedback, a
 - **Workspace Discovery:** `DesignPortfolio` started empty; `git` was installed, while `node` / `npm` / `python` were absent from default Windows `PATH`.
 - **Behance Profile (`https://www.behance.net/lucasigreja`, `/info`, `/resume`):**
   - **Name & Role:** Lucas Igreja (`UI/UX Design | Graphic Design`), Art Director at `Governo do Distrito Federal - SECOM` (Feb 2019–Present).
-  - **Contact:** `lucas.igreja@gmail.com` · `+55 61 98133-5098` · LinkedIn verified.
+  - **Contact:** `lucas.igreja@gmail.com` · LinkedIn verified.
   - **Resume Timeline:** UniCEUB Advertising & Propaganda (2010–2013) → Agência Comunica (2014–2016) → Grupo Voetur (2016–2017) → G3 Comunicação (2017–2019) → GDF SECOM (2019–Present) → Figma UI/UX Specializations (2026).
   - **All 9 Public Projects:**
     1. `Sonar BSB` (2026, UI/UX & Motion, Figma + Gemini AI)
@@ -147,7 +147,7 @@ This document preserves the full chronological context, audits, user feedback, a
 ## Session 7 (2026-11-24 Night, macOS) — Handoff Resume & `v0.9.4`
 
 ### Cross-Machine Handoff Restore
-- Restored the `v0.9.3` repository into `/Users/lucas/Documents/Antigravity/DesignPortfolio`, verified `git` (`2.54.0`) + Google Drive (`gdrive`) + Figma plugins, and launched the local `localhost:4173` preview server.
+- Restored the `v0.9.3` repository into `<workspace>`, verified `git` (`2.54.0`) + Google Drive (`gdrive`) + Figma plugins, and launched the local `localhost:4173` preview server.
 
 ### `v0.9.4` — Discipline-Only Subtitles, Single-Line Desktop Captions, GDF CIC 2022 & Active Nav Highlight
 - **Discipline-Only Project Subtitles (`js/components/portfolio.js`):** Removed the creation year from `.project-caption-meta` so project cards display strictly the discipline label.
@@ -158,6 +158,30 @@ This document preserves the full chronological context, audits, user feedback, a
 
 ### `#about` Portrait Layout (`/grill-me` & Placeholder Preview)
 - **Direction Locked:** Candid moody workspace/creative-director portrait in pure high-contrast B&W (`grayscale(100%) contrast(1.06)`), sharp `0px` frame (`1px solid #282828`), no caption, positioned in a `34%` left-column `4:5` grid cell beside the bottom-right-aligned `.about-statement` (stacking cleanly on mobile `<= 767px`).
-- **Staged Preview (`index.html`, `css/components.css`):** Built and browser-verified at `http://localhost:4173/#about` (`0` overflow, `0` console/page errors) with a dark `PORTRAIT · 4:5` grid placeholder ready for dropping in `assets/about-portrait.jpg` before cutting `v0.9.5`.
+- **Staged Preview (`index.html`, `css/components.css`):** Built and browser-verified at `http://localhost:4173/#about` (`0` overflow, `0` console/page errors) with a dark `PORTRAIT · 4:5` grid placeholder ready for dropping in `assets/about-portrait.jpg` before cutting `v0.10`.
+
+---
+
+## Session 8 (2026-11-25, Windows) — Overnight Sync, `v0.9.5` & `v0.9.6` Hardening
+
+### Overnight `v0.9.4` Sync
+- Downloaded `DesignPortfolio-handoff-241126.zip` (`363.2 MB`) from Google Drive `Antigravity/Handoffs`, verified clean fast-forward Git ancestry (`b890f58`, `6bb7f20` over `4a71efe`), mirrored into Windows workspace while preserving `.env.local` and HTTPS `origin`, and verified `v0.9.4` + `#about` `4:5` placeholder live at `http://localhost:4173/`.
+
+### `v0.9.5` — Contact Links Row & Centered Minimal Footer
+- **Initial Iteration → Final `/grill-me` Design (`index.html`, `css/components.css`):** Replaced `#contact`'s `.btn-pill-cta` pill button with a centered **`EMAIL / BEHANCE / LINKEDIN`** row (`E-MAIL / BEHANCE / LINKEDIN` in `PT`) using scaled-up `Clash Display` (`clamp(1.5rem, 3vw, 2.75rem)`), `600`-weight `#2E2E2E` `/` dividers matching `.career-sep`, resting `#8A8A8A` dimmed gray ink, and `#D4FF00` lime highlight on hover/focus/click with `0px` horizontal shift.
+- **Mobile & Footer Symmetry (`index.html`, `css/components.css`):** Stacked links vertically centered with hidden `/` separators below `768px` (`>= 45px` tap height), removed `ul.footer-list` from `<footer>`, and centered `.footer-bar` across desktop and mobile. Archived `Versions/v0.9.5/` and tagged `v0.9.5`.
+
+### `v0.9.6` — Usability, Stability, Accessibility & PT Parity Audit + 6-Project Lineup
+- **Audit & Navigation Fixes (`index.html`, `js/main.js`, `js/motion/animations.js`):**
+  - Moved `id="top"` to `<body>` with smooth scroll-to-top click handling on `.brand-wordmark`; added `revealUpTo()` on section anchors/hashes plus `fonts.ready`/`load` `ScrollTrigger` refreshes so direct jumps (`#career`, `#contact`) never render invisible.
+  - Tuned `initNavScrollSpy()` (`atBottom = 80px`, `refY = headerH + 0.42 * innerHeight`) so `CONTACT` highlights in lime reliably, added optimistic `pendingTargetIdx` stepping + preserved index on language switches, switched `initHeroTilt()` to GSAP `quickTo`, and removed dead `#customCursor`.
+- **Overlay Scroll Lock, `inert` & Focus Traps (`index.html`, `css/modal.css`, `css/components.css`, `js/components/portfolio.js`):**
+  - Added reference-counted `setScrollLock()` locking `html`/`body` overflow plus `wheel`/`touchmove` boundary guards outside scrollable `.modal-panel`/`.mobile-drawer-panel` containers (`0px` background drift verified), `visibility: hidden` + `inert` on closed overlays, dynamic `aria-labelledby="modalHeading"`, focus placement on drawer open, and `Tab` focus traps (`trapFocus`).
+- **Portuguese Parity, Touch Targets & Visibility Toggle (`js/data/projects.js`, `css/modal.css`, `css/components.css`, `index.html`):**
+  - Localized Discipline tab 2 (`IDENTIDADE VISUAL`), SECOM period (`2019 — ATUAL`), and `[data-i18n-aria]` landmark labels; added arrow-key tablist navigation on `#disciplinesList`.
+  - Redesigned mobile `.modal-header` into a 2-row grid (title + `×` row 1, `← 01/08 →` row 2), stacked `.career-toggle` vertically without dangling `/`, and ensured `>= 44×44px` mobile touch targets.
+  - Disabled `gdf-economia` and `gdf-clube` (`visible: false`, keeping assets intact) leaving `01`–`06` sequentially active (`#stickyCounterTotal` `/ 06`), archived `Versions/v0.9.6/`, and tagged `v0.9.6`.
+- **Handoff Tooling Update (`.agents/skills/prepare-handoff/SKILL.md`):** Updated handoff ZIP naming convention to `<project>-handoff-<ddmmyy>-<HHMM>.zip`.
+
 
 

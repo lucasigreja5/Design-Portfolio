@@ -94,7 +94,7 @@ Do **not** deviate from these user-confirmed rules without explicit approval:
 ## Suggested Phase 3 Next Steps
 
 1. **Completed — Real Behance Imagery & Studio Mockups (`v0.9`–`v0.9.6`):** All 10 Behance galleries are downloaded in `assets/projects/behance/` and wired with bespoke 16:9 device (`01`–`02`), stationery suite (`03`–`07`), and campaign print (`08`–`09`) mockups (`gdf-economia`, `gdf-clube`, `gdf-fabrica`, and `caubr-editorial` toggled `visible: false` with full assets preserved).
-2. **In Progress (Unarchived Preview on `main`):** Responsive `4:5` `#about` portrait layout (`index.html`, `css/components.css`) is staged with a dark architectural placeholder frame (pure high-contrast B&W candid workspace direction, sharp `0px` frame, no caption). Drop `assets/about-portrait.jpg` into place, swap out the placeholder, and cut `v0.9.5`.
+2. **In Progress (Unarchived Preview on `main`):** Responsive `4:5` `#about` portrait layout (`index.html`, `css/components.css`) is staged with a dark architectural placeholder frame (pure high-contrast B&W candid workspace direction, sharp `0px` frame, no caption). Drop `assets/about-portrait.jpg` into place, swap out the placeholder, and cut `v0.10`.
 3. **Optional `10 CAU/BR` Editorial Magazine Mockup:** If restoring `caubr-editorial` (`visible: true`), optionally swap `01-eleicoes-caubr.jpg` with a custom open-magazine spread mockup.
 4. **Custom Domain, Favicon & Social OG Image:** Add an SVG/PNG favicon and `og:image` meta tag inside [`index.html`](./index.html).
 5. **Deploy Statically:** Push via **GitHub Desktop** to `https://github.com/lucasigreja5/Design-Portfolio.git` and host on GitHub Pages, Netlify, Vercel, or Cloudflare Pages—no build command needed (publish root `.`).

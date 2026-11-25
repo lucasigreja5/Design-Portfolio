@@ -4,7 +4,7 @@ description: >-
   Standard routine for preparing a project for cross-machine handoff. Use whenever
   the user asks to "prepare for handoff", "create handoff", or run the handoff
   routine: updates and verifies handoff/history docs, creates a `<project>-handoff-<ddmmyy>-<HHMM>.zip`
-  archive, saves it to `C:\Users\Lucas.Moreira\OneDrive - secom.df.gov.br\AGY\Handoffs`,
+  archive, saves it to `<workspaceParent>\Handoffs` (the sibling `Handoffs` folder next to the workspace),
   and uploads it to Google Drive under `Antigravity/Handoffs`.
 ---
 
@@ -22,7 +22,7 @@ Follow this exact 4-step workflow whenever the user asks to **prepare for handof
 4. **Export Sanitized Transcript (`docs/history/conversation_log.json`):**
    - Read `<appDataDir>\brain\<conversation-id>\.system_generated\logs\transcript.jsonl`.
    - Keep only `USER_INPUT` and `PLANNER_RESPONSE` entries (excluding `SYSTEM_MESSAGE`, `GENERIC`, and internal `thinking`).
-   - Strip machine-specific absolute home paths (e.g., `C:\Users\<user>\...`) so zero absolute user paths leak into the repository.
+   - Strip machine-specific absolute home/workplace paths (e.g., `C:\Users\<user>\...`, OneDrive/org paths) AND redact all API keys, OAuth tokens, private keys, personal phone numbers, and private Drive URLs (`AQ.*`, `AIza*`, `ya29.*`, `GOCSPX-*`, `sk-*`, `gh*_*`, `-----BEGIN ... PRIVATE KEY-----`) before committing so zero secrets or private metadata enter Git history.
 5. **Commit Doc Updates (if Git repo):** Stage and commit updated handoff/history files cleanly so the archived repo has a clean working tree.
 
 ---
@@ -37,9 +37,9 @@ Follow this exact 4-step workflow whenever the user asks to **prepare for handof
 
 ## 3. Save to Local Handoffs Folder
 
-Copy the verified ZIP from scratch to:
+Copy the verified ZIP from scratch to the sibling `Handoffs` directory next to the workspace folder:
 ```
-C:\Users\Lucas.Moreira\OneDrive - secom.df.gov.br\AGY\Handoffs\<project>-handoff-<ddmmyy>-<HHMM>.zip
+<workspaceParent>\Handoffs\<project>-handoff-<ddmmyy>-<HHMM>.zip
 ```
 *(Create the `Handoffs` directory if it does not exist. On Windows inside the sandbox, run the copy step with `BypassSandbox: true`.)*
 

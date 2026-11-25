@@ -8,8 +8,6 @@
     profile: {
       name: 'LUCAS IGREJA',
       email: 'lucas.igreja@gmail.com',
-      phone: '+55 61 98133-5098',
-      whatsappUrl: 'https://wa.me/5561981335098',
       behanceUrl: 'https://www.behance.net/lucasigreja',
       linkedinUrl: 'https://www.linkedin.com/in/lucasigreja/',
       location: 'BRASÍLIA, BR'
